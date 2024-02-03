@@ -32,7 +32,7 @@ export default function LoginCard({isHome,children}:props):JSX.Element {
   mutationFn:(body:Omit<IUsers,"_id"|"films">)=>addUser(body),
   onSuccess:()=>invalidateQueries({queryKey:['users']})
 })
- const {setName,setId } = useStore();
+ const {setName,setId,setToken } = useStore();
  const methods = useForm<form>({
   defaultValues:{name:"",pass:""}
  });
@@ -54,6 +54,7 @@ export default function LoginCard({isHome,children}:props):JSX.Element {
       if (isHome){
        setName(date.name);
        setId(data._id);
+       setToken(data.token);
        router.push(`/home/profile/${data._id}`);
       } else add(date);
     } catch(e) {

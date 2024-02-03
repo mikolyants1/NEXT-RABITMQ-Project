@@ -19,7 +19,7 @@ import { useQuery } from "@tanstack/react-query"
 
   const userFilms:IUsers[] = data
   .filter((i:IUsers)=>i._id !== id);
-
+  
   return (
     <Box w='100%'
      mt={30}>

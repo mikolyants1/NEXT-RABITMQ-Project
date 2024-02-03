@@ -31,8 +31,10 @@ export interface ILogo {
 export interface IStore {
   name:string,
   id:string,
+  token:string
   setName:(name:string)=>void,
   setId:(id:string)=>void,
+  setToken:(token:string)=>void
 }
 
 export type form = Omit<IUsers,"_id"|'posts'>;
@@ -41,6 +43,7 @@ export type Control<T extends string> = ControllerRenderProps<FieldValues,T>;
 
 export interface ICheck {
    _id:string,
+   token:string
 }
 
 export type Null<T>  = null | T;

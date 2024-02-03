@@ -19,19 +19,19 @@ function FilmCard({data}:props):JSX.Element {
   const rows:string[] = [Released,Director,Actors];
   const router:AppRouterInstance = useRouter();
   const {invalidateQueries} = useQueryClient();
-  const {id:_id} = useStore();
+  const {id:_id,token} = useStore();
   const {mutate} = useMutation({
-  mutationFn:(date:IFilms)=>addFilm(date),
+  mutationFn:(date:IFilms&{token:string})=>addFilm(date),
   onSuccess:()=>invalidateQueries({queryKey:['films']})
   });
 
   const add = useCallback(async ():Promise<void> => {
     const isAdded:boolean = await checkFilmId(imdbID,_id);
     if (!isAdded){
-      mutate({_id,Title,Released,Actors,Director,imdbID,Plot,Poster});
+      mutate({_id,token,Title,Released,Actors,Director,imdbID,Plot,Poster});
     };
     router.push(`/home/film/${imdbID}`);
-  },[]);
+  },[data]);
 
   return (
     <FilmCardWrapper add={add}>

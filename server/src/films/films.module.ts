@@ -1,8 +1,10 @@
-import { Module } from "@nestjs/common";
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { UserSchema, Users } from "src/database/app.mongo";
 import { FilmsService } from "./films.service";
 import { FilmsController } from "./films.controller";
+import { CheckAuthToken } from "src/middlewares/CheckAuthToken";
+import { AuthService } from "src/auth.service";
 
 @Module({
     imports:[
@@ -10,7 +12,13 @@ import { FilmsController } from "./films.controller";
         {name:Users.name,schema:UserSchema}
       ])
     ],
-    providers:[FilmsService],
+    providers:[FilmsService,AuthService],
     controllers:[FilmsController]
 })
-export class FilmsModule {}
+export class FilmsModule implements NestModule {
+   configure(consumer: MiddlewareConsumer) {
+     consumer
+     .apply(CheckAuthToken)
+     .forRoutes({path:"films",method:RequestMethod.POST})
+   }
+}
