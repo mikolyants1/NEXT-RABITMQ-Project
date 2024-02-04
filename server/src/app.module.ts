@@ -21,7 +21,7 @@ import {JwtModule} from '@nestjs/jwt';
     MongooseModule.forRoot(process.env.DB_URI),
     UsersModule,
     FilmsModule,
-    CheckModule
+    CheckModule,
   ],
 })
 export class AppModule {}

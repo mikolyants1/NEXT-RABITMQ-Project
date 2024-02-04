@@ -8,7 +8,8 @@ export class FilmsController {
    constructor(private readonly service:FilmsService){};
 
    @Post(':id')
-   async addFilms(@Param('id') id:string,@Body() body:Omit<FilmsDto,"_id">):Promise<Users>{
+   async addFilms( @Param('id') id:string,
+   @Body() body:Omit<FilmsDto,"_id">):Promise<Users>{
      return await this.service.addFilm(id,body);
    };
 };

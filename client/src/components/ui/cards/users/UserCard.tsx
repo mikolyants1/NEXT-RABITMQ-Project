@@ -1,11 +1,11 @@
 import { IFilms } from '@/components/types/type'
-import { Box } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import React from 'react'
 import FilmMapCard from '../films/FilmMapCard'
 
 interface props {
   name:string,
-  films:IFilms[]
+  films:IFilms[],
 };
 
 function UserCard({name,films}:props):JSX.Element {
@@ -19,7 +19,7 @@ function UserCard({name,films}:props):JSX.Element {
        borderBottom='1px solid white'
        fontSize={30}
        color='white'>
-          {name}
+          {name} {" "}
       </Box>
       <FilmMapCard data={films} />
     </Box>

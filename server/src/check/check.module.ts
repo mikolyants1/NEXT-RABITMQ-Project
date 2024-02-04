@@ -3,15 +3,16 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { UserSchema, Users } from "src/database/app.mongo";
 import { CheckService } from "./check.service";
 import { CheckController } from "./check.controller";
-import { AuthService } from "src/auth.service";
+import { AuthModule } from "src/auth/auth.module";
 
 @Module({
     imports:[
         MongooseModule.forFeature([
           {name:Users.name,schema:UserSchema}
-        ])
+        ]),
+        AuthModule,
     ],
-    providers:[CheckService,AuthService],
+    providers:[CheckService],
     controllers:[CheckController]
 })
 export class CheckModule {}

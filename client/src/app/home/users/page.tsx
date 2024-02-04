@@ -23,12 +23,15 @@ import { useQuery } from "@tanstack/react-query"
   return (
     <Box w='100%'
      mt={30}>
-       {userFilms.map((i:IUsers):JSX.Element=>(
+       {userFilms.map((i:IUsers):JSX.Element=>{
+        const {name,films,_id}:IUsers = i;
+        return (
          <UserCard
-          name={i.name}
-          films={i.films}
-        />
-       ))}
+          key={_id}
+          name={name}
+          films={films}
+        />)
+       })}
     </Box>
   )
 }

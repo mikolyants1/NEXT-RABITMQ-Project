@@ -4,15 +4,16 @@ import { UserSchema, Users } from "src/database/app.mongo";
 import { FilmsService } from "./films.service";
 import { FilmsController } from "./films.controller";
 import { CheckAuthToken } from "src/middlewares/CheckAuthToken";
-import { AuthService } from "src/auth.service";
+import { AuthModule } from "src/auth/auth.module";
 
 @Module({
     imports:[
       MongooseModule.forFeature([
         {name:Users.name,schema:UserSchema}
-      ])
+      ]),
+      AuthModule
     ],
-    providers:[FilmsService,AuthService],
+    providers:[FilmsService],
     controllers:[FilmsController]
 })
 export class FilmsModule implements NestModule {

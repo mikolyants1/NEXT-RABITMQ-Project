@@ -5,7 +5,7 @@ import { Users } from "src/database/app.mongo";
 import { UsersDto } from "src/dto/users.dto";
 import * as bc from 'bcrypt';
 import { FilmsDto } from "src/dto/films.dto";
-import { AuthService } from "src/auth.service";
+import { AuthService } from "src/auth/auth.service";
 
 @Injectable()
 export class CheckService {
