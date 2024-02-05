@@ -19,6 +19,6 @@ export class AuthService {
 
     async getToken({headers}:Request):Promise<string>{
       const auth:string = headers.authorization;
-      return auth.split(' ')[1];
+      return auth.includes('Bearer') ? auth.split(' ')[1] : "";
     }
 }
