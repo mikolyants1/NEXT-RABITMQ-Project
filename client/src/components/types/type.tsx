@@ -23,6 +23,13 @@ export interface ILinks {
   name:string
 };
 
+export interface IClearQuery {
+  id:string,
+  token:string
+}
+export interface IDelQuery extends IClearQuery {
+  _id:string
+}
 export interface ILogo {
   one:string,
   two:string

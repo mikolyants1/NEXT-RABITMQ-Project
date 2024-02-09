@@ -7,8 +7,8 @@ import { Users } from "src/database/app.mongo";
 import { UsersDto } from "src/dto/users.dto";
 
 export class CheckAuthToken implements NestMiddleware {
-     constructor(private readonly auth:AuthService,
-     @InjectModel(Users.name) private readonly Base:Model<Users>){};
+    constructor(private readonly auth:AuthService,
+    @InjectModel(Users.name) private readonly Base:Model<Users>){};
 
     async use(req:Request, res:Response, next:NextFunction) {
       const id:string = req.params.id;

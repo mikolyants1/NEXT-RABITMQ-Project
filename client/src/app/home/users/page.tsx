@@ -7,7 +7,7 @@ import UserCard from "@/components/ui/cards/users/UserCard";
 import Error from "@/components/ui/load/Error";
 import Loading from "@/components/ui/load/Loading";
 import { Box } from "@chakra-ui/react";
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query";
 
  function page():JSX.Element {
   const {id} = useStore();
@@ -21,8 +21,7 @@ import { useQuery } from "@tanstack/react-query"
   .filter((i:IUsers)=>i._id !== id);
   
   return (
-    <Box w='100%'
-     mt={30}>
+     <Box w='100%' mt={30}>
        {userFilms.map((i:IUsers):JSX.Element=>{
         const {name,films,_id}:IUsers = i;
         return (

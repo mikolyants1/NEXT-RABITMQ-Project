@@ -2,10 +2,9 @@ import { Flex } from '@chakra-ui/react'
 import React from 'react'
 
 interface props {
-    add:()=>void,
     children:JSX.Element[]
 }
-function FilmCardWrapper({children,add}:props):JSX.Element {
+function FilmCardWrapper({children}:props):JSX.Element {
   return (
     <Flex w={400}
       borderRadius={10}
@@ -13,7 +12,7 @@ function FilmCardWrapper({children,add}:props):JSX.Element {
       m='20px auto'
       color='white'
       alignItems='center'
-      onClick={add}
+      position='relative'
       h={300}>
        {children}
     </Flex>

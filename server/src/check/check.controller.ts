@@ -13,7 +13,8 @@ export class CheckController {
   }
 
   @Post(':id')
-  async checkId(@Param('id') id:string,@Body() body:Pick<FilmsDto,"imdbID">):Promise<boolean>{
+  async checkId(@Param('id') id:string,
+  @Body() body:Pick<FilmsDto,"imdbID">):Promise<boolean>{
      return this.service.checkId(body.imdbID,id);
   };
 }

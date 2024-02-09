@@ -4,6 +4,7 @@ import { Drawer, DrawerBody,DrawerCloseButton,DrawerContent,
  DrawerHeader, DrawerOverlay } from '@chakra-ui/react'
 import React from 'react'
 import NavLinkCard from '../../cards/nav/NavLinkCard'
+import { createLinks } from '@/components/helpers/functions/links'
 
 interface props {
   isOpen:boolean,
@@ -11,12 +12,8 @@ interface props {
 }
 function NavMenu({isOpen,onClose}:props):JSX.Element {
   const {id} = useStore();
-  const links:ILinks[] = [
-    {path:`/home/profile/${id}`,name:"Profile"},
-    {path:'/home/users',name:"Users"},
-    {path:"/home/search",name:"Search"},
-    {path:"/",name:"exit"}
-  ]
+  const links:ILinks[] = createLinks(id);
+
   return (
     <Drawer
      isOpen={isOpen}

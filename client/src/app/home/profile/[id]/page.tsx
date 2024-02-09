@@ -27,9 +27,9 @@ function page({params}:props):JSX.Element {
        isMaped={isMaped}
        />
       {isMaped&&(
-        <FilmMapCard 
-         data={data.films}
-        />)}
+       <FilmMapCard 
+        data={data.films}
+       />)}
     </Box>
   )
 }

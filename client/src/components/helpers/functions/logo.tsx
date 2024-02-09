@@ -1,6 +1,6 @@
 import { ILogo } from "@/components/types/type";
 
-export function createLogo():ILogo{
+export function createLogo():ILogo {
   const first:string[] = ['gold','green','orange'];
   const second:string[] = ['red','blue','blueviolet'];
   return {

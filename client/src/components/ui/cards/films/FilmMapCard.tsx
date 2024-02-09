@@ -2,6 +2,7 @@ import { IFilms } from '@/components/types/type'
 import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import FilmCard from './film/FilmCard'
+import ClearJournalButton from '../../buttons/film/ClearJournalButton';
 
 interface props {
     data:IFilms[];
@@ -22,6 +23,7 @@ function FilmMapCard({data}:props):JSX.Element {
           />
         ))}
       </Flex>
+      <ClearJournalButton />
     </>
   )
 }

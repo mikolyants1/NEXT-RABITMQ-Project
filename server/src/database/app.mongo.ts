@@ -5,7 +5,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 export class Films extends Document {
    @Prop({
     type:String,
-    required:true
+    required:true,
    })
    Title:string;
 
@@ -13,7 +13,6 @@ export class Films extends Document {
     type:String,
     required:true
    })
-   Released:string;
    
    @Prop({
     type:String,

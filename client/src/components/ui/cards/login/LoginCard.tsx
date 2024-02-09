@@ -8,14 +8,15 @@ import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import LoginErrorCard from './LoginErrorCard'
-import LoginButton from '../../buttons/LoginButtons'
+import LoginButton from '../../buttons/login/LoginButtons'
 import { useStore } from '@/components/store/store'
 import { useMutation, useQueryClient,UseMutationResult } from '@tanstack/react-query'
-import addUser from '@/components/helpers/query/user/addUser'
+import addUser from '@/components/helpers/mutation/user/addUser'
 import { IUsers } from '@/components/types/type'
 import { response } from '@/components/helpers/functions/response'
 import checkUsers from '@/components/helpers/query/user/checkUsers'
 import LoginCardWrapper from '../../wrappers/LoginCardWrapper'
+import { createFields } from '@/components/helpers/functions/fileds'
 
 interface props {
   isHome:boolean,
@@ -36,10 +37,7 @@ export default function LoginCard({isHome,children}:props):JSX.Element {
  const methods = useForm<form>({
   defaultValues:{name:"",pass:""}
  });
- const fields:fields[] = [
-  {Name:'name',title:'name'},
-  {Name:'pass',title:'password'}
- ];
+ const fields:fields[] = createFields();
  const {reset} = methods;
 
  const submit:SubmitHandler<form> = async (date):Promise<void> => {

@@ -17,5 +17,23 @@ export class FilmsService {
     return await this.Base
     .findByIdAndUpdate(id,{films},{new:true})
     .exec();
-  }
+  };
+
+  async delFilm(id:string,_id:string):Promise<Users>{
+    const user:UsersDto|undefined = await this.Base.findById(id);
+    if (!user) return;
+    const films:FilmsDto[] = user.films
+    .filter((i:FilmsDto)=>i._id.toString() !== _id);
+    return await this.Base
+    .findByIdAndUpdate(id,{films},{new:true})
+    .exec();
+  };
+
+  async clearFilm(id:string):Promise<Users>{
+    const user:UsersDto|undefined = await this.Base.findById(id);
+    if (!user) return;
+    return await this.Base
+    .findByIdAndUpdate(id,{films:[]},{new:true})
+    .exec();
+  };
 }

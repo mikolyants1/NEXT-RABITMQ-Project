@@ -9,7 +9,10 @@ import { AuthModule } from "src/auth/auth.module";
 @Module({
     imports:[
       MongooseModule.forFeature([
-        {name:Users.name,schema:UserSchema}
+         {
+          name:Users.name,
+          schema:UserSchema
+         }
       ]),
       AuthModule
     ],
@@ -20,6 +23,6 @@ export class FilmsModule implements NestModule {
    configure(consumer: MiddlewareConsumer) {
      consumer
      .apply(CheckAuthToken)
-     .forRoutes({path:"films",method:RequestMethod.POST})
+     .forRoutes({path:"films",method:RequestMethod.ALL})
    }
 }
