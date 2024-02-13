@@ -5,7 +5,7 @@ export const mongoConfig = () => {
     imports:[ConfigModule],
     inject:[ConfigService],
     useFactory:(service:ConfigService)=>({
-      uri:service.get('COMM_URI')
+      uri:service.get('DB_URI')
     })
   }
 }

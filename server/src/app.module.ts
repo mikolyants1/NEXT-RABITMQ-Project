@@ -20,7 +20,6 @@ import { mongoConfig } from './configs/mongo.config';
           expiresIn:'24h'
        }
     }),
-    MongooseModule.forRoot(process.env.DB_URI),
     MongooseModule.forRootAsync(mongoConfig()),
     CommentsModule,
     UsersModule,

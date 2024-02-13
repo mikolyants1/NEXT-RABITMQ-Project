@@ -11,7 +11,6 @@ export class CommentsService {
 
    async getCommentsOfFilm(filmID:string):Promise<CommentDto[]>{
     const film:undefined|CommentsDto = await this.comm.findOne({filmID});
-    console.log(await this.comm.find())
     return film ? film.comm : [];
    };
 
