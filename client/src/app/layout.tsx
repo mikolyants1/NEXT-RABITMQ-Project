@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}
        style={{
         backgroundColor:"black",
-        minWidth:410
+        minWidth:450
         }}>
         <QueryLayout>
           <ChakraLayout> 
