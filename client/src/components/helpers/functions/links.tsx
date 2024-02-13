@@ -7,7 +7,7 @@ export const createLinks = (id:string):ILinks[] => {
           name:"Profile"
         },
         {
-          path:'/home/users',
+          path:`/home/users/${id}`,
           name:"Users"
         },
         {

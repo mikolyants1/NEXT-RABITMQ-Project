@@ -1,5 +1,5 @@
 import { IFilms } from '@/components/types/type'
-import { Box, Text } from '@chakra-ui/react'
+import { Box} from '@chakra-ui/react'
 import React from 'react'
 import FilmMapCard from '../films/FilmMapCard'
 
