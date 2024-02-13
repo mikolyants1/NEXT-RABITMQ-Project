@@ -2,7 +2,7 @@
 
 import {useDisclosure } from '@chakra-ui/react'
 import React from 'react'
-import NavMenu from './headerNav/NavMenu';
+import NavMenu from './nav/NavMenu';
 import HeaderCard from '../cards/header/HeaderCard';
 
 function Header():JSX.Element {

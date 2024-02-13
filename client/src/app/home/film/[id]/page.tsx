@@ -2,8 +2,9 @@
 import getFilmById from '@/components/helpers/query/film/getFilmById'
 import { IFilms, IParams } from '@/components/types/type'
 import FilmPosterCard from '@/components/ui/cards/films/film/FilmPosterCard';
-import FilmCompleteWrapper from '@/components/ui/wrappers/FilmCompleteWrapper';
+import FilmCompleteWrapper from '@/components/ui/wrappers/film/FilmCompleteWrapper';
 import { Box, Flex, Image } from '@chakra-ui/react';
+import Link from 'next/link';
 import React from 'react'
 
 interface props {
@@ -29,7 +30,7 @@ async function page({params}:props):Promise<JSX.Element> {
            <Box w='100%'
             textAlign='center'
             fontSize={32}>
-               {Title} 
+              {Title} 
            </Box>
            {values.map((i:string):JSX.Element=>(
              <FilmPosterCard
@@ -45,6 +46,12 @@ async function page({params}:props):Promise<JSX.Element> {
         m='10px auto'
         pt={5}>
           {Plot}
+       </Box>
+       <Box w='100%'
+        textAlign='center'>
+         <Link href={`/home/comments/film/${params.id}`}>
+            Comments 
+         </Link>
        </Box>
     </FilmCompleteWrapper>
   )

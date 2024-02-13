@@ -1,8 +1,8 @@
 import axios, { AxiosResponse } from "axios";
-import { IFilms, IUsers } from "../../../types/type";
+import { IFilms, IToken, IUsers } from "../../../types/type";
 
-async function addFilm(args:IFilms&{token:string}):Promise<IUsers> {
- const {_id,token,...body}:IFilms&{token:string} = args;
+async function addFilm(args:IFilms&IToken):Promise<IUsers> {
+ const {_id,token,...body}:IFilms&IToken = args;
  return await axios
   .post(`http://localhost:5000/films/${_id}`,body,{
     headers:{

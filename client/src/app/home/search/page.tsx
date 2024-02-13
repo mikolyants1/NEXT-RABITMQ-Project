@@ -1,38 +1,39 @@
 'use client'
 
 import getFilmByTitle from '@/components/helpers/query/film/getFilmByTitle';
+import { initial, reducer } from '@/components/helpers/reducer';
 import { IFilms } from '@/components/types/type'
 import FilmCard from '@/components/ui/cards/films/film/FilmCard';
 import Error from '@/components/ui/load/Error';
 import { Box, Button, Flex, Input } from '@chakra-ui/react';
-import React, { ChangeEvent, KeyboardEvent, useMemo, useState } from 'react'
+import React, { ChangeEvent, KeyboardEvent,
+useMemo, useReducer, useState } from 'react'
 
 function page():JSX.Element {
   const [data,setData] = useState<IFilms>({} as IFilms);
-  const [error,setError] = useState<boolean>(false);
-  const [show,setShow] = useState<boolean>(false);
-  const [title,setTitle] = useState<string>("");
+  const [state,dispatch] = useReducer(reducer,initial);
   const memoData:IFilms = useMemo(()=>data,[data]);
 
   const change = (e:ChangeEvent<HTMLInputElement>):void => {
-    setTitle(e.target.value);
+    dispatch({title:e.target.value});
   };
+
   const enterHandler = (e:KeyboardEvent<HTMLInputElement>):void => {
-     if (e.key === "Enter") search();
+    if (e.key === "Enter") search();
   };
 
   const search = async ():Promise<void> => {
     try {
-      const film:IFilms = await getFilmByTitle(title);
+      const film:IFilms = await getFilmByTitle(state.title);
       setData(film);
-      setShow(true);
+      dispatch({show:true});
     } catch (e) {
-        console.log(e)
-       setError(true);
+      console.log(e)
+      dispatch({error:true});
     };
   };
 
- if (error) return <Error />;
+ if (state.error) return <Error />;
 
   return (
     <Box w='100%'
@@ -57,7 +58,11 @@ function page():JSX.Element {
          </Button>
        </Flex>
        <>
-        {show&&<FilmCard data={memoData} />}
+        {state.show&&(
+          <FilmCard
+           data={memoData}
+           />
+        )}
        </>
     </Box>
   )

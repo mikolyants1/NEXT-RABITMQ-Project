@@ -15,6 +15,10 @@ export const createLinks = (id:string):ILinks[] => {
           name:"Search"
         },
         {
+          path:`/home/comments/user`,
+          name:"my comments"
+        },
+        {
           path:"/",
           name:"exit"
         }

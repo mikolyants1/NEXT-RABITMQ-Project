@@ -3,7 +3,7 @@
 import { IFilms} from '@/components/types/type'
 import React, { memo, useContext } from 'react'
 import { Box ,Image} from '@chakra-ui/react';
-import FilmCardWrapper from '@/components/ui/wrappers/FilmCardWrapper';
+import FilmCardWrapper from '@/components/ui/wrappers/film/FilmCardWrapper';
 import { useStore } from '@/components/store/store';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import addFilm from '@/components/helpers/mutation/film/addFilm';

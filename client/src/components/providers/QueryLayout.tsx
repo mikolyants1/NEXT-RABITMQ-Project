@@ -9,7 +9,8 @@ interface props {
 const query:QueryClient = new QueryClient({
     defaultOptions:{
       queries:{
-        refetchOnWindowFocus:false
+        refetchOnWindowFocus:false,
+        keepPreviousData:true
       }
     }
 })

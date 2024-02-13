@@ -1,3 +1,4 @@
+import { QueryFunction } from "@tanstack/react-query";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
 
 export interface IFilms {
@@ -35,6 +36,46 @@ export interface ILogo {
   two:string
 };
 
+export interface ICommContext {
+  answer:(name:string)=>()=>void,
+};
+
+export interface IComment {
+  _id:string,
+  text:string,
+  time:number,
+  userId:string,
+  username:string
+};
+
+export interface ICommBody extends Omit<IComment,"_id"> {
+  name:string,
+  filmID:string
+};
+
+export interface IQueries {
+  comm:IComment[],
+  film:IFilms
+}
+export type UserComm = Omit<ICommBody,"filmID">;
+
+export interface ICommDelBody {
+  id:string,
+  time:number,
+  token:string
+};
+
+export interface IQueryData {
+  queryKey:string[],
+  queryFn:QueryFunction
+}
+export interface IComments {
+  _id:string,
+  name:string,
+  filmID:string,
+  comm:IComment[]
+};
+
 export interface IStore {
   name:string,
   id:string,
@@ -43,6 +84,14 @@ export interface IStore {
   setId:(id:string)=>void,
   setToken:(token:string)=>void
 }
+
+export interface IState {
+   error:boolean
+   show:boolean,
+   title:string
+}
+
+export type Action = Record<string,IState[keyof IState]>;
 
 export type form = Omit<IUsers,"_id"|'posts'>;
 
@@ -53,6 +102,9 @@ export interface ICheck {
    token:string
 }
 
+export interface IToken {
+  token:string
+}
 export type Null<T>  = null | T;
 export interface IParams {
   id:string
