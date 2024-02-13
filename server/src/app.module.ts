@@ -5,6 +5,8 @@ import { UsersModule } from './users/users.module';
 import { FilmsModule } from './films/films.module';
 import { CheckModule } from './check/check.module';
 import {JwtModule} from '@nestjs/jwt';
+import { CommentsModule } from './comments/comments.module';
+import { mongoConfig } from './configs/mongo.config';
 
 @Module({
   imports: [
@@ -15,10 +17,12 @@ import {JwtModule} from '@nestjs/jwt';
       global:true,
       secret:process.env.SECRET,
       signOptions:{
-        expiresIn:'24h'
-      }
+          expiresIn:'24h'
+       }
     }),
     MongooseModule.forRoot(process.env.DB_URI),
+    MongooseModule.forRootAsync(mongoConfig()),
+    CommentsModule,
     UsersModule,
     FilmsModule,
     CheckModule,

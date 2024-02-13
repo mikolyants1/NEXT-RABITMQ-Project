@@ -5,7 +5,7 @@ import { FilmsDto } from "src/dto/films.dto";
 
 @Controller('check')
 export class CheckController {
-    constructor(private readonly service:CheckService){};
+  constructor(private readonly service:CheckService){};
 
   @Post()
   async checkData(@Body() body:Omit<UsersDto,"_id"|"films">):Promise<{_id:string}>{

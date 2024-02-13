@@ -13,7 +13,8 @@ export class AuthService {
     };
 
     async compare(token:string,{name,_id}:UsersDto):Promise<boolean>{
-      const decoded = await this.service.verify(token);
+      const decoded:Omit<UsersDto,"films"|"pass"> = await 
+      this.service.verify(token);
       return decoded._id == _id && decoded.name == name;
     };
 

@@ -3,7 +3,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import { NextFunction, Request, Response } from "express";
 import { Model } from "mongoose";
 import { AuthService } from "src/auth/auth.service";
-import { Users } from "src/database/app.mongo";
+import { Users } from "src/database/user.mongo";
 import { UsersDto } from "src/dto/users.dto";
 
 export class CheckAuthToken implements NestMiddleware {
@@ -16,6 +16,7 @@ export class CheckAuthToken implements NestMiddleware {
       if (!user) throw new UnauthorizedException();
       const token:string = await this.auth.getToken(req);
       const isAuth:boolean = await this.auth.compare(token,user);
-      if (isAuth) next();
-    }
+      if (!isAuth) throw new UnauthorizedException();
+      next();
+    };
 }

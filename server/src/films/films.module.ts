@@ -1,6 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { UserSchema, Users } from "src/database/app.mongo";
+import { UserSchema, Users } from "src/database/user.mongo";
 import { FilmsService } from "./films.service";
 import { FilmsController } from "./films.controller";
 import { CheckAuthToken } from "src/middlewares/CheckAuthToken";

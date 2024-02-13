@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Param, Post, Query } from "@nestjs/common";
 import { FilmsService } from "./films.service";
-import { Users } from "src/database/app.mongo";
+import { Users } from "src/database/user.mongo";
 import { FilmsDto } from "src/dto/films.dto";
 import { UsersDto } from "src/dto/users.dto";
 

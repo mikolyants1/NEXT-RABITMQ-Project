@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { Users } from "src/database/app.mongo";
+import { Users } from "src/database/user.mongo";
 import { UsersDto } from "src/dto/users.dto";
 import * as bc from 'bcrypt';
 import { FilmsDto } from "src/dto/films.dto";
