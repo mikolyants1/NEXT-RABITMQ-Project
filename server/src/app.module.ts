@@ -7,18 +7,13 @@ import { CheckModule } from './check/check.module';
 import {JwtModule} from '@nestjs/jwt';
 import { CommentsModule } from './comments/comments.module';
 import { mongoConfig } from './configs/mongo.config';
+import { jwtConfig } from './configs/jwt.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
+      isGlobal:true,
       envFilePath:'./src/.db.env'
-    }),
-    JwtModule.register({
-      global:true,
-      secret:process.env.SECRET,
-      signOptions:{
-          expiresIn:'24h'
-       }
     }),
     MongooseModule.forRootAsync(mongoConfig()),
     CommentsModule,

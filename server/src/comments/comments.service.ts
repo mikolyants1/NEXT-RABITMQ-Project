@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { Comments } from "src/database/comments.mongo";
-import { CommentDto } from "src/dto/comment.dto";
+import { CommentDto, UpdateDto } from "src/dto/comment.dto";
 import { CommentsDto } from "src/dto/comments.dto";
 
 @Injectable()
@@ -16,8 +16,7 @@ export class CommentsService {
 
    async delCommentOfFilm(filmID:string,time:number):Promise<Comments>{
     const film:undefined|CommentsDto = await this.comm.findOne({filmID});
-    const comm:CommentDto[] = film.comm
-    .filter((i:CommentDto)=> i.time !== time);
+    const comm:CommentDto[] = film.comm.filter((i:CommentDto)=> i.time !== time);
     return await this.comm
      .findOneAndUpdate({filmID},{comm},{new:true})
      .exec();
@@ -38,7 +37,7 @@ export class CommentsService {
      };
    };
 
-   async getUserComments(userId:string):Promise<Array<CommentDto&{name:string,filmID:string}>>{
+   async getUserComments(userId:string):Promise<UpdateDto[]>{
     const films:CommentsDto[] = await this.comm.find();
     return films.flatMap(({comm,name,filmID}:CommentsDto)=>(
       comm.map(({_id,text,time,userId,username}:CommentDto)=>({
