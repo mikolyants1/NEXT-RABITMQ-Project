@@ -2,7 +2,8 @@
 
 import { CommContext } from "@/components/helpers/functions/context"
 import queryData from "@/components/helpers/functions/getQueryData/queryData"
-import { IComment, IFilms, IParams, QResult } from "@/components/types/type"
+import { useStore } from "@/components/store/store"
+import { IComment, IFilms, IParams, IStore, QResult } from "@/components/types/type"
 import CommEmpty from "@/components/ui/blocks/empty/CommEmpty"
 import CommFilmMapCard from "@/components/ui/cards/comments/CommFilmMapCard"
 import CommentInput from "@/components/ui/inputs/CommentInput"
@@ -20,9 +21,10 @@ interface props {
 function page({params}:props):JSX.Element {
  const [personal,setPersonal] = useState<string>("");
  const [text,setText] = useState<string>("");
+ const {id,token}:IStore = useStore();
  const inputRef = useRef<HTMLInputElement>(null!);
  const queries:QResult = useQueries({
-   queries:queryData(params.id)
+   queries:queryData(params.id,id,token)
  });
 
  const answer = (name:string) => ():void =>{

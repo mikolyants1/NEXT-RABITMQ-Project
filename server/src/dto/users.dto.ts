@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { FilmsDto } from "./films.dto";
-import {IsNotEmpty, IsString} from 'class-validator';
+import {IsArray, IsNotEmpty, IsString, MinLength} from 'class-validator';
 
 export class UsersDto {
     @ApiProperty({
@@ -13,18 +13,19 @@ export class UsersDto {
       type:String
     })
     @IsString()
-    @IsNotEmpty()
+    @MinLength(1)
     name:string;
 
     @ApiProperty({
      type:String
     })
     @IsString()
-    @IsNotEmpty()
+    @MinLength(1)
     pass:string;
     
     @ApiProperty({
      type:[FilmsDto]
     })
+    @IsArray()
     films:FilmsDto[]
 }

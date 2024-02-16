@@ -14,7 +14,7 @@ interface props {
 };
 
 function CommUserCard({text,time,name,id}:props):JSX.Element {
-  const {token} = useStore();
+  const {token,id:userId} = useStore();
   const now:string = createTime(time);
   const {invalidateQueries} = useQueryClient();
   const {mutate} = useMutation({
@@ -23,7 +23,7 @@ function CommUserCard({text,time,name,id}:props):JSX.Element {
   });
 
   const del = ():void => {
-    mutate({id,time,token});
+    mutate({id,time,token,userId});
   };
  
   return (

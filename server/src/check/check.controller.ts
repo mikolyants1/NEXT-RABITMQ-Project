@@ -24,7 +24,7 @@ export class CheckController {
          message:"not found"
       }
     },
-    description:' path is inccorect'
+    description:'path is inccorect'
   })
   @ApiOkResponse({
     status:200,

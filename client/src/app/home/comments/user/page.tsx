@@ -11,10 +11,10 @@ import Loading from "@/components/ui/load/Loading";
 import { useQuery } from "@tanstack/react-query";
 
 function page():JSX.Element {
-  const {id}:IStore = useStore();
+  const {id,token}:IStore = useStore();
   const {data,isError,isLoading} = useQuery({
-    queryKey:['comments',id],
-    queryFn:()=>getUserComments(id)
+    queryKey:['comments',id,token],
+    queryFn:()=>getUserComments(id,token)
   });
       
   if (isLoading) return <Loading />;

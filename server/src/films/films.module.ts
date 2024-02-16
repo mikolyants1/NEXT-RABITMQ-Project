@@ -3,7 +3,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { UserSchema, Users } from "src/database/user.mongo";
 import { FilmsService } from "./films.service";
 import { FilmsController } from "./films.controller";
-import { CheckAuthToken } from "src/middlewares/CheckAuthToken";
+import { AuthMiddleware } from "src/middlewares/AuthMiddleware";
 import { AuthModule } from "src/auth/auth.module";
 
 @Module({
@@ -22,7 +22,7 @@ import { AuthModule } from "src/auth/auth.module";
 export class FilmsModule implements NestModule {
    configure(consumer: MiddlewareConsumer) {
      consumer
-     .apply(CheckAuthToken)
+     .apply(AuthMiddleware)
      .forRoutes({path:"films",method:RequestMethod.ALL})
    }
 }

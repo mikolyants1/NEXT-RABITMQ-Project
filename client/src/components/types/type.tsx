@@ -69,7 +69,8 @@ export type UserComm = Omit<ICommBody,"filmID">;
 export interface ICommDelBody {
   id:string,
   time:number,
-  token:string
+  token:string,
+  userId:string
 };
 
 export type IQueryData = [

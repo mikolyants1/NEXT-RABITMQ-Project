@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString } from "class-validator";
+import { IsNotEmpty, IsString } from "class-validator";
 
 export class FilmsDto {
     @ApiProperty({
@@ -18,6 +18,7 @@ export class FilmsDto {
      type:String
     })
     @IsString()
+    @IsNotEmpty()
     Title:string;
 
     @ApiProperty({
@@ -30,12 +31,14 @@ export class FilmsDto {
      type:String
     })
     @IsString()
+    @IsNotEmpty()
     Actors:string;
 
     @ApiProperty({
      type:String
     })
     @IsString()
+    @IsNotEmpty()
     Director:string;
 
     @ApiProperty({
@@ -48,5 +51,6 @@ export class FilmsDto {
      type:String
     })
     @IsString()
+    @IsNotEmpty()
     Plot:string
 }

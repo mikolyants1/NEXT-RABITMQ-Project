@@ -1,4 +1,4 @@
-import { IsString } from "class-validator";
+import { IsArray, IsString, MinLength } from "class-validator";
 import { CommentDto } from "./comment.dto";
 import { ApiProperty } from "@nestjs/swagger";
 
@@ -13,6 +13,7 @@ export class CommentsDto {
      type:String
     })
     @IsString()
+    @MinLength(1)
     name:string;
 
     @ApiProperty({
@@ -24,5 +25,6 @@ export class CommentsDto {
     @ApiProperty({
      type:[CommentDto]
     })
+    @IsArray()
     comm:CommentDto[]
 }

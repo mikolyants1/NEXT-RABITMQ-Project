@@ -1,10 +1,11 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query, UseGuards} from "@nestjs/common";
 import { CommentsService } from "./comments.service";
 import { CommentDto, UpdateDto } from "src/dto/comment.dto";
 import { Comments } from "src/database/comments.mongo";
-import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiInternalServerErrorResponse,
- ApiNotFoundResponse,ApiOkResponse,ApiOperation,ApiParam, ApiQuery, ApiTags,
-  ApiUnauthorizedResponse, OmitType } from "@nestjs/swagger";
+import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse,ApiInternalServerErrorResponse,
+ApiNotFoundResponse,ApiOkResponse,ApiOperation,ApiParam, ApiQuery, ApiTags,
+ApiUnauthorizedResponse, OmitType } from "@nestjs/swagger";
+import { AuthGuard } from "src/middlewares/AuthGuard";
 
 @ApiTags("action with comments")
 @Controller('comments')
@@ -67,6 +68,7 @@ export class CommentsController {
       name:"filmID",
       type:String
     })
+    @UseGuards(AuthGuard)
     @Get('film')
     async getComments(@Query('filmID') id:string):Promise<CommentDto[]>{
       return await this.service.getCommentsOfFilm(id);
@@ -132,6 +134,7 @@ export class CommentsController {
       name:"time",
       type:String
     })
+    @UseGuards(AuthGuard)
     @Delete(":id")
     async delComment(@Param('id') id:string,
     @Query('time',ParseIntPipe) time:number):Promise<Comments>{
@@ -196,6 +199,7 @@ export class CommentsController {
     @ApiBody({
       type:OmitType(UpdateDto,["filmID"] as const)
     })
+    @UseGuards(AuthGuard)
     @Post(':id')
     async createComment(@Param('id') id:string,
     @Body() {name,...body}:Omit<UpdateDto,"filmID">):Promise<Comments>{
@@ -258,8 +262,9 @@ export class CommentsController {
       name:"userId",
       type:String
     })
+    @UseGuards(AuthGuard)
     @Get('user')
-    async getUserComments(@Query('userId') userId:string):Promise<UpdateDto[]>{
-      return await this.service.getUserComments(userId);
+    async getUserComments(@Query('userId') id:string):Promise<UpdateDto[]>{
+      return await this.service.getUserComments(id);
     };
 }

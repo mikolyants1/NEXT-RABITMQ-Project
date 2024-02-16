@@ -4,7 +4,7 @@ import axios, { AxiosResponse } from "axios";
 async function addComment(args:ICommBody&IToken):Promise<IComments> {
     const {token,filmID,...body}:ICommBody&IToken = args;
     return await axios
-     .post(`http://localhost:5000/comments/${filmID}`,body,{
+     .post(`http://localhost:5000/comments/${filmID}?userId=${body.userId}`,body,{
        headers:{
          authorization:`Bearer ${token}`
        }

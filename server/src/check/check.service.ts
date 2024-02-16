@@ -28,7 +28,6 @@ export class CheckService {
 
    async checkId(imdbID:string,id:string):Promise<boolean>{
     const user:UsersDto|undefined = await this.Base.findById(id);
-    if (!user) throw new ExceptionsHandler();
     return user.films.some((i:FilmsDto)=>i.imdbID == imdbID);
    } 
 }

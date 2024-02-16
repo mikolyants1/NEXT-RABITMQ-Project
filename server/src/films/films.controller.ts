@@ -1,10 +1,10 @@
-import { Body, Controller, Delete, Param, Post, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Param, Post, Query} from "@nestjs/common";
 import { FilmsService } from "./films.service";
 import { Users } from "src/database/user.mongo";
 import { FilmsDto } from "src/dto/films.dto";
 import { ApiBadRequestResponse, ApiBody, ApiInternalServerErrorResponse, 
 ApiNotFoundResponse, ApiOkResponse, ApiOperation,ApiParam,ApiQuery, ApiTags,
- ApiUnauthorizedResponse, OmitType } from "@nestjs/swagger";
+ApiUnauthorizedResponse, OmitType } from "@nestjs/swagger";
 
 @ApiTags("actions with films")
 @Controller('films')
@@ -65,7 +65,8 @@ export class FilmsController {
    })
    @ApiQuery({
       name:"filmId",
-      type:String
+      type:String,
+      example:'tt12345'
    })
    @Delete('clear')
    async clearFilm(@Query('filmId') id:string):Promise<Users>{
@@ -154,7 +155,7 @@ export class FilmsController {
    @ApiOkResponse({
       status:200,
       type:Users,
-      description:'del film success'
+      description:'film was deleted success'
    })
    @ApiUnauthorizedResponse({
       status:401,
@@ -186,7 +187,7 @@ export class FilmsController {
             statusCode:500,
             message:"server error"
          }
-       }
+      }
    })
    @ApiQuery({
      name:"userId",

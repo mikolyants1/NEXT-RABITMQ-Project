@@ -1,6 +1,5 @@
-import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { AuthModule } from "src/auth/auth.module";
-import { CheckAuthToken } from "src/middlewares/CheckAuthToken";
 import { CommentsService } from "./comments.service";
 import { CommentsController } from "./comments.controller";
 import { MongooseModule } from "@nestjs/mongoose";
@@ -24,10 +23,4 @@ import { UserSchema, Users } from "src/database/user.mongo";
  controllers:[CommentsController],
  providers:[CommentsService]
 })
-export class CommentsModule implements NestModule {
-    configure(consumer: MiddlewareConsumer) {
-        consumer
-        .apply(CheckAuthToken)
-        .forRoutes({path:'comments',method:RequestMethod.ALL})
-    }
-}
+export class CommentsModule {}
