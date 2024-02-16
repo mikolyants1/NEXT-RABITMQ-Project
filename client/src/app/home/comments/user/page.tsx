@@ -3,7 +3,7 @@
 import { DelCommContext } from "@/components/helpers/functions/context";
 import getUserComments from "@/components/helpers/query/comment/getUserComments";
 import { useStore } from "@/components/store/store";
-import { IParams, IStore } from "@/components/types/type";
+import { ICommBody, IParams, IStore, datas } from "@/components/types/type";
 import YourCommEmpty from "@/components/ui/blocks/empty/CommEmpty";
 import CommUserMapCard from "@/components/ui/cards/comments/CommUserMapCard";
 import Error from "@/components/ui/load/Error";
@@ -13,7 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 function page():JSX.Element {
   const {id}:IStore = useStore();
   const {data,isError,isLoading} = useQuery({
-    queryKey:['comments'],
+    queryKey:['comments',id],
     queryFn:()=>getUserComments(id)
   });
       

@@ -1,8 +1,8 @@
 import delFilm from '@/components/helpers/mutation/film/delFilm'
 import { useStore } from '@/components/store/store'
-import { IDelQuery } from '@/components/types/type'
+import { IDelQuery, IStore, IUsers } from '@/components/types/type'
 import { Box, Button, Flex } from '@chakra-ui/react'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query'
 import React from 'react'
 
 interface props {
@@ -10,15 +10,15 @@ interface props {
 };
 
 function DelFilmButton({_id}:props):JSX.Element {
-  const {id,token} = useStore();
-  const {invalidateQueries} = useQueryClient();
-  const {mutate:removeFilm} = useMutation({
+  const {id,token}:IStore = useStore();
+  const {invalidateQueries}:QueryClient = useQueryClient();
+  const {mutate} = useMutation<unknown,IUsers,IDelQuery>({
     mutationFn:(arg:IDelQuery)=>delFilm(arg),
     onSuccess:()=>invalidateQueries({queryKey:['users']})
   });
 
-  const del = ():void => {
-    removeFilm({id,_id,token});
+  const removeFilm = ():void => {
+    mutate({id,_id,token});
   };
 
   return (
@@ -31,7 +31,7 @@ function DelFilmButton({_id}:props):JSX.Element {
        <Box
         transform='rotate(45deg)'
         cursor='pointer'
-        onClick={del}
+        onClick={removeFilm}
         fontSize={34}>
           +
        </Box>

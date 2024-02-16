@@ -1,4 +1,4 @@
-import { QueryFunction } from "@tanstack/react-query";
+import { QueryFunction, UseQueryResult } from "@tanstack/react-query";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
 
 export interface IFilms {
@@ -57,6 +57,13 @@ export interface IQueries {
   comm:IComment[],
   film:IFilms
 }
+
+export interface datas<T> {
+  isError:boolean,
+  isLoading:boolean,
+  data:T
+};
+
 export type UserComm = Omit<ICommBody,"filmID">;
 
 export interface ICommDelBody {
@@ -65,10 +72,19 @@ export interface ICommDelBody {
   token:string
 };
 
-export interface IQueryData {
-  queryKey:string[],
-  queryFn:QueryFunction
-}
+export type IQueryData = [
+  {
+    queryKey:string[],
+    queryFn:()=>Promise<IComment[]>
+  },
+  {
+    queryKey:string[],
+    queryFn:()=>Promise<IFilms>
+  }
+]
+
+export type QResult = [UseQueryResult<IComment[]>,UseQueryResult<IFilms>];
+
 export interface IComments {
   _id:string,
   name:string,

@@ -7,7 +7,7 @@ interface props {
 }
 
 function CommMapWrapper({children,length}:props):JSX.Element {
-    const [isSmall] = useMediaQuery('(max-width:700px)');
+    const [isSmall] = useMediaQuery('(max-width: 700px)');
      return (
        <Flex h={500}
         justifyContent='center'

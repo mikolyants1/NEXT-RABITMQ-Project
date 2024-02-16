@@ -1,12 +1,12 @@
-import { createLogo } from '@/components/helpers/functions/logo';
+import { createLogo } from '@/components/helpers/functions/create/logo';
 import { useStore } from '@/components/store/store';
-import { ILogo } from '@/components/types/type';
+import { ILogo, IStore } from '@/components/types/type';
 import { Box } from '@chakra-ui/react';
 import Link from 'next/link';
 import React, { memo } from 'react'
 
 function LogoCard():JSX.Element {
- const {name,id} = useStore();
+ const {name,id}:IStore = useStore();
  const lett:string = name[0].toUpperCase();
  const {one,two}:ILogo = createLogo();
   return (

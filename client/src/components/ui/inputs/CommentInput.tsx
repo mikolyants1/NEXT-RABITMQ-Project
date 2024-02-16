@@ -1,8 +1,8 @@
 import addComment from '@/components/helpers/mutation/comment/addComment';
 import { useStore } from '@/components/store/store';
-import { ICommBody, IToken } from '@/components/types/type';
+import { ICommBody, IComments, IStore, IToken } from '@/components/types/type';
 import { Button, Flex, Input, useMediaQuery } from '@chakra-ui/react'
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
 import React, { ChangeEvent, MutableRefObject, useState } from 'react'
 
 interface props {
@@ -14,17 +14,17 @@ interface props {
 };
 
 function CommentInput({personal,name,filmID,children,text}:props):JSX.Element {
- const [isWidth] = useMediaQuery('max-width:700px');
- const {token,name:username,id:userId} = useStore();
- const {invalidateQueries} = useQueryClient();
- const {mutate} = useMutation({
+ const [isWidth] = useMediaQuery('(max-width: 700px)');
+ const {token,name:username,id:userId}:IStore = useStore();
+ const {invalidateQueries}:QueryClient = useQueryClient();
+ const {mutate} = useMutation<unknown,IComments,ICommBody&IToken>({
   mutationFn:(body:ICommBody&IToken)=>addComment(body),
   onSuccess:()=>invalidateQueries({queryKey:['comments']})
  });
  
  const setNewComment = ():void => {
   if (text){
-       mutate({
+      mutate({
         token,
         userId,
         username,
@@ -36,10 +36,9 @@ function CommentInput({personal,name,filmID,children,text}:props):JSX.Element {
    };
  };
 
-
   return (
       <Flex m='auto'
-       w={isWidth ? '100%' : '70%'}>
+       w={isWidth ? '80%' : '70%'}>
         {children}
         <Button
          onClick={setNewComment}

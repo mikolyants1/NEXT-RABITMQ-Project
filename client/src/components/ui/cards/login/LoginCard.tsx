@@ -10,13 +10,13 @@ import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import LoginErrorCard from './LoginErrorCard'
 import LoginButton from '../../buttons/login/LoginButtons'
 import { useStore } from '@/components/store/store'
-import { useMutation, useQueryClient,UseMutationResult } from '@tanstack/react-query'
+import { useMutation, useQueryClient,UseMutationResult, QueryClient } from '@tanstack/react-query'
 import addUser from '@/components/helpers/mutation/user/addUser'
 import { IUsers } from '@/components/types/type'
 import { response } from '@/components/helpers/functions/response'
 import checkUsers from '@/components/helpers/query/user/checkUsers'
 import LoginCardWrapper from '../../wrappers/LoginCardWrapper'
-import { createFields } from '@/components/helpers/functions/fileds'
+import { createFields } from '@/components/helpers/functions/create/maps/fileds'
 
 interface props {
   isHome:boolean,
@@ -27,7 +27,7 @@ export default function LoginCard({isHome,children}:props):JSX.Element {
  const router:AppRouterInstance = useRouter();
  const title:string = isHome ? 'Entrance' : 'Registration';
  const [error,setError] = useState<boolean>(false);
- const {invalidateQueries} = useQueryClient();
+ const {invalidateQueries}:QueryClient = useQueryClient();
  const {mutate:add}:UseMutationResult<unknown,
   IUsers,Omit<IUsers,"_id"|"films">> = useMutation({
   mutationFn:(body:Omit<IUsers,"_id"|"films">)=>addUser(body),

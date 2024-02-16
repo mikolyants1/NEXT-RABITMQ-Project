@@ -1,4 +1,4 @@
-import {ICommBody, UserComm } from '@/components/types/type'
+import {ICommBody } from '@/components/types/type'
 import axios, { AxiosResponse } from 'axios'
 
 function getUserComments(id:string):Promise<ICommBody[]> {

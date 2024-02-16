@@ -4,7 +4,7 @@ import { Drawer, DrawerBody,DrawerCloseButton,DrawerContent,
  DrawerHeader, DrawerOverlay } from '@chakra-ui/react'
 import React from 'react'
 import NavLinkCard from '../../cards/nav/NavLinkCard'
-import { createLinks } from '@/components/helpers/functions/links'
+import { createLinks } from '@/components/helpers/functions/create/maps/links'
 
 interface props {
   isOpen:boolean,

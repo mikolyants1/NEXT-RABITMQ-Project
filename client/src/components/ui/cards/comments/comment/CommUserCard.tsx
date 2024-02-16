@@ -1,5 +1,5 @@
-import { DelCommContext } from "@/components/helpers/functions/context";
-import createTime from "@/components/helpers/functions/time";
+
+import createTime from "@/components/helpers/functions/create/time/createCommTime";
 import delComment from "@/components/helpers/mutation/comment/delComment";
 import { useStore } from "@/components/store/store";
 import { ICommDelBody } from "@/components/types/type";

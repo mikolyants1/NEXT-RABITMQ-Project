@@ -2,15 +2,15 @@
 
 import clearFilm from '@/components/helpers/mutation/film/clearFilm'
 import { useStore } from '@/components/store/store'
-import { IClearQuery } from '@/components/types/type'
+import { IClearQuery, IStore, IUsers } from '@/components/types/type'
 import { Button, Flex } from '@chakra-ui/react'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query'
 import {memo} from 'react'
 
 function ClearJournalButton():JSX.Element {
-  const {token,id} = useStore();
-  const {invalidateQueries} = useQueryClient();
-  const {mutate} = useMutation({
+  const {token,id}:IStore = useStore();
+  const {invalidateQueries}:QueryClient = useQueryClient();
+  const {mutate} = useMutation<unknown,IUsers,IClearQuery>({
     mutationFn:(args:IClearQuery)=>clearFilm(args),
     onSuccess:()=>invalidateQueries({queryKey:['users']})
   });

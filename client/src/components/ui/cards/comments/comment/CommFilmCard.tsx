@@ -1,5 +1,5 @@
 import { CommContext } from '@/components/helpers/functions/context';
-import createTime from '@/components/helpers/functions/time';
+import createTime from '@/components/helpers/functions/create/time/createCommTime';
 import { ICommContext } from '@/components/types/type';
 import { Box, Flex } from '@chakra-ui/react'
 import {memo, useContext} from 'react'
