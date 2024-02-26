@@ -11,10 +11,10 @@ import LoginErrorCard from './LoginErrorCard'
 import LoginButton from '../../buttons/login/LoginButtons'
 import { useStore } from '@/components/store/store'
 import { useMutation, useQueryClient,UseMutationResult, QueryClient } from '@tanstack/react-query'
-import addUser from '@/components/helpers/mutation/user/addUser'
+import addUser from '@/components/helpers/api/mutation/user/addUser'
 import { IUsers } from '@/components/types/type'
 import { response } from '@/components/helpers/functions/response'
-import checkUsers from '@/components/helpers/query/user/checkUsers'
+import checkUsers from '@/components/helpers/api/query/user/checkUsers'
 import LoginCardWrapper from '../../wrappers/LoginCardWrapper'
 import { createFields } from '@/components/helpers/functions/create/maps/fileds'
 
@@ -33,7 +33,7 @@ export default function LoginCard({isHome,children}:props):JSX.Element {
   mutationFn:(body:Omit<IUsers,"_id"|"films">)=>addUser(body),
   onSuccess:()=>invalidateQueries({queryKey:['users']})
 })
- const {setName,setId,setToken } = useStore();
+ const {setName,setId,setToken} = useStore();
  const methods = useForm<form>({
   defaultValues:{name:"",pass:""}
  });

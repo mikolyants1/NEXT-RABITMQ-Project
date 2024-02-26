@@ -1,6 +1,6 @@
 import { IQueryData } from "@/components/types/type"
-import getFilmComments from "../../query/comment/getFilmComments"
-import getFilmById from "../../query/film/getFilmById"
+import getFilmComments from "../../api/query/comment/getFilmComments"
+import getFilmById from "../../api/query/film/getFilmById"
 
 export default (id:string,userId:string,token:string):IQueryData => {
   return [

@@ -1,9 +1,8 @@
 'use client'
 
-import { DelCommContext } from "@/components/helpers/functions/context";
-import getUserComments from "@/components/helpers/query/comment/getUserComments";
+import getUserComments from "@/components/helpers/api/query/comment/getUserComments";
 import { useStore } from "@/components/store/store";
-import { ICommBody, IParams, IStore, datas } from "@/components/types/type";
+import { IStore } from "@/components/types/type";
 import YourCommEmpty from "@/components/ui/blocks/empty/CommEmpty";
 import CommUserMapCard from "@/components/ui/cards/comments/CommUserMapCard";
 import Error from "@/components/ui/load/Error";

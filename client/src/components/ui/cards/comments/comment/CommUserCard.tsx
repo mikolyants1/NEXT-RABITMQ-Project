@@ -1,6 +1,6 @@
 
 import createTime from "@/components/helpers/functions/create/time/createCommTime";
-import delComment from "@/components/helpers/mutation/comment/delComment";
+import delComment from "@/components/helpers/api/mutation/comment/delComment";
 import { useStore } from "@/components/store/store";
 import { ICommDelBody } from "@/components/types/type";
 import { Box, Button, Flex, Grid } from "@chakra-ui/react";

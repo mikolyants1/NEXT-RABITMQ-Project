@@ -1,5 +1,5 @@
 
-import getUser from '@/components/helpers/query/user/getUser'
+import getUser from '@/components/helpers/api/query/user/getUser'
 import { IParams, IUsers } from '@/components/types/type'
 import FIlmJournalCard from '@/components/ui/cards/films/film/FIlmJournalCard'
 import FilmMapCard from '@/components/ui/cards/films/FilmMapCard'

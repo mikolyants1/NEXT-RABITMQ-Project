@@ -1,6 +1,6 @@
 'use client'
 
-import getFilmByTitle from '@/components/helpers/query/film/getFilmByTitle';
+import getFilmByTitle from '@/components/helpers/api/query/film/getFilmByTitle';
 import { initial, reducer } from '@/components/helpers/reducer';
 import { IFilms } from '@/components/types/type'
 import FilmCard from '@/components/ui/cards/films/film/FilmCard';

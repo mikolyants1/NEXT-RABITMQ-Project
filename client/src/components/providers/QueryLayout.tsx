@@ -16,7 +16,8 @@ const query:QueryClient = new QueryClient({
 })
 function QueryLayout({children}:props):JSX.Element {
   return (
-    <QueryClientProvider client={query}>
+    <QueryClientProvider
+     client={query}>
       {children}
     </QueryClientProvider>
   )

@@ -1,6 +1,6 @@
 "use client"
 
-import clearFilm from '@/components/helpers/mutation/film/clearFilm'
+import clearFilm from '@/components/helpers/api/mutation/film/clearFilm'
 import { useStore } from '@/components/store/store'
 import { IClearQuery, IStore, IUsers } from '@/components/types/type'
 import { Button, Flex } from '@chakra-ui/react'

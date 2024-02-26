@@ -1,5 +1,5 @@
 import { useStore } from '@/components/store/store'
-import { ILinks } from '@/components/types/type'
+import { ILinks, IStore } from '@/components/types/type'
 import { Drawer, DrawerBody,DrawerCloseButton,DrawerContent,
  DrawerHeader, DrawerOverlay } from '@chakra-ui/react'
 import React from 'react'
@@ -11,7 +11,7 @@ interface props {
   onClose:()=>void
 }
 function NavMenu({isOpen,onClose}:props):JSX.Element {
-  const {id} = useStore();
+  const {id}:IStore = useStore();
   const links:ILinks[] = createLinks(id);
 
   return (

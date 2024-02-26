@@ -1,7 +1,7 @@
 'use client'
 
 import { IFilms } from '@/components/types/type'
-import { Box, Flex } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import React, { useContext } from 'react'
 import FilmCard from './film/FilmCard'
 import ClearJournalButton from '../../buttons/film/ClearJournalButton';

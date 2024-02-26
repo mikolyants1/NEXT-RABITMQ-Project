@@ -10,7 +10,6 @@ interface props {
 };
 
 function CommFilmMapCard({data}:props):JSX.Element {
-  console.log(data)
   return (
      <Flex w='100%' h='100%'
       flexDirection='column'>

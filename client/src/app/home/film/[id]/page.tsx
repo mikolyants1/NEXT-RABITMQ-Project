@@ -1,5 +1,5 @@
 
-import getFilmById from '@/components/helpers/query/film/getFilmById'
+import getFilmById from '@/components/helpers/api/query/film/getFilmById'
 import { IFilms, IParams } from '@/components/types/type'
 import FilmPosterCard from '@/components/ui/cards/films/film/FilmPosterCard';
 import FilmCompleteWrapper from '@/components/ui/wrappers/film/FilmCompleteWrapper';

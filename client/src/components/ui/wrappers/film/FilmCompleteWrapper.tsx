@@ -7,7 +7,7 @@ interface props {
     children:JSX.Element[]
 }
 function FilmCompleteWrapper({children}:props):JSX.Element {
- const [isWidth] = useMediaQuery("(max-width:800px)")
+ const [isWidth] = useMediaQuery("(max-width: 800px)")
   return (
     <Box minH={400}
      m='60px auto'
@@ -17,7 +17,7 @@ function FilmCompleteWrapper({children}:props):JSX.Element {
      bg='rgb(50,50,50)'
      color='white'
      pt={5} pb={5}>
-     {children}
+      {children}
     </Box>
   )
 }

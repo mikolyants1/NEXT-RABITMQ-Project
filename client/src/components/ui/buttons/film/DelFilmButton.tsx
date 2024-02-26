@@ -1,7 +1,7 @@
-import delFilm from '@/components/helpers/mutation/film/delFilm'
+import delFilm from '@/components/helpers/api/mutation/film/delFilm'
 import { useStore } from '@/components/store/store'
 import { IDelQuery, IStore, IUsers } from '@/components/types/type'
-import { Box, Button, Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query'
 import React from 'react'
 

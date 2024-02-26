@@ -1,9 +1,8 @@
-import addComment from '@/components/helpers/mutation/comment/addComment';
+import addComment from '@/components/helpers/api/mutation/comment/addComment';
 import { useStore } from '@/components/store/store';
 import { ICommBody, IComments, IStore, IToken } from '@/components/types/type';
-import { Button, Flex, Input, useMediaQuery } from '@chakra-ui/react'
+import { Button, Flex, useMediaQuery } from '@chakra-ui/react'
 import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
-import React, { ChangeEvent, MutableRefObject, useState } from 'react'
 
 interface props {
     filmID:string,
