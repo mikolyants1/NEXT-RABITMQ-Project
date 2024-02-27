@@ -3,7 +3,7 @@ import { CheckService } from "./check.service";
 import { UsersDto } from "src/dto/users.dto";
 import { FilmsDto } from "src/dto/films.dto";
 import {ApiBadRequestResponse, ApiBody, ApiInternalServerErrorResponse, ApiNotFoundResponse,
-ApiOkResponse,ApiOperation, ApiParam, ApiTags, OmitType, PickType} from '@nestjs/swagger';
+ApiOkResponse,ApiOperation, ApiParam, ApiTags, OmitType, PickType,} from '@nestjs/swagger';
 import { CheckDto } from "src/dto/check.dto";
 
 @ApiTags('check correct data')
@@ -57,8 +57,8 @@ export class CheckController {
   })
   @Post()
   async checkData(@Body() body:Omit<UsersDto,"_id"|"films">):Promise<CheckDto>{
-     return await this.service.checkData(body);
-  }
+    return await this.service.checkData(body);
+  };
   
   @ApiOperation({
    summary:"check filmID",

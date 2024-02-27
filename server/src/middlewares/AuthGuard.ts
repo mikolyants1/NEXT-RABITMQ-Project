@@ -12,15 +12,15 @@ export class AuthGuard implements CanActivate {
      private readonly authService:AuthService
     ){};
     
-   async canActivate(context: ExecutionContext):Promise<boolean> {
+   async canActivate(ctx: ExecutionContext):Promise<boolean> {
     try {
-      const req:Request = context.switchToHttp().getRequest();
-      const token:string = await this.authService.getToken(req);
+      const req:Request = ctx.switchToHttp().getRequest();
+      const token:string = this.authService.getToken(req);
       const user:UsersDto = await this.Base.findById(req.query.userId);
       if (!token) throw new UnauthorizedException('Bearer not found');
-      return await this.authService.compare(token,user);
+      return this.authService.compare(token,user);
     } catch (e) {
-       throw new UnauthorizedException(e);
+      throw new UnauthorizedException(e);
     };
    };
 };

@@ -7,7 +7,9 @@ import { UsersDto } from "src/dto/users.dto";
 
 @Injectable()
 export class FilmsService {
-  constructor(@InjectModel(Users.name) private readonly Base:Model<Users>){};
+  constructor(
+    @InjectModel(Users.name) private readonly Base:Model<Users>
+  ){};
 
   async addFilm(id:string,body:Omit<FilmsDto,"_id">):Promise<Users>{
     const user:UsersDto|undefined = await this.Base.findById(id);

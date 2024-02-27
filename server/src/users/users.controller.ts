@@ -2,8 +2,9 @@ import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { UsersDto } from "src/dto/users.dto";
 import { Users } from "src/database/user.mongo";
-import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiInternalServerErrorResponse, ApiNotFoundResponse,
- ApiOkResponse, ApiOperation, ApiParam, ApiTags, OmitType } from "@nestjs/swagger";
+import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse,
+ApiInternalServerErrorResponse, ApiNotFoundResponse,ApiOkResponse,
+ApiOperation, ApiParam, ApiTags, OmitType } from "@nestjs/swagger";
 
 @ApiTags('actions with users')
 @Controller('users')

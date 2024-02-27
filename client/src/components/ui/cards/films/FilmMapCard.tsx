@@ -22,7 +22,7 @@ function FilmMapCard({data}:props):JSX.Element {
        gap={10}>
         {data.map((i:IFilms):JSX.Element=>(
          <FilmCard
-          key={i._id}
+          key={i.Plot}
           data={i}
           />
         ))}

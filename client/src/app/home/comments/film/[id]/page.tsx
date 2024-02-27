@@ -78,6 +78,7 @@ function page({params}:props):JSX.Element {
           borderRightRadius='none'
           bg='rgb(200,200,200)'
           placeholder='write your comment'
+          name="text"
           ref={inputRef}
         />
        </CommentInput>

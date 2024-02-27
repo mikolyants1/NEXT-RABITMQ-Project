@@ -6,6 +6,7 @@ import { FilmsModule } from './films/films.module';
 import { CheckModule } from './check/check.module';
 import { CommentsModule } from './comments/comments.module';
 import { mongoConfig } from './configs/mongo.config';
+import { GatewayModule } from './socket/socket.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { mongoConfig } from './configs/mongo.config';
     }),
     MongooseModule.forRootAsync(mongoConfig()),
     CommentsModule,
+    GatewayModule,
     UsersModule,
     FilmsModule,
     CheckModule,

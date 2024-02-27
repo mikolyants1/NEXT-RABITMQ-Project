@@ -10,7 +10,7 @@ import { AuthGuard } from "src/middlewares/AuthGuard";
 @ApiTags("action with comments")
 @Controller('comments')
 export class CommentsController {
-    constructor(private readonly service:CommentsService){};
+  constructor(private readonly service:CommentsService){};
 
     @ApiOperation({
       summary:"get film comments",
@@ -185,12 +185,12 @@ export class CommentsController {
     @ApiInternalServerErrorResponse({
       status:500,
       schema:{
-         type:"object",
-         example:{
-            statusCode:500,
-            message:"server error"
-         }
-       }
+        type:"object",
+        example:{
+          statusCode:500,
+          message:"server error"
+        }
+      }
     })
     @ApiParam({
       name:"id",

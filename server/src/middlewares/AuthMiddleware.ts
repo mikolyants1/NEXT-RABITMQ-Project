@@ -8,16 +8,16 @@ import { UsersDto } from "src/dto/users.dto";
 
 export class AuthMiddleware implements NestMiddleware {
     constructor(
-      private readonly auth:AuthService,
-      @InjectModel(Users.name) private readonly Base:Model<Users>
+      @InjectModel(Users.name) private readonly Base:Model<Users>,
+      private readonly auth:AuthService
     ){};
 
     async use(req:Request, res:Response, next:NextFunction) {
       const id:string = req.params.id;
       const user:UsersDto|undefined = await this.Base.findById(id);
       if (!user) throw new UnauthorizedException();
-      const token:string = await this.auth.getToken(req);
-      const isAuth:boolean = await this.auth.compare(token,user);
+      const token:string = this.auth.getToken(req);
+      const isAuth:boolean = this.auth.compare(token,user);
       if (!isAuth) throw new UnauthorizedException();
       next();
     };

@@ -8,17 +8,17 @@ import { UsersDto } from "../dto/users.dto";
 export class AuthService {
     constructor(private readonly service:JwtService){};
 
-    async create({_id,name}:UsersDto):Promise<string>{
-      return await this.service.sign({_id,name});
+    create({_id,name}:UsersDto):string{
+      return this.service.sign({_id,name});
     };
 
-    async compare(token:string,{name,_id}:UsersDto):Promise<boolean>{
-      const decoded:Omit<UsersDto,"films"|"pass"> = await 
-      this.service.verify(token);
+    compare(token:string,{name,_id}:UsersDto):boolean{
+      const decoded:Omit<UsersDto,
+      "films"| "pass"> = this.service.verify(token);
       return decoded._id == _id && decoded.name == name;
     };
 
-    async getToken({headers}:Request):Promise<string>{
+     getToken({headers}:Request):string{
       const auth:string = headers.authorization;
       return auth.includes('Bearer') ? auth.split(' ')[1] : "";
     }
