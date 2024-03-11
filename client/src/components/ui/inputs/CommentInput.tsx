@@ -14,7 +14,7 @@ interface props {
 
 function CommentInput({personal,name,filmID,children,text}:props):JSX.Element {
  const [isWidth] = useMediaQuery('(max-width: 700px)');
- const {token,name:username,id:userId}:IStore = useStore();
+ const {token,name:username,id:userId,role}:IStore = useStore();
  const {invalidateQueries}:QueryClient = useQueryClient();
  const {mutate} = useMutation<unknown,IComments,ICommBody&IToken>({
   mutationFn:(body:ICommBody&IToken)=>addComment(body),
@@ -30,7 +30,8 @@ function CommentInput({personal,name,filmID,children,text}:props):JSX.Element {
         time:Date.now(),
         name,
         text:`${personal}${text}`,
-        filmID
+        filmID,
+        role
       });
    };
  };

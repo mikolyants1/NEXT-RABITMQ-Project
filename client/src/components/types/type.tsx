@@ -1,5 +1,6 @@
-import { QueryFunction, UseQueryResult } from "@tanstack/react-query";
+import { QueryFunction, UseMutationResult, UseQueryResult } from "@tanstack/react-query";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
+import { BanType, Roles } from "./enum";
 
 export interface IFilms {
   _id:string;
@@ -16,7 +17,8 @@ export interface IUsers {
   _id:string;
   name:string;
   pass:string;
-  films:IFilms[]
+  films:IFilms[],
+  role:Roles
 };
 
 export interface ILinks {
@@ -26,8 +28,12 @@ export interface ILinks {
 
 export interface IClearQuery {
   id:string,
-  token:string
+  token:string,
+  role:string
 }
+
+export type Mutate<T,N> = UseMutationResult<unknown,T,N>;
+
 export interface IDelQuery extends IClearQuery {
   _id:string
 }
@@ -36,6 +42,25 @@ export interface ILogo {
   two:string
 };
 
+export interface IBanUsers {
+  _id:string,
+  userId:string,
+  banTime:number
+}; 
+
+export interface IMessToAdmin {
+  _id:string,
+  text:string,
+  description:string,
+  user:string,
+  time:number
+}
+
+export interface BanData {
+  _id:string,
+  userId:string,
+  time:number
+}
 export interface ICommContext {
   answer:(name:string)=>()=>void,
 };
@@ -50,7 +75,8 @@ export interface IComment {
 
 export interface ICommBody extends Omit<IComment,"_id"> {
   name:string,
-  filmID:string
+  filmID:string,
+  role:string
 };
 
 export interface IQueries {
@@ -70,9 +96,16 @@ export interface ICommDelBody {
   id:string,
   time:number,
   token:string,
-  userId:string
+  userId:string,
+  role:string
 };
 
+export interface IFilmsBody {
+  id:string,
+  token:string,
+  userId?:string,
+  role:string
+}
 export type IQueryData = [
   {
     queryKey:string[],
@@ -96,10 +129,12 @@ export interface IComments {
 export interface IStore {
   name:string,
   id:string,
-  token:string
+  token:string,
+  role:string,
   setName:(name:string)=>void,
   setId:(id:string)=>void,
-  setToken:(token:string)=>void
+  setToken:(token:string)=>void,
+  setRole:(role:string)=>void
 }
 
 export interface IState {
@@ -116,11 +151,26 @@ export type Control<T extends string> = ControllerRenderProps<FieldValues,T>;
 
 export interface ICheck {
    _id:string,
-   token:string
+   token:string,
+   role:string
 }
 
+export interface IStateMess {
+  text:string,
+  description:string
+}
+export interface IMessBody extends ICheck {
+  text:string,
+  description:string,
+  user:string
+}
+export interface IBanBody extends ICheck {
+  id:string,
+  type:BanType,
+}
 export interface IToken {
-  token:string
+  token:string,
+  role?:string
 }
 export type Null<T>  = null | T;
 export interface IParams {

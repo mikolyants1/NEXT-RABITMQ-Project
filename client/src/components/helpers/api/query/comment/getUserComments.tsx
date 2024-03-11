@@ -1,11 +1,12 @@
-import {ICommBody } from '@/components/types/type'
-import axios, { AxiosResponse } from 'axios'
+import {ICommBody, IFilmsBody } from '@/components/types/type'
+import { AxiosResponse } from 'axios'
 import { baseUrl } from '../../baseUrl'
 
-function getUserComments(id:string,token:string):Promise<ICommBody[]> {
-  return baseUrl.get(`comments/user?userId=${id}`,{
+function getUserComments(body:IFilmsBody):Promise<ICommBody[]> {
+  return baseUrl.get(`comments/user?userId=${body.id}`,{
      headers:{
-      authorization:`Bearer ${token}`
+      authorization:`Bearer ${body.token}`,
+      role:`${body.role}`
      }
    })
    .then(({data}:AxiosResponse<ICommBody[]>)=>data)

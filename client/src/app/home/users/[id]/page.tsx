@@ -3,7 +3,6 @@ import getUsers from "@/components/helpers/api/query/user/getUsers"
 import { IParams, IUsers } from "@/components/types/type";
 import UserCard from "@/components/ui/cards/users/UserCard";
 import { Box } from "@chakra-ui/react";
-import { Socket, io } from "socket.io-client";
 
 interface props {
   params:IParams

@@ -4,6 +4,8 @@ import { UserSchema, Users } from "src/database/user.mongo";
 import { CheckService } from "./check.service";
 import { CheckController } from "./check.controller";
 import { AuthModule } from "src/auth/auth.module";
+import { Reflector } from "@nestjs/core";
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
     imports:[
@@ -14,8 +16,9 @@ import { AuthModule } from "src/auth/auth.module";
           }
         ]),
         AuthModule,
+        ConfigModule
     ],
-    providers:[CheckService],
+    providers:[CheckService,Reflector],
     controllers:[CheckController]
 })
 export class CheckModule {}

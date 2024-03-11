@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { baseUrl } from "../../baseUrl";
 
 async function checkFilmId(imdbID:string,id:string):Promise<boolean> {

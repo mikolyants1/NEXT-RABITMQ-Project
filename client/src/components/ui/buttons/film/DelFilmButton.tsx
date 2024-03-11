@@ -10,7 +10,7 @@ interface props {
 };
 
 function DelFilmButton({_id}:props):JSX.Element {
-  const {id,token}:IStore = useStore();
+  const {id,token,role}:IStore = useStore();
   const {invalidateQueries}:QueryClient = useQueryClient();
   const {mutate} = useMutation<unknown,IUsers,IDelQuery>({
     mutationFn:(arg:IDelQuery)=>delFilm(arg),
@@ -18,7 +18,7 @@ function DelFilmButton({_id}:props):JSX.Element {
   });
 
   const removeFilm = ():void => {
-    mutate({id,_id,token});
+    mutate({id,_id,token,role});
   };
 
   return (

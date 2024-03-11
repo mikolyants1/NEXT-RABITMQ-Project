@@ -8,6 +8,7 @@ persist(devtools(immer((set)=>({
   name:"",
   id:"",
   token:"",
+  role:"",
   setId:(id:string)=>set((state:IStore):void=>{
      state.id = id;
   }),
@@ -16,5 +17,8 @@ persist(devtools(immer((set)=>({
   },
   setToken:(token:string):void=>{
     set({token});
+  },
+  setRole:(role:string):void=>{
+    set({role})
   }
 }))),{version:1,name:'films'}))

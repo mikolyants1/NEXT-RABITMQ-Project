@@ -1,12 +1,15 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query, UseGuards} from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query, SetMetadata, UseGuards} from "@nestjs/common";
 import { CommentsService } from "./comments.service";
 import { CommentDto, UpdateDto } from "src/dto/comment.dto";
 import { Comments } from "src/database/comments.mongo";
 import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse,ApiInternalServerErrorResponse,
 ApiNotFoundResponse,ApiOkResponse,ApiOperation,ApiParam, ApiQuery, ApiTags,
 ApiUnauthorizedResponse, OmitType } from "@nestjs/swagger";
-import { AuthGuard } from "src/middlewares/AuthGuard";
+import { AuthGuard } from "src/guards/auth.guard";
+import { BanGuard } from "src/guards/ban.guard";
+import { AdminGuard } from "src/guards/admin.guard";
 
+@SetMetadata("roles",["admin","guest"])
 @ApiTags("action with comments")
 @Controller('comments')
 export class CommentsController {
@@ -135,9 +138,12 @@ export class CommentsController {
       type:String
     })
     @UseGuards(AuthGuard)
+    @UseGuards(AdminGuard)
     @Delete(":id")
-    async delComment(@Param('id') id:string,
-    @Query('time',ParseIntPipe) time:number):Promise<Comments>{
+    async delComment(
+      @Param('id') id:string,
+      @Query('time',ParseIntPipe) time:number
+    ):Promise<Comments>{
       return await this.service.delCommentOfFilm(id,time);
     };
 
@@ -200,10 +206,14 @@ export class CommentsController {
       type:OmitType(UpdateDto,["filmID"] as const)
     })
     @UseGuards(AuthGuard)
+    @UseGuards(BanGuard)
+    @UseGuards(AdminGuard)
     @Post(':id')
-    async createComment(@Param('id') id:string,
-    @Body() {name,...body}:Omit<UpdateDto,"filmID">):Promise<Comments>{
-      return await this.service.createComment(id,name,body);
+    async createComment(
+      @Param('id') id:string,
+      @Body() body:Omit<UpdateDto,"filmID">
+    ):Promise<Comments>{
+      return await this.service.createComment(id,body);
     };
 
     @ApiOperation({
@@ -263,6 +273,7 @@ export class CommentsController {
       type:String
     })
     @UseGuards(AuthGuard)
+    @UseGuards(AdminGuard)
     @Get('user')
     async getUserComments(@Query('userId') id:string):Promise<UpdateDto[]>{
       return await this.service.getUserComments(id);

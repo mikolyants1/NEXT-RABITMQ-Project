@@ -1,6 +1,6 @@
 'use client'
 
-import { IFilms, IStore} from '@/components/types/type'
+import { IFilms, IStore, IToken} from '@/components/types/type'
 import React, { memo, useContext } from 'react'
 import { Box ,Image} from '@chakra-ui/react';
 import FilmCardWrapper from '@/components/ui/wrappers/film/FilmCardWrapper';
@@ -24,15 +24,15 @@ function FilmCard({data}:props):JSX.Element {
   const isDel = useContext<boolean>(DelContext);
   const router:AppRouterInstance = useRouter();
   const {invalidateQueries}:QueryClient = useQueryClient();
-  const {id:userId,token}:IStore = useStore();
-  const {mutate:setFilm} = useMutation<unknown,IFilms,IFilms&{token:string}>({
-    mutationFn:(date:IFilms&{token:string})=>addFilm(date),
+  const {id:userId,token,role}:IStore = useStore();
+  const {mutate:setFilm} = useMutation<unknown,IFilms,IFilms&IToken>({
+    mutationFn:(date:IFilms&IToken)=>addFilm(date),
     onSuccess:()=>invalidateQueries({queryKey:['films']})
   });
   
   const add = async ():Promise<void> => {
     const isAdded:boolean = await checkFilmId(data.imdbID,userId);
-    if (!isAdded) setFilm({_id:userId,token,...body});
+    if (!isAdded) setFilm({_id:userId,token,role,...body});
     router.push(`/home/film/${data.imdbID}`);
   };
   

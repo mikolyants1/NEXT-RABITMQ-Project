@@ -28,7 +28,7 @@ function page():JSX.Element {
       setData(film);
       dispatch({show:true});
     } catch (e) {
-      console.log(e)
+      console.log(e);
       dispatch({error:true});
     };
   };

@@ -1,10 +1,14 @@
-import { Body, Controller, Param, Post } from "@nestjs/common";
+import { Body, Controller, Param, Post, SetMetadata, UseGuards } from "@nestjs/common";
 import { CheckService } from "./check.service";
 import { UsersDto } from "src/dto/users.dto";
 import { FilmsDto } from "src/dto/films.dto";
-import {ApiBadRequestResponse, ApiBody, ApiInternalServerErrorResponse, ApiNotFoundResponse,
-ApiOkResponse,ApiOperation, ApiParam, ApiTags, OmitType, PickType,} from '@nestjs/swagger';
+import {ApiBadRequestResponse, ApiBody,
+ApiInternalServerErrorResponse, ApiNotFoundResponse,
+ApiOkResponse,ApiOperation, ApiParam, ApiTags, 
+OmitType, PickType,} from '@nestjs/swagger';
 import { CheckDto } from "src/dto/check.dto";
+import { AuthGuard } from "src/guards/auth.guard";
+import { AdminGuard } from "src/guards/admin.guard";
 
 @ApiTags('check correct data')
 @Controller('check')
@@ -109,8 +113,10 @@ export class CheckController {
    type:PickType(FilmsDto,["imdbID"] as const)
   })
   @Post(':id')
-  async checkId(@Param('id') id:string,
-  @Body() body:Pick<FilmsDto,"imdbID">):Promise<boolean>{
+  async checkId(
+    @Param('id') id:string,
+    @Body() body:Pick<FilmsDto,"imdbID">
+  ):Promise<boolean>{
      return this.service.checkId(body.imdbID,id);
   };
 }

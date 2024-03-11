@@ -1,6 +1,7 @@
 import { Document } from "mongoose";
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Films } from "./films.mongo";
+import { Roles } from "src/enums/role.enum";
 
 @Schema()
 export class Users extends Document {
@@ -16,6 +17,12 @@ export class Users extends Document {
     })
     pass:string;
 
+    @Prop({
+      type:String,
+      required:true
+    })
+    role:Roles;
+    
     @Prop({
      type:[Films],
      required:true

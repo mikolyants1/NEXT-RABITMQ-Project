@@ -3,6 +3,7 @@ import { UsersService } from "./users.service"
 import { UsersController } from "./users.controller";
 import { MongooseModule } from "@nestjs/mongoose";
 import { UserSchema, Users } from "src/database/user.mongo";
+import { Roles } from "src/enums/role.enum";
 
 describe("test user service",()=>{
     let service:UsersService;
@@ -25,10 +26,7 @@ describe("test user service",()=>{
 
     describe("service",()=>{
        it("add user",async ()=>{
-          expect(service.addUser({
-            name:"dima",
-            pass:"red"
-          })
+          expect(service.addUser("dima","red")
           .then((d:Users)=>d.name))
           .toBe("dima")
        })

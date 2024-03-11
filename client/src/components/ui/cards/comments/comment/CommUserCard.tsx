@@ -2,7 +2,7 @@
 import createTime from "@/components/helpers/functions/create/time/createCommTime";
 import delComment from "@/components/helpers/api/mutation/comment/delComment";
 import { useStore } from "@/components/store/store";
-import { ICommDelBody } from "@/components/types/type";
+import { ICommDelBody, IComment, IComments, Mutate } from "@/components/types/type";
 import { Box, Button, Flex, Grid } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -14,16 +14,16 @@ interface props {
 };
 
 function CommUserCard({text,time,name,id}:props):JSX.Element {
-  const {token,id:userId} = useStore();
+  const {token,id:userId,role} = useStore();
   const now:string = createTime(time);
   const {invalidateQueries} = useQueryClient();
-  const {mutate} = useMutation({
+  const {mutate} = useMutation<unknown,IComments,ICommDelBody>({
     mutationFn:(body:ICommDelBody)=>delComment(body),
     onSuccess:()=>invalidateQueries({queryKey:['comments']})
   });
 
   const del = ():void => {
-    mutate({id,time,token,userId});
+    mutate({id,time,token,userId,role});
   };
  
   return (

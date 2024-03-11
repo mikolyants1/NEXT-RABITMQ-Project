@@ -13,7 +13,7 @@ export class AuthMiddleware implements NestMiddleware {
     ){};
 
     async use(req:Request, res:Response, next:NextFunction) {
-      const id:string = req.params.id;
+      const id:string = `${req.query.userId}`;
       const user:UsersDto|undefined = await this.Base.findById(id);
       if (!user) throw new UnauthorizedException();
       const token:string = this.auth.getToken(req);

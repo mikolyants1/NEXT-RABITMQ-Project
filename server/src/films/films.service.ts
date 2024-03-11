@@ -12,7 +12,7 @@ export class FilmsService {
   ){};
 
   async addFilm(id:string,body:Omit<FilmsDto,"_id">):Promise<Users>{
-    const user:UsersDto|undefined = await this.Base.findById(id);
+    const user:UsersDto = await this.Base.findById(id);
     const films:Omit<FilmsDto,"_id">[] = user.films;
     films.push({...body});
     return await this.Base
@@ -21,7 +21,7 @@ export class FilmsService {
   };
 
   async delFilm(id:string,_id:string):Promise<Users>{
-    const user:UsersDto|undefined = await this.Base.findById(id);
+    const user:UsersDto = await this.Base.findById(id);
     const films:FilmsDto[] = user.films
     .filter((i:FilmsDto)=>i._id.toString() !== _id);
     return await this.Base

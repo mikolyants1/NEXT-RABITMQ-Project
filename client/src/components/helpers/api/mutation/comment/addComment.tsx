@@ -3,11 +3,12 @@ import { AxiosResponse } from "axios";
 import { baseUrl } from "../../baseUrl";
 
 async function addComment(args:ICommBody&IToken):Promise<IComments> {
-    const {token,filmID,...body}:ICommBody&IToken = args;
+    const {token,filmID,role,...body}:ICommBody&IToken = args;
     return await baseUrl
      .post(`comments/${filmID}?userId=${body.userId}`,body,{
        headers:{
-         authorization:`Bearer ${token}`
+         authorization:`Bearer ${token}`,
+         role
        }
      })
      .then(({data}:AxiosResponse<IComments>)=>data)

@@ -1,6 +1,6 @@
 'use client'
 
-import { ICheck,fields,form } from '@/components/types/type'
+import { ICheck,IStore,Mutate,fields,form } from '@/components/types/type'
 import LoginInputs from '@/components/ui/inputs/LoginInputs'
 import { Box,} from '@chakra-ui/react'
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
@@ -23,43 +23,43 @@ interface props {
   children:JSX.Element
 };
 
+type MutateArg = Omit<IUsers,"_id"|"films">;
+
+
 export default function LoginCard({isHome,children}:props):JSX.Element {
  const router:AppRouterInstance = useRouter();
- const title:string = isHome ? 'Entrance' : 'Registration';
  const [error,setError] = useState<boolean>(false);
  const {invalidateQueries}:QueryClient = useQueryClient();
- const {mutate:add}:UseMutationResult<unknown,
-  IUsers,Omit<IUsers,"_id"|"films">> = useMutation({
-  mutationFn:(body:Omit<IUsers,"_id"|"films">)=>addUser(body),
-  onSuccess:()=>invalidateQueries({queryKey:['users']})
-})
- const {setName,setId,setToken} = useStore();
+ const {mutate:add} = useMutation<unknown,IUsers,MutateArg>({
+    mutationFn:(body:MutateArg)=>addUser(body),
+    onSuccess:()=>invalidateQueries({queryKey:['users']})
+  })
+ const {setName,setId,setToken,setRole}:IStore = useStore();
  const methods = useForm<form>({
   defaultValues:{name:"",pass:""}
  });
  const fields:fields[] = createFields();
- const {reset} = methods;
 
  const submit:SubmitHandler<form> = async (date):Promise<void> => {
    try {
-   const data:ICheck = await checkUsers(date);
-   console.log(data._id)
-      if (response(data._id,isHome)){
+      const {_id,token,role}:ICheck = await checkUsers(date);
+      if (response(_id,isHome)){
         setError(true);
-        reset();
+        methods.reset();
         return;
        };
       if (isHome){
        setName(date.name);
-       setId(data._id);
-       setToken(data.token);
-       router.push(`/home/profile/${data._id}`);
+       setId(_id);
+       setToken(token);
+       setRole(role);
+       router.push(`/home/profile/${_id}`);
       } else add(date);
     } catch(e) {
       console.log(e);
       setError(true);
-      reset();
-    }
+      methods.reset();
+    };
  };
  
   return (
@@ -68,7 +68,7 @@ export default function LoginCard({isHome,children}:props):JSX.Element {
         <Box fontSize={25}
          fontWeight='bold'
          textAlign='center'>
-          {title}
+          {isHome ? "Entrance" : "Registration"}
         </Box>
         <>
          {fields.map((i:fields):JSX.Element=>(

@@ -8,7 +8,7 @@ import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query'
 import {memo} from 'react'
 
 function ClearJournalButton():JSX.Element {
-  const {token,id}:IStore = useStore();
+  const {token,id,role}:IStore = useStore();
   const {invalidateQueries}:QueryClient = useQueryClient();
   const {mutate} = useMutation<unknown,IUsers,IClearQuery>({
     mutationFn:(args:IClearQuery)=>clearFilm(args),
@@ -16,7 +16,7 @@ function ClearJournalButton():JSX.Element {
   });
 
  const clear = ():void => {
-   mutate({id,token});
+   mutate({id,token,role});
  };
 
   return (

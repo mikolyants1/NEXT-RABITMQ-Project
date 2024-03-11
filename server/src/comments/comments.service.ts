@@ -7,23 +7,27 @@ import { CommentsDto } from "src/dto/comments.dto";
 
 @Injectable()
 export class CommentsService {
-  constructor(@InjectModel(Comments.name) private readonly comm:Model<Comments>){};
+  constructor(
+    @InjectModel(Comments.name) private readonly comm:Model<Comments>
+  ){};
 
    async getCommentsOfFilm(filmID:string):Promise<CommentDto[]>{
-    const film:undefined|CommentsDto = await this.comm.findOne({filmID});
+    const film:CommentsDto = await this.comm.findOne({filmID});
     return film ? film.comm : [];
    };
 
    async delCommentOfFilm(filmID:string,time:number):Promise<Comments>{
-    const film:undefined|CommentsDto = await this.comm.findOne({filmID});
-    const comm:CommentDto[] = film.comm.filter((i:CommentDto)=> i.time !== time);
+    const film:CommentsDto = await this.comm.findOne({filmID});
+    const comm:CommentDto[] = film.comm
+    .filter((i:CommentDto)=> i.time !== time);
     return await this.comm
      .findOneAndUpdate({filmID},{comm},{new:true})
      .exec();
    };
 
-   async createComment(filmID:string,name:string,body:Omit<CommentDto,"_id">):Promise<Comments>{
-     const film:undefined|CommentsDto = await this.comm.findOne({filmID});
+   async createComment(filmID:string,arg:Omit<UpdateDto,"filmID">):Promise<Comments>{
+     const {name,...body}:Omit<UpdateDto,"filmID"> = arg;
+     const film:CommentsDto = await this.comm.findOne({filmID});
      if (film) {
       const comm:Omit<CommentDto,"_id">[] = film.comm;
       comm.push(body);

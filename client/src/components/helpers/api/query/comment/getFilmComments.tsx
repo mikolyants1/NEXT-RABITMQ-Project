@@ -1,12 +1,13 @@
-import { IComment } from "@/components/types/type";
+import { IComment, IFilmsBody } from "@/components/types/type";
 import axios, { AxiosResponse } from "axios";
 import { baseUrl } from "../../baseUrl";
 
-async function getFilmComments(id:string,userId:string,token:string):Promise<IComment[]> {
+async function getFilmComments(body:IFilmsBody):Promise<IComment[]> {
     return await baseUrl
-    .get(`comments/film?filmID=${id}&userId=${userId}`,{
+    .get(`comments/film?filmID=${body.id}&userId=${body.userId}`,{
         headers:{
-            authorization:`Bearer ${token}`
+            authorization:`Bearer ${body.token}`,
+            role:`${body.role}`
         }
     })
     .then(({data}:AxiosResponse<IComment[]>)=>data)

@@ -7,14 +7,21 @@ import { CheckModule } from './check/check.module';
 import { CommentsModule } from './comments/comments.module';
 import { mongoConfig } from './configs/mongo.config';
 import { GatewayModule } from './socket/socket.module';
+import { MessModule } from './mess/mess.module';
+import { BanModule } from './ban/ban.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal:true,
-      envFilePath:'./src/.db.env'
+      envFilePath:[
+        './src/.db.env',
+        './src/.admin.env'
+      ]
     }),
     MongooseModule.forRootAsync(mongoConfig()),
+    MessModule,
+    BanModule,
     CommentsModule,
     GatewayModule,
     UsersModule,

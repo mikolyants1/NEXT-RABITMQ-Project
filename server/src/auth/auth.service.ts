@@ -14,7 +14,7 @@ export class AuthService {
 
     compare(token:string,{name,_id}:UsersDto):boolean{
       const decoded:Omit<UsersDto,
-      "films"| "pass"> = this.service.verify(token);
+      "films" | "pass"> = this.service.verify(token);
       return decoded._id == _id && decoded.name == name;
     };
 

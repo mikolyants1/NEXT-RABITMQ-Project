@@ -18,13 +18,13 @@ interface props {
     params:IParams
 };
 
-function page({params}:props):JSX.Element {
+function page({params:{id}}:props):JSX.Element {
  const [personal,setPersonal] = useState<string>("");
  const [text,setText] = useState<string>("");
- const {id,token}:IStore = useStore();
+ const {id:userId,token,role}:IStore = useStore();
  const inputRef = useRef<HTMLInputElement>(null!);
  const queries:QResult = useQueries({
-   queries:queryData(params.id,id,token)
+   queries:queryData({token,id,role,userId})
  });
 
  const answer = (name:string) => ():void =>{
@@ -72,7 +72,7 @@ function page({params}:props):JSX.Element {
        </CommMapWrapper>
        <CommentInput personal={personal}
          name={film.Title} text={text}
-         filmID={params.id}>
+         filmID={id}>
          <Input
           onChange={change}
           borderRightRadius='none'

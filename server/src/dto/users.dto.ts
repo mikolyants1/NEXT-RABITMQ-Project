@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { FilmsDto } from "./films.dto";
-import {IsArray, IsNotEmpty, IsString, MinLength} from 'class-validator';
+import {IsArray, IsString, MinLength} from 'class-validator';
+import { Roles } from "src/enums/role.enum";
 
 export class UsersDto {
     @ApiProperty({
@@ -23,6 +24,12 @@ export class UsersDto {
     @MinLength(1)
     pass:string;
     
+    @ApiProperty({
+      type:String
+    })
+    @IsString()
+    role:Roles;
+
     @ApiProperty({
      type:[FilmsDto]
     })

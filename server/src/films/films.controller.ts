@@ -1,11 +1,15 @@
-import { Body, Controller, Delete, Param, Post, Query} from "@nestjs/common";
+import { Body, Controller, Delete, Param, Post, Query, SetMetadata, UseGuards} from "@nestjs/common";
 import { FilmsService } from "./films.service";
 import { Users } from "src/database/user.mongo";
 import { FilmsDto } from "src/dto/films.dto";
 import { ApiBadRequestResponse, ApiBody, ApiInternalServerErrorResponse, 
 ApiNotFoundResponse, ApiOkResponse, ApiOperation,ApiParam,ApiQuery, ApiTags,
-ApiUnauthorizedResponse, OmitType } from "@nestjs/swagger";
+ApiUnauthorizedResponse,
+OmitType} from "@nestjs/swagger";
+import { AuthGuard } from "src/guards/auth.guard";
+import { AdminGuard } from "src/guards/admin.guard";
 
+@SetMetadata("roles",["admin","guest"])
 @ApiTags("actions with films")
 @Controller('films')
 export class FilmsController {
@@ -69,7 +73,9 @@ export class FilmsController {
       example:'tt12345'
    })
    @Delete('clear')
-   async clearFilm(@Query('filmId') id:string):Promise<Users>{
+   @UseGuards(AuthGuard)
+   @UseGuards(AdminGuard)
+   async clearFilm(@Query('userId') id:string):Promise<Users>{
       return await this.service.clearFilm(id);
    };
 
@@ -133,8 +139,12 @@ export class FilmsController {
      type:OmitType(FilmsDto,["_id"] as const)
    })
    @Post(':id')
-   async addFilms(@Param('id') id:string,
-   @Body() body:Omit<FilmsDto,"_id">):Promise<Users>{
+   @UseGuards(AuthGuard)
+   @UseGuards(AdminGuard)
+   async addFilms(
+     @Param('id') id:string,
+     @Body() body:Omit<FilmsDto,"_id">
+   ):Promise<Users>{
      return await this.service.addFilm(id,body);
    };
 
@@ -198,8 +208,12 @@ export class FilmsController {
      type:String
    })
    @Delete('delOne')
-   async delFilm(@Query('userId') id:string,
-   @Query('filmId') _id:string):Promise<Users>{
+   @UseGuards(AuthGuard)
+   @UseGuards(AdminGuard)
+   async delFilm(
+      @Query('userId') id:string,
+      @Query('filmId') _id:string
+   ):Promise<Users>{
     return this.service.delFilm(id,_id);
    };
 };
