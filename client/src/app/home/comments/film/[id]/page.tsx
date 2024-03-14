@@ -15,7 +15,7 @@ import { UseQueryResult, useQueries } from "@tanstack/react-query"
 import { ChangeEvent, useRef, useState } from "react"
 
 interface props {
-    params:IParams
+  params:IParams
 };
 
 function page({params:{id}}:props):JSX.Element {
@@ -41,7 +41,7 @@ function page({params:{id}}:props):JSX.Element {
  };
 
  if (queries.some((i:UseQueryResult<IComment[]|IFilms>)=>i.isError)){
-    return <Error />
+    return <Error />;
  };
  
  const [{data:comm},{data:film}]:QResult = queries;

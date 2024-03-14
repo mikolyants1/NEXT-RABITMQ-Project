@@ -6,11 +6,11 @@ async function delFilm({id,_id,token,role}:IDelQuery):Promise<IUsers> {
     return await baseUrl
     .delete(`films/delOne?userId=${id}&filmId=${_id}`,{
         headers:{
-            authorization:`Bearer ${token}`,
-            role
+          authorization:`Bearer ${token}`,
+          role
         }
     })
-    .then(({data}:AxiosResponse<IUsers>)=>data)
-}
+    .then(({data}:AxiosResponse<IUsers>)=>data);
+};
 
 export default delFilm

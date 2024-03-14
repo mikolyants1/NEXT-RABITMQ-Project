@@ -28,13 +28,13 @@ function DelFilmButton({_id}:props):JSX.Element {
      zIndex={101}
      top={0}
      m='auto'>
-       <Box
-        transform='rotate(45deg)'
-        cursor='pointer'
-        onClick={removeFilm}
-        fontSize={34}>
-          +
-       </Box>
+      <Box
+       transform='rotate(45deg)'
+       cursor='pointer'
+       onClick={removeFilm}
+       fontSize={34}>
+        +
+      </Box>
     </Flex>
   )
 }

@@ -13,7 +13,6 @@ interface props {
 
 function page({params}:props):JSX.Element {
  const data:IUsers = use(getUser(params.id));
- console.log(data)
  const isMaped:boolean = Boolean(data.films.length);
   return (
     <Box w='100%'

@@ -28,7 +28,7 @@ function page({params}:IParams):JSX.Element {
           color="white"
           textAlign="center"
           fontSize={30}>
-          Admin Panel
+            Admin Panel
          </Box>
          <BanUserMapCard
           users={users}

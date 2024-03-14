@@ -25,11 +25,11 @@ function CommUserMapCard({data}:props):JSX.Element {
         gap={10}>
         {data.map((i:ICommBody):JSX.Element=>(
            <CommUserCard
-             key={i.userId}
-             id={i.filmID}
-             text={i.text}
-             time={i.time}
-             name={i.name}
+            key={i.userId}
+            id={i.filmID}
+            text={i.text}
+            time={i.time}
+            name={i.name}
            />
         ))}
       </Flex>

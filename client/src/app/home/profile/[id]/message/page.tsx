@@ -14,11 +14,11 @@ import { useRouter } from 'next/navigation';
 import React from 'react'
 
 function page():JSX.Element {
-  const router:AppRouterInstance = useRouter();
+  const rout:AppRouterInstance = useRouter();
   const {id:_id,role,token}:IStore = useStore();
   const {data,isError,isLoading} = useQuery<IMessToAdmin[]>({
-     queryKey:["messages",_id,role,token],
-     queryFn:()=>getAdminMess({_id,role,token})
+    queryKey:["messages",_id,role,token],
+    queryFn:()=>getAdminMess({_id,role,token})
   });
 
   if (isLoading) return <Loading />;
@@ -29,7 +29,7 @@ function page():JSX.Element {
        <Box w="95%"
         color="white"
         textDecor="underline"
-        onClick={router.back.bind(router)}
+        onClick={rout.back.bind(rout)}
         fontSize={20}
         m="20px auto">
          back

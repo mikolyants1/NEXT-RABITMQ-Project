@@ -5,11 +5,11 @@ import { useStore } from "@/components/store/store";
 import { IMessBody, IMessToAdmin, IStateMess, IStore } from "@/components/types/type";
 import { Box, Button, Flex, Input, Textarea } from "@chakra-ui/react"
 import { useMutation } from "@tanstack/react-query";
-import { ChangeEvent, use, useState } from "react"
+import { ChangeEvent, useState } from "react"
 
 function page():JSX.Element {
   const {name:user,token,role,id}:IStore = useStore();
-  const {mutate,data} = useMutation<unknown,IMessToAdmin[],IMessBody>({
+  const {mutate} = useMutation<unknown,IMessToAdmin[],IMessBody>({
     mutationFn:(body:IMessBody)=>setMessToAdmin(body)
   });
   const [state,setState] = useState<IStateMess>({
@@ -24,16 +24,15 @@ function page():JSX.Element {
 
   const send = ():void => {
     if (state.description && state.text){
-       mutate({
-         text:state.text,
-         description:state.description,
-         _id:id,
-         user,
-         token,
-         role
-       })
-    }
-    console.log(data)
+      mutate({
+        text:state.text,
+        description:state.description,
+        _id:id,
+        user,
+        token,
+        role
+      });
+    };
   };
 
   return (

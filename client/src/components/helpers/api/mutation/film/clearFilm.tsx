@@ -1,5 +1,5 @@
 import { IUsers, IClearQuery } from "@/components/types/type";
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { baseUrl } from "../../baseUrl";
 
 async function clearFilm({id,token,role}:IClearQuery):Promise<IUsers> {

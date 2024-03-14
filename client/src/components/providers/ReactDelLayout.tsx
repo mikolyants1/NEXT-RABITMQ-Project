@@ -11,8 +11,9 @@ export const DelContext = createContext<boolean>(true);
 
 function DelLayut({children,isDel}:props):JSX.Element{
    return (
-     <DelContext.Provider value={isDel}>
-            {children}
+     <DelContext.Provider
+      value={isDel}>
+        {children}
      </DelContext.Provider>
    )
 }

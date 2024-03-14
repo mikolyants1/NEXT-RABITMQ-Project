@@ -1,8 +1,9 @@
 import delAdminMess from '@/components/helpers/api/mutation/mess/delAdminMess';
+import createTime from '@/components/helpers/functions/create/time/createCommTime';
 import { useStore } from '@/components/store/store';
 import { ICheck, IMessToAdmin, IStore } from '@/components/types/type';
 import { Box, Button, Flex, Grid } from '@chakra-ui/react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
 import React, { memo } from 'react'
 
 interface props {
@@ -14,7 +15,8 @@ interface props {
 }
 function MessAdminCard({id,text,description,user,time}:props):JSX.Element {
   const {role,id:_id,token}:IStore = useStore();
-  const {invalidateQueries} = useQueryClient();
+  const {invalidateQueries}:QueryClient = useQueryClient();
+  const date:string = createTime(time);
   const {mutate} = useMutation<unknown,IMessToAdmin,ICheck&{id:string}>({
     mutationFn:(body:ICheck&{id:string})=>delAdminMess(body),
     onSuccess:()=>invalidateQueries({queryKey:["messages"]})
@@ -49,7 +51,7 @@ function MessAdminCard({id,text,description,user,time}:props):JSX.Element {
        m="auto">
         <Box fontSize={18}
          textDecor="underline">
-          {user}
+          {user}{" "}{date}
         </Box>
         <Button
          colorScheme='red'

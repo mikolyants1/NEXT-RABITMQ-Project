@@ -27,8 +27,8 @@ function BanButton({id}:props):JSX.Element {
       role,
       _id,
       id
-    })
-    setBan((prv:boolean)=>!prv)
+    });
+    setBan((prv:boolean)=>!prv);
   };
 
   return (

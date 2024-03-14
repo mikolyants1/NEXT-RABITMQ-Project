@@ -1,4 +1,4 @@
-import { QueryFunction, UseMutationResult, UseQueryResult } from "@tanstack/react-query";
+import {  UseMutationResult, UseQueryResult } from "@tanstack/react-query";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
 import { BanType, Roles } from "./enum";
 
