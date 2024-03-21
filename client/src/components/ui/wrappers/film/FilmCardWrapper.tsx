@@ -1,21 +1,15 @@
-import { Flex } from '@chakra-ui/react'
+import { FlexWrapper } from '@/components/style/animation';
 import React from 'react'
 
-interface props {
-    children:JSX.Element[]
+interface IProps {
+    children:JSX.Element[],
+    delay:number
 }
-function FilmCardWrapper({children}:props):JSX.Element {
+function FilmCardWrapper({children,delay}:IProps):JSX.Element {
   return (
-    <Flex w={400}
-      borderRadius={10}
-      bg='rgb(50,50,50)'
-      m='20px auto'
-      color='white'
-      alignItems='center'
-      position='relative'
-      h={300}>
-       {children}
-    </Flex>
+    <FlexWrapper delay={delay}>
+      {children}
+    </FlexWrapper>
   )
 }
 

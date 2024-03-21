@@ -25,19 +25,19 @@ function LoginInput({title,Name,err,focus}:IProps):JSX.Element{
            render={({field}):JSX.Element=>{
             const {onChange,name,value
             }:Control<`${typeof Name}`> = field;
-             return (
-                <Input w='100%'
-                 variant="flushed"
-                 isInvalid={invalid}
-                 color={color}
-                 placeholder={title}
-                 _placeholder={{color}}
-                 onChange={onChange}
-                 onFocus={focus}
-                 value={value}
-                 name={name}
-                />
-             )}}
+            return (
+              <Input w='100%'
+               variant="flushed"
+               isInvalid={invalid}
+               color={color}
+               placeholder={title}
+               _placeholder={{color}}
+               onChange={onChange}
+               onFocus={focus}
+               value={value}
+               name={name}
+               />
+            )}}
           />
        </Flex>
     )

@@ -11,7 +11,6 @@ import { Box, Flex } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query'
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useRouter } from 'next/navigation';
-import React from 'react'
 
 function page():JSX.Element {
   const rout:AppRouterInstance = useRouter();

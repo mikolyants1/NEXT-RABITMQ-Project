@@ -20,10 +20,11 @@ function FilmMapCard({data}:props):JSX.Element {
        flexWrap='wrap'
        justifyContent='center'
        gap={10}>
-        {data.map((i:IFilms):JSX.Element=>(
+        {data.map((i:IFilms,idx:number):JSX.Element=>(
          <FilmCard
           key={i.Plot}
           data={i}
+          i={idx}
           />
         ))}
       </Flex>

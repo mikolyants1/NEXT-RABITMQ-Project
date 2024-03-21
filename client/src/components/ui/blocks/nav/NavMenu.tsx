@@ -11,8 +11,8 @@ interface props {
   onClose:()=>void
 }
 function NavMenu({isOpen,onClose}:props):JSX.Element {
-  const {id,role}:IStore = useStore();
-  const links:ILinks[] = createLinks(id,role);
+  const {id}:IStore = useStore();
+  const links:ILinks[] = createLinks(id);
 
   return (
     <Drawer

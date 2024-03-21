@@ -1,7 +1,7 @@
 import { ILinks } from "@/components/types/type";
 
-export const createLinks = (id:string,role:string):ILinks[] => {
-  const links:ILinks[] = [
+export const createLinks = (id:string):ILinks[] => {
+  return [
         {
           path:`/home/profile/${id}`,
           name:"Profile"
@@ -23,12 +23,4 @@ export const createLinks = (id:string,role:string):ILinks[] => {
           name:"exit"
         }
     ];
-    if (role == "guest"){
-       links.push({
-         path:'/home/comments/admin',
-         name:"send to admin"
-       });
-    };
-
-    return links;
 }

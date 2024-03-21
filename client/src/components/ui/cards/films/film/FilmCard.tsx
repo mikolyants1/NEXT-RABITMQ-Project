@@ -16,9 +16,10 @@ import createRows from '@/components/helpers/functions/create/maps/rows';
 
 interface props {
     data:IFilms;
+    i?:number
 };
 
-function FilmCard({data}:props):JSX.Element {
+function FilmCard({data,i}:props):JSX.Element {
   const {_id,...body}:IFilms = data;
   const rows:string[] = createRows(data);
   const isDel = useContext<boolean>(DelContext);
@@ -37,7 +38,7 @@ function FilmCard({data}:props):JSX.Element {
   };
   
   return (
-    <FilmCardWrapper>
+    <FilmCardWrapper delay={i ? i : 0}>
       <>
         {isDel&&<DelFilmButton _id={_id} />}
       </>

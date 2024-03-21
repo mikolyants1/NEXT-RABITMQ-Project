@@ -5,8 +5,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import QueryLayout from "@/components/providers/QueryLayout";
 import ChakraLayout from "@/components/providers/ChakraLayout";
+import { NextFont } from "next/dist/compiled/@next/font";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter:NextFont = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Film App",
