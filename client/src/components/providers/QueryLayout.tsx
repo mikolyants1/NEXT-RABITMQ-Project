@@ -6,6 +6,7 @@ import React from 'react'
 interface props {
     children:JSX.Element
 }
+
 const query:QueryClient = new QueryClient({
     defaultOptions:{
       queries:{
@@ -14,10 +15,10 @@ const query:QueryClient = new QueryClient({
       }
     }
 })
+
 function QueryLayout({children}:props):JSX.Element {
   return (
-    <QueryClientProvider
-     client={query}>
+    <QueryClientProvider client={query}>
       {children}
     </QueryClientProvider>
   )

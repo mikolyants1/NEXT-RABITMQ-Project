@@ -11,7 +11,7 @@ import BanUserCard from "./user/BanUserCard";
 import { BanContext } from "@/components/helpers/functions/context";
 import { ChangeEvent, useCallback, useState } from "react";
 import FilterInput from "../../inputs/FilterInput";
-import { filterUser } from "@/components/helpers/functions/filterUser";
+import { filterUser } from "@/components/helpers/functions/compare/filterUser";
 
 interface props {
   users:IUsers[]

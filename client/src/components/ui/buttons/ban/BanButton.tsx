@@ -1,6 +1,6 @@
 import setBanOrUnBanUser from '@/components/helpers/api/mutation/ban/setBanOrUnBanUser'
 import { BanContext } from '@/components/helpers/functions/context'
-import getBan from '@/components/helpers/functions/create/getBan'
+import getBan from '@/components/helpers/functions/compare/getBan'
 import { useStore } from '@/components/store/store'
 import { BanType } from '@/components/types/enum'
 import { IBanBody, IBanUsers, IStore, Mutate } from '@/components/types/type'

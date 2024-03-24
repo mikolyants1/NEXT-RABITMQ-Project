@@ -5,7 +5,7 @@ import { Flex } from '@chakra-ui/react'
 import React, { useContext } from 'react'
 import FilmCard from './film/FilmCard'
 import ClearJournalButton from '../../buttons/film/ClearJournalButton';
-import { DelContext } from '@/components/providers/ReactDelLayout';
+import { DelContext } from '@/components/helpers/functions/context'
 
 interface props {
     data:IFilms[];

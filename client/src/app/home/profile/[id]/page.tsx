@@ -1,12 +1,10 @@
 
 import getUser from '@/components/helpers/api/query/user/getUser'
 import { IParams, IUsers } from '@/components/types/type'
-import ModalContainer from '@/components/ui/blocks/modal/ModalContainer'
 import FIlmJournalCard from '@/components/ui/cards/films/film/FIlmJournalCard'
 import FilmMapCard from '@/components/ui/cards/films/FilmMapCard'
 import HeaderProfileCard from '@/components/ui/cards/header/HeaderProfileCard'
-import { Box, Flex, Text, useDisclosure } from '@chakra-ui/react'
-import Link from 'next/link'
+import { Box } from '@chakra-ui/react'
 import React, { use } from 'react'
 
 interface props {

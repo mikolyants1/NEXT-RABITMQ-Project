@@ -1,18 +1,16 @@
 'use client'
 
-import { ReactNode, createContext } from "react"
+import { ReactNode } from "react"
+import { DelContext } from "../helpers/functions/context"
 
 interface props {
     children:ReactNode,
     isDel:boolean
 };
 
-export const DelContext = createContext<boolean>(true);
-
 function DelLayut({children,isDel}:props):JSX.Element{
    return (
-     <DelContext.Provider
-      value={isDel}>
+     <DelContext.Provider value={isDel}>
         {children}
      </DelContext.Provider>
    )

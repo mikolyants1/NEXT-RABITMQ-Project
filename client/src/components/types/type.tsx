@@ -13,6 +13,11 @@ export interface IFilms {
   Plot:string
 }
 
+export interface Invalid {
+  invalid:boolean,
+  color:string
+}
+
 export interface IUsers {
   _id:string;
   name:string;

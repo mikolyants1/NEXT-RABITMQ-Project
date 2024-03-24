@@ -11,8 +11,8 @@ import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.share
 import { useRouter } from 'next/navigation';
 import checkFilmId from '@/components/helpers/api/query/film/checkFilmId';
 import DelFilmButton from '@/components/ui/buttons/film/DelFilmButton';
-import { DelContext } from '@/components/providers/ReactDelLayout';
 import createRows from '@/components/helpers/functions/create/maps/rows';
+import { DelContext } from '@/components/helpers/functions/context';
 
 interface props {
     data:IFilms;
