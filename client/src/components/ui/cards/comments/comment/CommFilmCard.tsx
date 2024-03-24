@@ -13,6 +13,7 @@ interface props {
 function CommFilmCard({name,text,time}:props):JSX.Element {
  const {answer} = useContext<ICommContext>(CommContext);
  const now:string = createTime(time);
+ 
   return (
     <Flex maxW='100%'
      alignItems='center'
