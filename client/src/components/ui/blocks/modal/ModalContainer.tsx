@@ -12,7 +12,7 @@ interface IProps {
 
 function ModalContainer({isOpen,onClose}:IProps):JSX.Element {
   const store:IStore = useStore();
-  const sendToAdmin = setMessAtion.bind(null,store);
+  const sendToAdmin = setMessAtion.bind(null,{onClose,store});
   
     return (
         <Modal

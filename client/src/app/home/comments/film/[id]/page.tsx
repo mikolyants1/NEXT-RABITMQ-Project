@@ -14,11 +14,11 @@ import { Box, Input } from "@chakra-ui/react"
 import { UseQueryResult, useQueries } from "@tanstack/react-query"
 import { ChangeEvent, useRef, useState } from "react"
 
-interface props {
+interface IProps {
   params:IParams
 };
 
-function page({params:{id}}:props):JSX.Element {
+function page({params:{id}}:IProps):JSX.Element {
  const [personal,setPersonal] = useState<string>("");
  const [text,setText] = useState<string>("");
  const {id:userId,token,role}:IStore = useStore();
@@ -45,6 +45,7 @@ function page({params:{id}}:props):JSX.Element {
  };
  
  const [{data:comm},{data:film}]:QResult = queries;
+
  if (!comm || !film) return <Error />;
 
   return (

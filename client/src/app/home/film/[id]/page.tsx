@@ -11,10 +11,13 @@ interface props {
     params:IParams
 };
 
-async function page({params}:props):Promise<JSX.Element> {
- const film:IFilms = await getFilmById(params.id);
- const {Actors,Director,Plot,Poster,Released,Title}:IFilms = film;
- const values:string[] = [Actors,Director,Released];
+async function page({params:{id}}:props):Promise<JSX.Element> {
+ const film:IFilms = await getFilmById(id);
+ const values:string[] = [
+  film.Actors,
+  film.Director,
+  film.Released
+ ];
 
   return (
     <FilmCompleteWrapper>
@@ -23,14 +26,14 @@ async function page({params}:props):Promise<JSX.Element> {
         m='10px auto'>
           <Image 
            w={260} h={320}
-           src={Poster}
+           src={film.Poster}
            borderRadius={10}
           />
           <Box>
            <Box w='100%'
             textAlign='center'
             fontSize={32}>
-              {Title} 
+              {film.Title} 
            </Box>
            {values.map((i:string):JSX.Element=>(
              <FilmPosterCard
@@ -45,11 +48,11 @@ async function page({params}:props):Promise<JSX.Element> {
         borderTop='1px solid white'
         m='10px auto'
         pt={5}>
-          {Plot}
+          {film.Plot}
        </Box>
        <Box w='100%'
         textAlign='center'>
-         <Link href={`/home/comments/film/${params.id}`}>
+         <Link href={`/home/comments/film/${id}`}>
             Comments 
          </Link>
        </Box>

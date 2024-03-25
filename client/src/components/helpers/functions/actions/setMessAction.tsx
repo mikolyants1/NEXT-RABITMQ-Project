@@ -2,7 +2,12 @@ import { IStore, Null } from "@/components/types/type";
 import { schema } from "../compare/zodValid";
 import setMessToAdmin from "../../api/mutation/mess/setMessToAdmin";
 
-export async function  setMessAtion(store:IStore,formData:FormData) {
+interface IProps {
+    store:IStore,
+    onClose:()=>void
+}
+
+export async function setMessAtion({store,onClose}:IProps,formData:FormData) {
     const {token,id:_id,role,name:user}:IStore = store;
     const text:Null<FormDataEntryValue> = formData.get("text");
     const description:Null<FormDataEntryValue> = formData.get("description");
@@ -14,10 +19,11 @@ export async function  setMessAtion(store:IStore,formData:FormData) {
     };
 
     await setMessToAdmin({
-        description:`${description}`,
-        text:`${text}`,
-        token,_id,
-        role,
-        user
+      description:`${description}`,
+      text:`${text}`,
+      token,_id,
+      role,
+      user
     });
+    onClose();
 }
