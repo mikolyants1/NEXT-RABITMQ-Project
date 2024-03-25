@@ -1,4 +1,4 @@
-import setMessToAdmin from '@/components/helpers/api/mutation/mess/setMessToAdmin';
+import { setMessAtion } from '@/components/helpers/functions/actions/setMessAction';
 import { useStore } from '@/components/store/store';
 import { IStore } from '@/components/types/type';
 import { Box, Button, Flex, Input, Modal,
@@ -12,7 +12,7 @@ interface IProps {
 
 function ModalContainer({isOpen,onClose}:IProps):JSX.Element {
   const store:IStore = useStore();
-  const sendToAdmin = setMessToAdmin.bind(null,store);
+  const sendToAdmin = setMessAtion.bind(null,store);
   
     return (
         <Modal

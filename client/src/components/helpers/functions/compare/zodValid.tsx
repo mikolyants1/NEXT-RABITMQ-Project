@@ -1,6 +1,11 @@
-import { z } from 'zod';
+import { z,ZodString,ZodObject } from 'zod';
 
-export const schema = z.object({
+type Schema = ZodObject<{
+   text:ZodString,
+   description:ZodString
+}>
+
+export const schema:Schema = z.object({
    text:z.string({
       invalid_type_error:"invalid title"
    }),
