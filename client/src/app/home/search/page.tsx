@@ -1,9 +1,9 @@
 'use client'
 
-import getFilmByTitle from '@/components/helpers/api/query/film/getFilmByTitle';
-import { initial, reducer } from '@/components/helpers/reducer';
-import { IFilms } from '@/components/types/type'
-import FilmCard from '@/components/ui/cards/films/film/FilmCard';
+import getFilmByTitle from '@/components/api/query/film/getFilmByTitle';
+import { initial, reducer } from '@/components/model/reducers/reducer';
+import { IFilms } from '@/components/libs/types/type'
+import FilmCard from '@/components/ui/cards/films/content/FilmCard';
 import Error from '@/components/ui/load/Error';
 import { Box, Button, Flex, Input } from '@chakra-ui/react';
 import React, { ChangeEvent, KeyboardEvent,

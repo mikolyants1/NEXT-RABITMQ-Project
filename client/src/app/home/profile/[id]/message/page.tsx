@@ -1,16 +1,16 @@
 "use client"
 
-import getAdminMess from '@/components/helpers/api/query/mess/getAdminMess';
-import { useStore } from '@/components/store/store';
-import { IMessToAdmin, IStore } from '@/components/types/type'
-import EmptyMessCard from '@/components/ui/cards/mess/EmptyMessCard';
-import MessAdminCard from '@/components/ui/cards/mess/MessAdminCard';
+import getAdminMess from '@/components/api/query/mess/getAdminMess';
+import { useStore } from '@/components/model/store/store';
+import { IMessToAdmin, IStore } from '@/components/libs/types/type'
 import Error from '@/components/ui/load/Error';
 import Loading from '@/components/ui/load/Loading';
 import { Box, Flex } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query'
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useRouter } from 'next/navigation';
+import MessAdminCard from '@/components/ui/views/home/profile/mess/MessAdminCard';
+import EmptyMessCard from '@/components/ui/views/home/profile/mess/EmptyMessCard';
 
 function page():JSX.Element {
   const rout:AppRouterInstance = useRouter();
@@ -39,14 +39,7 @@ function page():JSX.Element {
         {data.length ? (
           <>
            {data.map((i:IMessToAdmin):JSX.Element=>(
-            <MessAdminCard
-             key={i._id}
-             text={i.text}
-             description={i.description}
-             time={i.time}
-             user={i.user}
-             id={i._id}
-            />
+            <MessAdminCard key={i._id} {...i} />
            ))}
           </>
           ) : <EmptyMessCard />}

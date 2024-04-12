@@ -1,5 +1,5 @@
-import LoginCard from "@/components/ui/cards/login/LoginCard";
-import LoginLinks from "@/components/ui/links/LoginLinks";
+import LoginLinks from "@/components/ui/views/login/content/links/LoginLinks";
+import LoginCard from "@/components/ui/views/login/LoginCard";
 
 export default function Regist():JSX.Element{
     return (

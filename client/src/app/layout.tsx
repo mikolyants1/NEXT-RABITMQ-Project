@@ -3,8 +3,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import QueryLayout from "@/components/providers/QueryLayout";
-import ChakraLayout from "@/components/providers/ChakraLayout";
+import QueryLayout from "@/components/model/providers/QueryLayout";
+import ChakraLayout from "@/components/model/providers/ChakraLayout";
 import { NextFont } from "next/dist/compiled/@next/font";
 
 const inter:NextFont = Inter({ subsets: ["latin"] });

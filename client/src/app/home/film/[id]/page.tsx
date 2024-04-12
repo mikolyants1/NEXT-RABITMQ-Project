@@ -1,29 +1,29 @@
-
-import getFilmById from '@/components/helpers/api/query/film/getFilmById'
-import { IFilms, IParams } from '@/components/types/type'
-import FilmPosterCard from '@/components/ui/cards/films/film/FilmPosterCard';
-import FilmCompleteWrapper from '@/components/ui/wrappers/film/FilmCompleteWrapper';
+import getFilmById from '@/components/api/query/film/getFilmById'
+import { IFilms, IParams } from '@/components/libs/types/type'
+import FavorGetCard from '@/components/ui/views/home/films/content/favorite/FavorGetCard';
+import FilmPosterCard from '@/components/ui/views/home/films/content/poster/FilmPosterCard';
+import FilmCompleteWrapper from '@/components/ui/views/home/films/FilmCompleteWrapper';
 import { Box, Flex, Image } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react'
 
-interface props {
-    params:IParams
+interface IProps {
+  params:IParams
 };
 
-async function page({params:{id}}:props):Promise<JSX.Element> {
+async function page({params:{id}}:IProps):Promise<JSX.Element> {
  const film:IFilms = await getFilmById(id);
  const values:string[] = [
-  film.Actors,
-  film.Director,
-  film.Released
- ];
+   film.Actors,
+   film.Director,
+   film.Released
+ ]
 
   return (
     <FilmCompleteWrapper>
-       <Flex w='90%'
-        justifyContent='space-around'
-        m='10px auto'>
+       <FavorGetCard film={film} />
+       <Flex w='90%' m='40px auto'
+        justifyContent='space-around'>
           <Image 
            w={260} h={320}
            src={film.Poster}
@@ -36,10 +36,7 @@ async function page({params:{id}}:props):Promise<JSX.Element> {
               {film.Title} 
            </Box>
            {values.map((i:string):JSX.Element=>(
-             <FilmPosterCard
-              key={i}
-              item={i}
-             />
+             <FilmPosterCard key={i} item={i} />
            ))}
          </Box>
        </Flex>

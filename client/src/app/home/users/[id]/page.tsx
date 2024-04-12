@@ -1,29 +1,22 @@
 
-import getUsers from "@/components/helpers/api/query/user/getUsers"
-import { IParams, IUsers } from "@/components/types/type";
-import UserCard from "@/components/ui/cards/users/UserCard";
+import getUsers from "@/components/api/query/user/getUsers"
+import { IParams, IUsers } from "@/components/libs/types/type";
+import UserCard from "@/components/ui/views/home/users/UserCard";
 import { Box } from "@chakra-ui/react";
 
-interface props {
+interface IProps {
   params:IParams
 };
 
-async function page({params:{id}}:props):Promise<JSX.Element> {
+async function page({params:{id}}:IProps):Promise<JSX.Element> {
   const data:IUsers[] = await getUsers();
   const users:IUsers[] = data.filter((i:IUsers)=>i._id !== id);
 
   return (
      <Box w='100%' mt={30}>
-       {users.map((i:IUsers):JSX.Element=>{
-        const {name,films,_id}:IUsers = i;
-        return (
-         <UserCard
-          key={_id}
-          name={name}
-          films={films}         
-          id={_id}
-        />)
-       })}
+      {users.map((i:IUsers):JSX.Element=>(
+        <UserCard key={i._id} {...i} />
+      ))}
     </Box>
   )
 }

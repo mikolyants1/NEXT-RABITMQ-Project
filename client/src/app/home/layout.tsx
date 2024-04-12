@@ -1,4 +1,5 @@
-import Header from "@/components/ui/blocks/Header";
+
+import Header from "@/components/ui/views/home/header/Header";
 import { ReactNode } from "react";
 
 interface props {

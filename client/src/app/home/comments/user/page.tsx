@@ -1,10 +1,10 @@
 'use client'
 
-import  {default as getUserComments} from "@/components/helpers/api/query/comment/getUserComments";
-import { useStore } from "@/components/store/store";
-import { ICommBody, IStore } from "@/components/types/type";
-import YourCommEmpty from "@/components/ui/blocks/empty/CommEmpty";
-import CommUserMapCard from "@/components/ui/cards/comments/CommUserMapCard";
+import  {default as getUserComments} from "@/components/api/query/comment/getUserComments";
+import { useStore } from "@/components/model/store/store";
+import { ICommBody, IStore } from "@/components/libs/types/type";
+import YourCommEmpty from "@/components/ui/cards/empty/CommEmpty";
+import CommUserMapCard from "@/components/ui/views/home/comments/users/CommUserMapCard";
 import { default as Error } from "@/components/ui/load/Error";
 import {default as Loading } from "@/components/ui/load/Loading";
 import { useQuery } from "@tanstack/react-query";

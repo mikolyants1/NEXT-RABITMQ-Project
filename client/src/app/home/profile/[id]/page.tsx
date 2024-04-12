@@ -1,9 +1,9 @@
 
-import getUser from '@/components/helpers/api/query/user/getUser'
-import { IParams, IUsers } from '@/components/types/type'
-import FIlmJournalCard from '@/components/ui/cards/films/film/FIlmJournalCard'
+import getUser from '@/components/api/query/user/getUser'
+import { IParams, IUsers } from '@/components/libs/types/type'
+import FIlmJournalCard from '@/components/ui/views/home/profile/journal/FIlmJournalCard'
 import FilmMapCard from '@/components/ui/cards/films/FilmMapCard'
-import HeaderProfileCard from '@/components/ui/cards/header/HeaderProfileCard'
+import HeaderProfileCard from '@/components/ui/views/home/profile/header/HeaderProfileCard'
 import { Box } from '@chakra-ui/react'
 import React, { use } from 'react'
 

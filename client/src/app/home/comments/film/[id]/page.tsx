@@ -1,18 +1,18 @@
 'use client'
 
-import { CommContext } from "@/components/helpers/functions/context"
-import queryData from "@/components/helpers/functions/getQueryData/queryData"
-import { useStore } from "@/components/store/store"
-import { IComment, IFilms, IParams, IStore, QResult } from "@/components/types/type"
-import CommEmpty from "@/components/ui/blocks/empty/CommEmpty"
-import CommFilmMapCard from "@/components/ui/cards/comments/CommFilmMapCard"
-import CommentInput from "@/components/ui/inputs/CommentInput"
+import { useStore } from "@/components/model/store/store"
+import {type IComment,type IFilms,type IParams,type IStore,type QResult } from "@/components/libs/types/type"
+import CommEmpty from "@/components/ui/cards/empty/CommEmpty"
+import CommFilmMapCard from "@/components/ui/views/home/comments/films/wrappers/content/CommFilmMapCard"
+import CommentInput from "@/components/ui/views/home/comments/films/inputs/CommentInput"
 import Error from "@/components/ui/load/Error"
 import Loading from "@/components/ui/load/Loading"
-import CommMapWrapper from "@/components/ui/wrappers/comment/CommMapWrapper"
+import CommMapWrapper from "@/components/ui/views/home/comments/films/wrappers/CommMapWrapper"
 import { Box, Input } from "@chakra-ui/react"
 import { UseQueryResult, useQueries } from "@tanstack/react-query"
 import { ChangeEvent, useRef, useState } from "react"
+import queryData from "@/components/libs/getQueryData/queryData"
+import { CommContext } from "@/components/model/context/CommContext"
 
 interface IProps {
   params:IParams
@@ -30,19 +30,19 @@ function page({params:{id}}:IProps):JSX.Element {
  const answer = (name:string) => ():void =>{
     setPersonal(name);
     inputRef.current.focus();
- };
+ }
 
  const change = (e:ChangeEvent<HTMLInputElement>):void => {
   setText(e.target.value);
- };
+ }
 
  if (queries.some((i:UseQueryResult<IComment[]|IFilms>)=>i.isLoading)){
    return <Loading />;
- };
+ }
 
  if (queries.some((i:UseQueryResult<IComment[]|IFilms>)=>i.isError)){
     return <Error />;
- };
+ }
  
  const [{data:comm},{data:film}]:QResult = queries;
 

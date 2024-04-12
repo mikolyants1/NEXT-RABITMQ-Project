@@ -1,4 +1,4 @@
-import DelLayut from '@/components/providers/ReactDelLayout'
+import DelLayut from '@/components/model/providers/ReactDelLayout'
 import React, { ReactNode } from 'react'
 
 interface props {
