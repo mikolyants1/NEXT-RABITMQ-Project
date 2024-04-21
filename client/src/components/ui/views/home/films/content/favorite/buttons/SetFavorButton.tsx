@@ -2,23 +2,27 @@
 
 import { favorAction } from '@/components/api/mutation/favor/favorAction'
 import { useStore } from '@/components/model/store/store'
-import { IFavorData,IFilms, IStore } from '@/components/libs/types/type'
+import {type IFavorFilmData,type IFilms,type IStore } from '@/components/libs/types/type'
 import { Box, Text } from '@chakra-ui/react'
 import React, { memo, useState } from 'react'
 import { checkFavor } from '@/components/libs/compare/checkFavor'
 import { EFavoriteType } from '@/components/libs/enum/enum'
 
 interface IProps {
-  favorFilms:IFavorData[],
+  favorFilms:IFavorFilmData[],
   film:IFilms
 }
 
 function SetFavorButton({favorFilms,film}:IProps):JSX.Element {
   const store:IStore = useStore();
   const [favor,setFavor] = useState<boolean>(()=>(
-    checkFavor(favorFilms,film.imdbID,store.id)
+    checkFavor({
+      data:favorFilms,
+      id:film.imdbID,
+      userId:store.id
+    })
   ));
-  
+
   const updateFavor = async ():Promise<void> => {
     await favorAction({
       store,

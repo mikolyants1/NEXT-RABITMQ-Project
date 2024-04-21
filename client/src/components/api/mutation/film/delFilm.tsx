@@ -1,6 +1,5 @@
-import { IDelQuery, IUsers } from "@/components/libs/types/type";
+import {type Axios, type IDelQuery,type IUsers } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
-import { Axios } from "../../../libs/types/type";
 
 async function delFilm({id,_id,token,role}:IDelQuery):Promise<IUsers> {
     return apiClient.delete<IUsers>(

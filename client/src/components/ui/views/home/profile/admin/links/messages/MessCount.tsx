@@ -1,9 +1,9 @@
 import { Box } from '@chakra-ui/react'
-import React from 'react'
 
 interface IProps {
-    length:number
+  length:number
 }
+
 function MessCount({length}:IProps):JSX.Element {
  const size:string = length ?
   length >= 10 ? "23px" : "20px" : "20px";

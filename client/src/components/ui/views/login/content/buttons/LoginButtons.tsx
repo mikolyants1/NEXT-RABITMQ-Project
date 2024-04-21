@@ -1,14 +1,14 @@
-import { form } from '@/components/libs/types/type'
+import {type Form } from '@/components/libs/types/type'
 import { Button, Flex } from '@chakra-ui/react';
 import { SubmitHandler, useFormContext } from 'react-hook-form'
 
-interface props {
+interface IProps {
   isHome:boolean,
-  submit:SubmitHandler<form>
+  submit:SubmitHandler<Form>
 };
 
-function LoginButton({isHome,submit}:props):JSX.Element {
- const {handleSubmit} = useFormContext<form>();
+function LoginButton({isHome,submit}:IProps):JSX.Element {
+ const {handleSubmit} = useFormContext<Form>();
   return (
     <Flex mt={8} 
      justifyContent='center'>

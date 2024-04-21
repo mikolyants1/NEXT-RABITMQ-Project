@@ -1,5 +1,5 @@
-import { ICommBody, IComments, IToken } from "@/components/libs/types/type";
-import { AxiosResponse } from "axios";
+import {type ICommBody,type IComments,type IToken } from "@/components/libs/types/type";
+import {type AxiosResponse } from "axios";
 import { apiClient } from "../../apiClient";
 
 async function addComment(args:ICommBody&IToken):Promise<IComments> {

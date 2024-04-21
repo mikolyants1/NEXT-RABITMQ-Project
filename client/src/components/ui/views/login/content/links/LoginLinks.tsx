@@ -1,11 +1,12 @@
-import { Box } from '@chakra-ui/react'
-import Link from 'next/link'
-import {memo} from 'react'
+import { Box } from '@chakra-ui/react';
+import Link from 'next/link';
+import {memo} from 'react';
 
-interface props {
-    isHome:boolean
+interface IProps {
+  isHome:boolean
 }
-function LoginLink({isHome}:props):JSX.Element {
+
+function LoginLink({isHome}:IProps):JSX.Element {
   const href:string = isHome ? '/regist' : '/';
   const text:string = isHome ? 'registration' : 'back';
   return (

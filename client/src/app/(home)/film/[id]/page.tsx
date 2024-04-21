@@ -1,24 +1,35 @@
 import getFilmById from '@/components/api/query/film/getFilmById'
-import { IFilms, IParams } from '@/components/libs/types/type'
+import {type IFilms } from '@/components/libs/types/type'
+import Error from '@/components/ui/load/Error';
 import FavorGetCard from '@/components/ui/views/home/films/content/favorite/FavorGetCard';
 import FilmPosterCard from '@/components/ui/views/home/films/content/poster/FilmPosterCard';
 import FilmCompleteWrapper from '@/components/ui/views/home/films/FilmCompleteWrapper';
 import { Box, Flex, Image } from '@chakra-ui/react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react'
 
-interface IProps {
-  params:IParams
-};
+interface IParams {
+  params:{
+    id:string
+  }
+}
 
-async function page({params:{id}}:IProps):Promise<JSX.Element> {
- const film:IFilms = await getFilmById(id);
- const values:string[] = [
-   film.Actors,
-   film.Director,
-   film.Released
- ]
+export const generateMetadata = async ({params}:IParams):Promise<Metadata> => {
+  const film:IFilms = await getFilmById(params.id);
+  return {
+    title:film.Title,
+    description:"Information of film"
+  }
+}
 
+async function page({params:{id}}:IParams):Promise<JSX.Element> {
+  const film = await getFilmById(id);
+  const values:string[] = [
+    film.Actors,
+    film.Director,
+    film.Released
+  ]
   return (
     <FilmCompleteWrapper>
        <FavorGetCard film={film} />
@@ -49,7 +60,7 @@ async function page({params:{id}}:IProps):Promise<JSX.Element> {
        </Box>
        <Box w='100%'
         textAlign='center'>
-         <Link href={`/home/comments/film/${id}`}>
+         <Link href={`/comments/film/${id}`}>
             Comments 
          </Link>
        </Box>

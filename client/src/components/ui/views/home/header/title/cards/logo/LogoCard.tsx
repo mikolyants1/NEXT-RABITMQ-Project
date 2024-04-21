@@ -1,6 +1,6 @@
 
 import { useStore } from '@/components/model/store/store';
-import { ILogo, IStore } from '@/components/libs/types/type';
+import {type ILogo,type IStore } from '@/components/libs/types/type';
 import { Box } from '@chakra-ui/react';
 import Link from 'next/link';
 import React, { memo } from 'react'
@@ -11,7 +11,7 @@ function LogoCard():JSX.Element {
  const lett:string = name[0].toUpperCase();
  const {one,two}:ILogo = createLogo();
   return (
-    <Link href={`/home/profile/${id}`}>
+    <Link href={`/profile/${id}`}>
       <Box w={12}
        background={`linear-gradient(45deg,${one},${two})`}
        textAlign='center'

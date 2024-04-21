@@ -1,15 +1,14 @@
-import { IComment } from '@/components/libs/types/type'
+import {type IComment } from '@/components/libs/types/type'
 import { Flex} from '@chakra-ui/react'
-import React from 'react'
 import CommFilmCard from './cards/CommFilmCard';
 import DayCommCard from './cards/DayCommCard';
 import checkData from '@/components/libs/create/time/checkData';
 
-interface props {
-    data:IComment[]
+interface IProps {
+  data:IComment[]
 };
 
-function CommFilmMapCard({data}:props):JSX.Element {
+function CommFilmMapCard({data}:IProps):JSX.Element {
   return (
      <Flex w='100%' h='100%'
       flexDirection='column'>

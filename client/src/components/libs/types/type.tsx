@@ -1,7 +1,7 @@
-import {  UseMutationResult, UseQueryResult } from "@tanstack/react-query";
-import { ControllerRenderProps, FieldValues } from "react-hook-form";
+import {type UseMutationResult,type UseQueryResult } from "@tanstack/react-query";
+import {type ControllerRenderProps,type FieldValues } from "react-hook-form";
 import { BanType, EFilmType, EFavoriteType, Roles } from "../enum/enum";
-import { AxiosResponse } from "axios";
+import {type AxiosResponse } from "axios";
 
 export interface IFilms {
   _id:string;
@@ -19,6 +19,17 @@ export interface Invalid {
   color:string
 }
 
+export interface IFavorCreateMap {
+  films:IFilms[],
+  favorite:IFavorFilmData[]
+}
+
+export interface IServerProps {
+  statusCode:number,
+  film:IFilms,
+  values:string[],
+  id:string
+}
 export interface IUsers {
   _id:string;
   name:string;
@@ -27,6 +38,13 @@ export interface IUsers {
   role:Roles
 };
 
+export interface IAbsolute {
+  top:number,
+  right:number,
+  left:number,
+  bottom:number,
+  m:string
+}
 export interface ILinks {
   path:string,
   name:string
@@ -153,7 +171,7 @@ export interface IState {
 
 export type Action = Record<string,IState[keyof IState]>;
 
-export type form = Omit<IUsers,"_id"|'posts'>;
+export type Form = Omit<IUsers,"_id"|'posts'>;
 
 export type Control<T extends string> = ControllerRenderProps<FieldValues,T>;
 

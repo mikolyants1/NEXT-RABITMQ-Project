@@ -1,5 +1,5 @@
 import { EFilmType } from "@/components/libs/enum/enum";
-import { IFilms, OptimisticAction } from "@/components/libs/types/type";
+import {type IFilms,type OptimisticAction } from "@/components/libs/types/type";
 
 export const optimisticAction = (
   state:IFilms[],

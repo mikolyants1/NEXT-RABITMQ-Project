@@ -1,4 +1,4 @@
-import { Axios, IFilms } from "@/components/libs/types/type";
+import {type Axios,type IFilms } from "@/components/libs/types/type";
 import axios from "axios";
 
 async function getFilmById(id:string):Promise<IFilms> {

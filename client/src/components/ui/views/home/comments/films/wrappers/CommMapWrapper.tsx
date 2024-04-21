@@ -1,12 +1,12 @@
 import { Flex, useMediaQuery } from "@chakra-ui/react";
 import { memo } from "react";
 
-interface props {
-    children:JSX.Element,
-    length:number
+interface IProps {
+  children:JSX.Element,
+  length:number
 }
 
-function CommMapWrapper({children,length}:props):JSX.Element {
+function CommMapWrapper({children,length}:IProps):JSX.Element {
     const [isSmall] = useMediaQuery('(max-width: 700px)');
      return (
        <Flex h={500}

@@ -1,11 +1,11 @@
 
 
-import type { Metadata } from "next";
+import {type Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import QueryLayout from "@/components/model/providers/QueryLayout";
 import ChakraLayout from "@/components/model/providers/ChakraLayout";
-import { NextFont } from "next/dist/compiled/@next/font";
+import {type NextFont } from "next/dist/compiled/@next/font";
 
 const inter:NextFont = Inter({ subsets: ["latin"] });
 
@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}
        style={{
         backgroundColor:"black",
-        minWidth:450
+        minWidth:540
         }}>
         <QueryLayout>
           <ChakraLayout> 

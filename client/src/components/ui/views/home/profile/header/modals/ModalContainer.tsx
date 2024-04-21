@@ -1,9 +1,9 @@
 import { setMessAtion } from '@/components/model/actions/serverActions/setMessAction';
 import { useStore } from '@/components/model/store/store';
-import { IStore } from '@/components/libs/types/type';
-import { Box, Button, Flex, Input, Modal,
- ModalContent, ModalOverlay, Textarea } from '@chakra-ui/react';
-import React, { memo, useState } from 'react'
+import {type IStore } from '@/components/libs/types/type';
+import { Box, Button, Flex, Input, Modal,ModalContent,
+ ModalOverlay, Textarea } from '@chakra-ui/react';
+import { memo, useState } from 'react'
 
 interface IProps {
     isOpen:boolean,
@@ -34,23 +34,20 @@ function ModalContainer({isOpen,onClose}:IProps):JSX.Element {
            w={400} mt={200}>
             <form action={sendToAdmin}>
               <Box w={400}>
-                <Input
-                 w={150} mt={5}
+                <Input w={150} mt={5} ml={5}
                  isInvalid={isError("text")}
                  bg="rgb(240,240,240)" 
                  placeholder="title"
                  name="text"
-                 ml={5}
                 />
-               <Textarea mt={5}
-                ml={5} w="90%"
-                name='description'
+               <Textarea mt={5} ml={5} w="90%"
                 isInvalid={isError("description")}
                 placeholder="description"
+                name='description'
                 bg="rgb(240,240,240)"
                 h={200} 
                />
-               {error.length&&(
+               {Boolean(error.length)&&(
                 <Box w="100%"
                  textAlign="center"
                  color="red" mt={5}>

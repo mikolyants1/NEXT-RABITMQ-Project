@@ -1,4 +1,4 @@
-import { IComment } from "@/components/libs/types/type";
+import {type IComment } from "@/components/libs/types/type";
 
 function checkData(i:IComment[],idx:number):boolean{
   if (idx == 0) return true;

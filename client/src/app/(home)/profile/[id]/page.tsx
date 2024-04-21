@@ -1,19 +1,20 @@
 
 import getUser from '@/components/api/query/user/getUser'
-import { IParams, IUsers } from '@/components/libs/types/type'
+import {type IParams,type IUsers } from '@/components/libs/types/type'
 import FIlmJournalCard from '@/components/ui/views/home/profile/journal/FIlmJournalCard'
 import FilmMapCard from '@/components/ui/cards/films/FilmMapCard'
 import HeaderProfileCard from '@/components/ui/views/home/profile/header/HeaderProfileCard'
 import { Box } from '@chakra-ui/react'
-import React, { use } from 'react'
+import { use } from 'react'
 
 interface props {
-    params:IParams
+  params:IParams
 };
 
 function page({params}:props):JSX.Element {
  const data:IUsers = use(getUser(params.id));
  const isMaped:boolean = Boolean(data.films.length);
+
   return (
     <Box w='100%'
      color='white'>
@@ -32,8 +33,8 @@ function page({params}:props):JSX.Element {
        isMaped={isMaped}
        />
       {isMaped&&(
-       <FilmMapCard 
-        data={data.films}
+      <FilmMapCard 
+       data={data.films}
        />)}
     </Box>
   )

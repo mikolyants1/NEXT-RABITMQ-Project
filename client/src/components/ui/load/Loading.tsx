@@ -9,8 +9,8 @@ import { useEffect, useState ,memo } from "react";
      useEffect(():void=>{
        setInterval(():void => {
         setSpin((prev:number)=>(
-         prev == 360 ? 0 : prev+10
-         ));
+          prev == 360 ? 0 : prev + 10
+        ));
        }, 50);
      },[])
     

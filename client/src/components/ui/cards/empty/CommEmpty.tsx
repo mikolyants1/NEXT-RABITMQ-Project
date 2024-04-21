@@ -1,12 +1,11 @@
 'use client'
 
 import { Box } from '@chakra-ui/react'
-import React from 'react'
 
-interface props {
+interface IProps {
   text:string
 }
-function CommEmpty({text}:props):JSX.Element {
+function CommEmpty({text}:IProps):JSX.Element {
   return (
     <Box w='100%'
      textAlign='center'

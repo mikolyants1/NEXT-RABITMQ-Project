@@ -1,4 +1,4 @@
-import { IUsers, IClearQuery, Axios } from "@/components/libs/types/type";
+import {type IUsers,type IClearQuery,type Axios } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 async function clearFilm({id,token,role}:IClearQuery):Promise<IUsers> {

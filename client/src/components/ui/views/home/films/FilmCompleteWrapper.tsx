@@ -3,10 +3,11 @@
 import { Box, useMediaQuery } from '@chakra-ui/react'
 import {memo} from 'react'
 
-interface props {
-    children:JSX.Element[]
+interface IProps {
+  children:JSX.Element[]
 }
-function FilmCompleteWrapper({children}:props):JSX.Element {
+
+function FilmCompleteWrapper({children}:IProps):JSX.Element {
  const [isWidth] = useMediaQuery("(max-width: 800px)")
   return (
     <Box minH={400}

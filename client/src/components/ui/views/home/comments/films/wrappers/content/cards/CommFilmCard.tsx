@@ -1,6 +1,6 @@
 
 import createTime from '@/components/libs/create/time/createCommTime';
-import { ICommContext } from '@/components/libs/types/type';
+import {type ICommContext } from '@/components/libs/types/type';
 import { CommContext } from '@/components/model/context/CommContext';
 import { Box, Flex } from '@chakra-ui/react'
 import {memo, useContext} from 'react'
@@ -20,12 +20,11 @@ function CommFilmCard({username,text,time}:props):JSX.Element {
      alignItems='center'
      boxSizing='border-box'
      onClick={answer(`${username},`)}
-     color='white'
-     p={4}>
+     color='white' p={4}>
       <Box minW={100}
        textAlign='center'
        fontSize={20}>
-         {username}
+        {username}
       </Box>
       <Flex minW={250}
        justifyContent='space-between'

@@ -1,7 +1,7 @@
-import { IStore, Null } from "@/components/libs/types/type";
+import {type IStore,type Null } from "@/components/libs/types/type";
 import setMessToAdmin from "../../../api/mutation/mess/setMessToAdmin";
 import { schema } from "@/components/libs/types/zod";
-import { Dispatch, SetStateAction } from "react";
+import {type Dispatch,type SetStateAction } from "react";
 
 interface IProps {
   store:IStore,

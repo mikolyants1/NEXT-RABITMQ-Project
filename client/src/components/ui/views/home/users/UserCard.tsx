@@ -1,11 +1,11 @@
 "use client"
 
-import { IFilms } from '@/components/libs/types/type'
-import { Box, Text} from '@chakra-ui/react'
-import React, { useEffect, useState,useLayoutEffect } from 'react'
+import {type IFilms } from '@/components/libs/types/type';
+import { Box, Text} from '@chakra-ui/react';
+import { useEffect, useState,useLayoutEffect } from 'react';
 import {Socket, io} from 'socket.io-client';
 import { useStore } from '@/components/model/store/store'
-import FilmMapCard from '@/components/ui/cards/films/FilmMapCard';
+import UserShowMapCard from './content/UserShowMapCard';
 
 interface IProps {
   name:string,
@@ -49,7 +49,11 @@ function UserCard({name,films,_id}:IProps):JSX.Element {
             {isOnline ? "online" : "offline"}
           </Text>
       </Box>
-      <FilmMapCard data={films} />
+      <UserShowMapCard
+       name={name}
+       films={films}
+       _id={_id}
+      />
     </Box>
   )
 }

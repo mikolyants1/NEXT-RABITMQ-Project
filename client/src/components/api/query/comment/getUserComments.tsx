@@ -1,5 +1,5 @@
-import {Axios, ICommBody, IFilmsBody } from '@/components/libs/types/type'
-import { AxiosResponse } from 'axios'
+import {type Axios,type ICommBody,type IFilmsBody } from '@/components/libs/types/type'
+import {type AxiosResponse } from 'axios'
 import { apiClient } from '../../apiClient'
 
 function getUserComments(body:IFilmsBody):Promise<ICommBody[]> {

@@ -1,21 +1,21 @@
 'use client'
 
-import { Box,} from '@chakra-ui/react'
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
-import { useRouter } from 'next/navigation'
-import React, { ChangeEvent, useCallback, useMemo, useState } from 'react'
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
-import { useStore } from '@/components/model/store/store'
-import { useMutation, useQueryClient,QueryClient } from '@tanstack/react-query'
-import LoginCardWrapper from './content/LoginCardWrapper'
-import LoginButton from './content/buttons/LoginButtons'
-import LoginErrorCard from './content/error/LoginErrorCard'
-import addUser from '@/components/api/mutation/user/addUser'
-import { ICheck, IFields, IStore, IUsers, form } from '@/components/libs/types/type'
-import { response } from '@/components/libs/compare/response'
-import checkUsers from '@/components/api/query/user/checkUsers'
-import { createFields } from '@/components/libs/create/maps/fileds'
-import LoginInputs from './content/inputs/LoginInputs'
+import { Box,} from '@chakra-ui/react';
+import {type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { useRouter } from 'next/navigation';
+import { ChangeEvent, useCallback, useMemo, useState } from 'react';
+import { FormProvider,type SubmitHandler, useForm } from 'react-hook-form';
+import { useStore } from '@/components/model/store/store';
+import { useMutation, useQueryClient,QueryClient } from '@tanstack/react-query';
+import LoginCardWrapper from './content/LoginCardWrapper';
+import LoginButton from './content/buttons/LoginButtons';
+import LoginErrorCard from './content/error/LoginErrorCard';
+import addUser from '@/components/api/mutation/user/addUser';
+import {type ICheck,type IFields,type IStore,type IUsers,type Form } from '@/components/libs/types/type';
+import { response } from '@/components/libs/compare/response';
+import checkUsers from '@/components/api/query/user/checkUsers';
+import { createFields } from '@/components/libs/create/maps/fileds';
+import LoginInputs from './content/inputs/LoginInputs';
 
 interface props {
   isHome:boolean,
@@ -35,12 +35,12 @@ export default function LoginCard({isHome,children}:props):JSX.Element {
     onSuccess:()=>invalidateQueries({queryKey:['users']})
   })
  const {setName,setId,setToken,setRole}:IStore = useStore();
- const methods = useForm<form>({
+ const methods = useForm<Form>({
   defaultValues:{name:"",pass:""}
  });
  const fields:IFields[] = createFields();
 
- const submit:SubmitHandler<form> = async (date):Promise<void> => {
+ const submit:SubmitHandler<Form> = async (date):Promise<void> => {
   setErrArray([]);
   if (!date.name) errorHandler("name");
   if (!date.pass) errorHandler("pass");
@@ -57,7 +57,7 @@ export default function LoginCard({isHome,children}:props):JSX.Element {
       setId(check._id);
       setToken(check.token);
       setRole(check.role);
-      router.push(`/home/profile/${check._id}`);
+      router.push(`/profile/${check._id}`);
     } else add(date);
   } catch(e) {
     console.log(e);

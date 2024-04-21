@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from "axios";
-import { Axios, IFilms, IToken, IUsers } from "@/components/libs/types/type";
+import axios, {type AxiosResponse } from "axios";
+import {type Axios,type IFilms,type IToken,type IUsers } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 async function addFilm(args:IFilms&IToken):Promise<IUsers> {

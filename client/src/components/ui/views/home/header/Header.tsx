@@ -1,7 +1,6 @@
 "use client"
 
-import {useDisclosure } from '@chakra-ui/react'
-import React from 'react'
+import { useDisclosure } from '@chakra-ui/react'
 import NavMenu from './navigate/NavMenu';
 import HeaderTitleCard from './title/cards/HeaderTitleCard';
 

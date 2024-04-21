@@ -1,4 +1,4 @@
-import { Action, IState } from "@/components/libs/types/type";
+import {type Action,type IState } from "@/components/libs/types/type";
 
 export const initial:IState = {
     error:false,

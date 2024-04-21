@@ -1,21 +1,21 @@
-import { ILinks } from "@/components/libs/types/type";
+import {type ILinks } from "@/components/libs/types/type";
 
 export const createLinks = (id:string):ILinks[] => {
   return [
         {
-          path:`/home/profile/${id}`,
+          path:`/profile/${id}`,
           name:"Profile"
         },
         {
-          path:`/home/users/${id}`,
+          path:`/users/${id}`,
           name:"Users"
         },
         {
-          path:"/home/search",
+          path:"/search",
           name:"Search"
         },
         {
-          path:`/home/comments/user`,
+          path:`/comments/user`,
           name:"My comments"
         },
         {

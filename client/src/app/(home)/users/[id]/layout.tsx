@@ -1,9 +1,16 @@
 import DelLayut from '@/components/model/providers/ReactDelLayout'
-import React, { ReactNode } from 'react'
+import {type Metadata } from 'next'
+import {type ReactNode } from 'react'
 
 interface props {
-    children:ReactNode
-};
+  children:ReactNode
+}
+
+
+export const metadata:Metadata = {
+  title:"Users",
+  description:"Users page"
+}
 
 function layout({children}:props):JSX.Element {
   return (

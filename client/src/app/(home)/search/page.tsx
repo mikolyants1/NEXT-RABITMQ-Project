@@ -2,12 +2,14 @@
 
 import getFilmByTitle from '@/components/api/query/film/getFilmByTitle';
 import { initial, reducer } from '@/components/model/reducers/reducer';
-import { IFilms } from '@/components/libs/types/type'
+import {type IFilms } from '@/components/libs/types/type'
 import FilmCard from '@/components/ui/cards/films/content/FilmCard';
 import Error from '@/components/ui/load/Error';
 import { Box, Button, Flex, Input } from '@chakra-ui/react';
-import React, { ChangeEvent, KeyboardEvent,
+import { ChangeEvent, KeyboardEvent,
 useMemo, useReducer, useState } from 'react'
+import {motion} from 'framer-motion';
+import { searchMotion } from '@/components/libs/style/animation';
 
 function page():JSX.Element {
   const [data,setData] = useState<IFilms>({} as IFilms);
@@ -36,7 +38,7 @@ function page():JSX.Element {
  if (state.error) return <Error />;
 
   return (
-    <Box w='100%'
+    <Box w='100%' 
      color='white'>
        <Box mt={10}
         w='100%'
@@ -59,9 +61,13 @@ function page():JSX.Element {
        </Flex>
        <>
         {state.show&&(
-          <FilmCard
-           data={memoData}
-           />
+          <motion.div
+           initial="initial"
+           animate="animate"
+           variants={searchMotion}
+           style={{width:400,margin:"auto"}}>
+            <FilmCard data={memoData} />
+          </motion.div>
         )}
        </>
     </Box>

@@ -1,6 +1,6 @@
 import addComment from '@/components/api/mutation/comment/addComment';
 import { useStore } from '@/components/model/store/store';
-import { ICommBody, IComments, IStore, IToken } from '@/components/libs/types/type';
+import {type ICommBody,type IComments,type IStore,type IToken } from '@/components/libs/types/type';
 import { Button, Flex, useMediaQuery } from '@chakra-ui/react'
 import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
 

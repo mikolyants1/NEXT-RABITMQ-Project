@@ -1,4 +1,4 @@
-import { IFilmsBody, IQueryData } from "@/components/libs/types/type"
+import {type IFilmsBody,type IQueryData } from "@/components/libs/types/type"
 import getFilmComments from "../../api/query/comment/getFilmComments"
 import getFilmById from "../../api/query/film/getFilmById"
 

@@ -1,6 +1,6 @@
 
 import getUsers from "@/components/api/query/user/getUsers"
-import { IParams, IUsers } from "@/components/libs/types/type";
+import {type IParams,type IUsers } from "@/components/libs/types/type";
 import UserCard from "@/components/ui/views/home/users/UserCard";
 import { Box } from "@chakra-ui/react";
 

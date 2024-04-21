@@ -2,7 +2,7 @@
 
 import clearFilm from '@/components/api/mutation/film/clearFilm'
 import { useStore } from '@/components/model/store/store'
-import { IOptimisticContext, IStore} from '@/components/libs/types/type'
+import {type IOptimisticContext,type IStore} from '@/components/libs/types/type'
 import { Button, Flex } from '@chakra-ui/react'
 import {memo, useContext} from 'react'
 import { OptimisticContext } from '@/components/model/context/OptimisticContext'

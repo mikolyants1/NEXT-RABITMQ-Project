@@ -1,10 +1,10 @@
 import setBanOrUnBanUser from '@/components/api/mutation/ban/setBanOrUnBanUser'
 import { useStore } from '@/components/model/store/store'
 import { BanType } from '@/components/libs/enum/enum'
-import { IBanBody, IBanUsers, IStore, } from '@/components/libs/types/type'
+import {type IBanBody,type IBanUsers,type IStore } from '@/components/libs/types/type'
 import { Button } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { BanContext } from '@/components/model/context/BanContext'
 import getBan from '@/components/libs/compare/getBan'
 

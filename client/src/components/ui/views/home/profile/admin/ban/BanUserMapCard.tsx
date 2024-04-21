@@ -2,7 +2,7 @@
 
 import { getBanUsers } from "@/components/api/query/ban/getBanUsers";
 import { useStore } from "@/components/model/store/store"
-import { IBanUsers, IStore, IUsers } from "@/components/libs/types/type"
+import {type IBanUsers,type IStore,type IUsers } from "@/components/libs/types/type"
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../../../load/Loading";
 import Error from "../../../../../load/Error";
@@ -13,11 +13,11 @@ import FilterInput from "./inputs/FilterInput";
 import { BanContext } from "@/components/model/context/BanContext";
 import { filterUser } from "@/components/libs/compare/filterUser";
 
-interface props {
+interface IProps {
   users:IUsers[]
 };
 
-function BanUserMapCard({users}:props):JSX.Element {
+function BanUserMapCard({users}:IProps):JSX.Element {
   const [text,setText] = useState<string>("");
   const {token,id:_id,role}:IStore = useStore();
   const {data,isError,isLoading} = useQuery<IBanUsers[]>({

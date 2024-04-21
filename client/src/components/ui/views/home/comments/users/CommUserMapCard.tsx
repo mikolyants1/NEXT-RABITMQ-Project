@@ -1,6 +1,6 @@
 'use client'
 
-import { ICommBody} from "@/components/libs/types/type"
+import {type ICommBody} from "@/components/libs/types/type"
 import { Box, Flex } from "@chakra-ui/react"
 import CommUserCard from "./cards/CommUserCard"
 

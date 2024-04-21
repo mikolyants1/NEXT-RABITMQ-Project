@@ -1,8 +1,8 @@
 'use client'
 
-import  {default as getUserComments} from "@/components/api/query/comment/getUserComments";
+import {default as getUserComments} from "@/components/api/query/comment/getUserComments";
 import { useStore } from "@/components/model/store/store";
-import { ICommBody, IStore } from "@/components/libs/types/type";
+import {type ICommBody,type IStore } from "@/components/libs/types/type";
 import YourCommEmpty from "@/components/ui/cards/empty/CommEmpty";
 import CommUserMapCard from "@/components/ui/views/home/comments/users/CommUserMapCard";
 import { default as Error } from "@/components/ui/load/Error";

@@ -6,19 +6,20 @@ import {memo} from 'react';
 import ModalContainer from './modals/ModalContainer';
 
 interface IProps {
-    role:string,
-    id:string
+  role:string,
+  id:string
 }
 
 function HeaderProfileCard({role,id}:IProps):JSX.Element {
   const {isOpen,onClose,onOpen} = useDisclosure();
+  
   return (
     <>
      <Flex w="95%"
       justifyContent="end"
       mt={5} fontSize={25}>
       {role == "admin" ? (
-       <Link href={`${id}/admin/${id}`}>
+       <Link href={`${id}/admin/${role}`}>
          admin panel
        </Link>
       ) : (

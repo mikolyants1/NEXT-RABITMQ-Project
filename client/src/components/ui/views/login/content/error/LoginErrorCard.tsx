@@ -1,10 +1,10 @@
-import { Box } from '@chakra-ui/react'
-import {memo} from 'react'
+import { Box } from '@chakra-ui/react';
+import {memo} from 'react';
 
-interface props {
-    error:boolean
+interface IProps {
+  error:boolean
 }
-function LoginErrorCard({error}:props):JSX.Element {
+function LoginErrorCard({error}:IProps):JSX.Element {
   return (
         <Box>
           {error&&(

@@ -1,7 +1,7 @@
 
 import delComment from "@/components/api/mutation/comment/delComment";
 import { useStore } from "@/components/model/store/store";
-import { ICommDelBody, IComments, IStore } from "@/components/libs/types/type";
+import {type ICommDelBody,type IComments,type IStore } from "@/components/libs/types/type";
 import { Box, Button, Flex, Grid } from "@chakra-ui/react";
 import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query";
 import createTime from "@/components/libs/create/time/createCommTime";

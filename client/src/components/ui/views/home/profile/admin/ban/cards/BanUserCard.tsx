@@ -1,16 +1,15 @@
 
 import { createLogo } from '@/components/libs/create/logo';
-import { ILogo } from '@/components/libs/types/type';
+import {type ILogo } from '@/components/libs/types/type';
 import BanButton from '@/components/ui/views/home/profile/admin/ban/cards/buttons/BanButton';
 import { Box, Flex } from '@chakra-ui/react'
-import React from 'react'
 
-interface props {
+interface IProps {
   id:string,
   name:string
 };
 
-function BanUserCard({id,name}:props):JSX.Element {
+function BanUserCard({id,name}:IProps):JSX.Element {
   const lett:string = name[0].toUpperCase();
  const {one,two}:ILogo = createLogo();
   return (

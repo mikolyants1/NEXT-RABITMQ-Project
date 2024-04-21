@@ -1,4 +1,4 @@
-import { Axios, BanBody, IBanBody, IBanUsers } from "@/components/libs/types/type";
+import {type Axios,type BanBody,type IBanBody,type IBanUsers } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 import { AxiosResponse } from "axios";
 

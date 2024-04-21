@@ -1,5 +1,5 @@
-import { form } from "@/components/libs/types/type";
-import { Flex, Input } from "@chakra-ui/react"
+import { type Form } from "@/components/libs/types/type";
+import { Flex, Input } from "@chakra-ui/react";
 import { ChangeEvent, memo } from "react";
 import { Controller, useFormContext} from 'react-hook-form'
 
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 function LoginInput({title,name,err,focus}:IProps):JSX.Element{
-  const {control} = useFormContext<form>();
+  const {control} = useFormContext<Form>();
   const invalid:boolean = err.some((i:string)=>i == name);
   const color:string = invalid ? "red" : "white";
     return (

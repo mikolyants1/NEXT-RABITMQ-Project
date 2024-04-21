@@ -1,6 +1,6 @@
 import delFilm from '@/components/api/mutation/film/delFilm'
 import { useStore } from '@/components/model/store/store'
-import { IOptimisticContext, IStore } from '@/components/libs/types/type'
+import {type IOptimisticContext,type IStore } from '@/components/libs/types/type'
 import { Box, Flex } from '@chakra-ui/react'
 import { useContext } from 'react'
 import { OptimisticContext } from '@/components/model/context/OptimisticContext'

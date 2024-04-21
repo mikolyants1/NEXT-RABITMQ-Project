@@ -1,21 +1,32 @@
 
+import getUser from '@/components/api/query/user/getUser';
 import getUsers from '@/components/api/query/user/getUsers'
 import { Roles } from '@/components/libs/enum/enum';
-import { IUsers } from '@/components/libs/types/type'
+import {type IUsers } from '@/components/libs/types/type'
 import BanUserMapCard from '@/components/ui/views/home/profile/admin/ban/BanUserMapCard';
 import AdminLinks from '@/components/ui/views/home/profile/admin/links/AdminLinks';
 import { Box, Flex } from '@chakra-ui/react';
-import React, { use } from 'react'
+import {type Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 interface IParams {
   params:{
-    adminId:string
+    id:string,
+    role:string
   }
 };
+export const metadata:Metadata = {
+  title:"Admin panel",
+  description:"Admin panel"
+}
 
-function page({params}:IParams):JSX.Element {
-  const users:IUsers[] = use(getUsers())
-  .filter((i:IUsers)=>i.role !== Roles.ADMIN);
+async function page({params}:IParams):Promise<JSX.Element> {
+  const users:IUsers[] = await getUsers();
+  const data:IUsers[] = users.filter(u => u.role !== Roles.ADMIN);
+  
+  if (params.role !== Roles.ADMIN){
+    redirect(`/profile/${params.id}`);
+  }
 
   return (
       <Flex w="90%"
@@ -23,7 +34,7 @@ function page({params}:IParams):JSX.Element {
        justifyContent="center"
        flexDirection="column">
          <AdminLinks
-          adminId={params.adminId}
+          adminId={params.id}
           />
          <Box w="100%"
           color="white"

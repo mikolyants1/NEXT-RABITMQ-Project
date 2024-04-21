@@ -1,4 +1,4 @@
-import { Axios, IFavorBody, IFavorData } from "@/components/libs/types/type";
+import {type Axios,type IFavorBody,type IFavorData } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 

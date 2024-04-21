@@ -1,18 +1,17 @@
 "use client"
 
-import getAdminMess from '@/components/api/query/mess/getAdminMess'
-import { useStore } from '@/components/model/store/store'
-import { IMessToAdmin, IStore, IUsers } from '@/components/libs/types/type'
-import { Box, Flex, Text } from '@chakra-ui/react'
-import { useQuery } from '@tanstack/react-query'
-import Link from 'next/link'
-import React from 'react'
-import Loading from '../../../../../load/Loading'
-import Error from '../../../../../load/Error'
-import MessCount from './messages/MessCount'
+import getAdminMess from '@/components/api/query/mess/getAdminMess';
+import { useStore } from '@/components/model/store/store';
+import {type IMessToAdmin,type IStore} from '@/components/libs/types/type';
+import { Box, Flex } from '@chakra-ui/react';
+import { useQuery } from '@tanstack/react-query';
+import Link from 'next/link';
+import Loading from '@/components/ui/load/Loading';
+import Error from '@/components/ui/load/Error';
+import MessCount from './messages/MessCount';
 
 interface IProps {
-    adminId:string
+  adminId:string
 };
 
 function AdminLinks({adminId}:IProps):JSX.Element {
@@ -31,7 +30,7 @@ function AdminLinks({adminId}:IProps):JSX.Element {
         fontWeight="bold"
         color="white"
          justifyContent="space-between">
-           <Link href={`/home/profile/${adminId}`}
+           <Link href={`/profile/${adminId}`}
             style={{
               fontSize:20,
               textDecoration:"underline"
@@ -39,7 +38,7 @@ function AdminLinks({adminId}:IProps):JSX.Element {
              back to profile
           </Link>
           <Link style={{display:"flex",gap:5}}
-           href={`/home/profile/${adminId}/message`}>
+           href={`/profile/${adminId}/message`}>
             <Box>
                messages
             </Box>

@@ -1,5 +1,5 @@
 
-import { Axios, IMessBody, IStateMess } from '@/components/libs/types/type'
+import {type Axios,type IMessBody,type IStateMess } from '@/components/libs/types/type'
 import { apiClient } from '../../apiClient'
 
 async function setMessToAdmin(args:IMessBody):Promise<IStateMess> {

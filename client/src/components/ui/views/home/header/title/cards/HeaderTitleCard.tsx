@@ -1,7 +1,7 @@
 "use client"
 
 import { Box} from '@chakra-ui/react'
-import React, { memo } from 'react'
+import { memo } from 'react'
 import LogoCard from './logo/LogoCard'
 import HeaderWrapper from '../HeaderWrapper'
 

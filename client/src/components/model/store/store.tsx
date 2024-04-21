@@ -1,6 +1,6 @@
 import {create} from 'zustand'
 import {persist,devtools} from 'zustand/middleware';
-import { IStore } from '@/components/libs/types/type';
+import {type IStore } from '@/components/libs/types/type';
 import {immer} from 'zustand/middleware/immer'
 
 export const useStore = create<IStore>()(

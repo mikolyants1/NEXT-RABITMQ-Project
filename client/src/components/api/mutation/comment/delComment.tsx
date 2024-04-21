@@ -1,5 +1,5 @@
-import { ICommDelBody, IComments } from "@/components/libs/types/type";
-import { AxiosResponse } from "axios";
+import {type ICommDelBody,type IComments } from "@/components/libs/types/type";
+import {type AxiosResponse } from "axios";
 import { apiClient } from "../../apiClient";
 
 async function delComment({id,time,token,userId,role}:ICommDelBody):Promise<IComments> {

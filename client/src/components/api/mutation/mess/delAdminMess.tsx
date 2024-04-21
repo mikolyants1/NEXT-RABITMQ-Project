@@ -1,4 +1,4 @@
-import { Axios, ICheck, IMessBody, IMessToAdmin } from '@/components/libs/types/type'
+import {type Axios,type ICheck,type IMessBody,type IMessToAdmin } from '@/components/libs/types/type'
 import { apiClient } from '../../apiClient'
 
 async function delAdminMess(body:ICheck&{id:string}):Promise<IMessToAdmin> {

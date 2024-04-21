@@ -1,21 +1,20 @@
 import { Box } from '@chakra-ui/react'
-import React, { memo } from 'react'
+import { memo } from 'react'
 
-interface props {
-    item:string
+interface IProps {
+  item:string
 };
 
-function FilmPosterCard({item}:props):JSX.Element {
+function FilmPosterCard({item}:IProps):JSX.Element {
   return (
-        <Box
-         w='100%'
-         textAlign='center'
-         borderTop='1px solid white'
-         boxSizing="border-box"
-         fontSize={23}
-         p={5}>
-          {item}
-        </Box>
+    <Box
+     w='100%'
+     textAlign='center'
+     borderTop='1px solid white'
+     boxSizing="border-box"
+     fontSize={23} p={5}>
+      {item}
+    </Box>
   )
 }
 

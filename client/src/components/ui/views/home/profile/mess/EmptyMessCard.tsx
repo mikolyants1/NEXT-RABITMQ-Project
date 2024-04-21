@@ -1,5 +1,4 @@
 import { Box } from '@chakra-ui/react'
-import React from 'react'
 
 function EmptyMessCard():JSX.Element {
   return (

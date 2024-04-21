@@ -1,9 +1,9 @@
 import delAdminMess from '@/components/api/mutation/mess/delAdminMess';
 import { useStore } from '@/components/model/store/store';
-import { ICheck, IMessToAdmin, IStore } from '@/components/libs/types/type';
+import {type ICheck,type IMessToAdmin,type IStore } from '@/components/libs/types/type';
 import { Box, Button, Flex, Grid } from '@chakra-ui/react';
 import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
-import React, { memo } from 'react'
+import { memo } from 'react';
 import createTime from '@/components/libs/create/time/createCommTime';
 
 interface props {

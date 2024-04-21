@@ -7,9 +7,9 @@ type Schema = ZodObject<{
 
 export const schema:Schema = z.object({
    text:z.string({
-      invalid_type_error:"invalid title"
+     invalid_type_error:"invalid title"
    }),
    description:z.string({
-      invalid_type_error:"invalid desc"
+     invalid_type_error:"invalid desc"
    })
 })

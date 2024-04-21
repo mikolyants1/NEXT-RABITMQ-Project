@@ -1,4 +1,4 @@
-import { IFields } from "@/components/libs/types/type";
+import {type IFields } from "@/components/libs/types/type";
 
 export const createFields = ():IFields[] => {
   return [

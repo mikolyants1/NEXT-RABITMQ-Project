@@ -1,4 +1,4 @@
-import { Axios, IUsers } from "@/components/libs/types/type";
+import {type Axios,type IUsers } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 async function getUser(id:string):Promise<IUsers> {

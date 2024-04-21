@@ -1,11 +1,11 @@
-import { Box } from "@chakra-ui/react"
-import { memo } from "react"
+import { Box } from "@chakra-ui/react";
+import { memo } from "react";
 
-interface props {
-    children:JSX.Element[]
+interface IProps {
+  children:JSX.Element[]
 };
 
-function LoginCardWrapper({children}:props):JSX.Element {
+function LoginCardWrapper({children}:IProps):JSX.Element {
   return (
     <Box w={400}
       m='100px auto'

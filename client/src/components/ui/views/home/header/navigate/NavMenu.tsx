@@ -1,8 +1,7 @@
 import { useStore } from '@/components/model/store/store'
-import { ILinks, IStore } from '@/components/libs/types/type'
+import {type ILinks,type IStore } from '@/components/libs/types/type'
 import { Drawer, DrawerBody,DrawerCloseButton,DrawerContent,
  DrawerHeader, DrawerOverlay } from '@chakra-ui/react'
-import React from 'react'
 import { createLinks } from '@/components/libs/create/maps/links'
 import NavLinkCard from './links/NavLinkCard'
 

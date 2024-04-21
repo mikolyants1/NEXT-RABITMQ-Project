@@ -1,4 +1,4 @@
-import { Axios, ICheck, IUsers } from "@/components/libs/types/type";
+import {type Axios,type ICheck,type IUsers } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 async function checkUsers(body:Omit<IUsers,"_id"|"films">):Promise<ICheck> {
