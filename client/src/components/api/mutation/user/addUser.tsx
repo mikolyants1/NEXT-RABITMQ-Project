@@ -1,9 +1,11 @@
-import {type Axios,type IUsers } from "@/components/libs/types/type";
+import {type TAxios,type IUsers } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
-async function addUser(body:Omit<IUsers,"_id"|"films">):Promise<IUsers> {
+type TBody = Omit<IUsers,"_id"|"films">;
+
+async function addUser(body:TBody):Promise<IUsers> {
     return apiClient.post<IUsers>('users',body)
-    .then(({data}:Axios<IUsers>)=>data);
+    .then(({data}:TAxios<IUsers>)=>data);
 }
 
 export default addUser

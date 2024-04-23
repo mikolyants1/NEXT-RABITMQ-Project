@@ -13,15 +13,15 @@ function Error():JSX.Element {
    }, 800);
   },[]);
   
-    return (
-         <Flex
-          width ='100%'
-          justifyContent='center'
-          textAlign='center'
-          color='white'>
-            error {err}
-         </Flex>
-       );
+  return (
+    <Flex
+     width ='100%'
+     justifyContent='center'
+     textAlign='center'
+     color='white'>
+       error {err}
+    </Flex>
+  );
 }
 
 export default memo(Error)

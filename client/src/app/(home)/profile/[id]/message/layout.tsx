@@ -2,8 +2,8 @@ import {type Metadata } from "next";
 import {type ReactNode } from "react";
 
 export const metadata:Metadata = {
-    title:"Messages",
-    description:"messages for admin"
+  title:"Messages",
+  description:"messages for admin"
 }
 
 export default function Layout({

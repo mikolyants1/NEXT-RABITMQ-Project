@@ -1,6 +1,5 @@
-import {type Axios,type BanBody,type IBanBody,type IBanUsers } from "@/components/libs/types/type";
+import {type TAxios,type BanBody,type IBanBody,type IBanUsers } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
-import { AxiosResponse } from "axios";
 
 export async function getBanUsers(body:BanBody):Promise<IBanUsers[]> {
   return apiClient.get<IBanUsers[]>(
@@ -9,5 +8,5 @@ export async function getBanUsers(body:BanBody):Promise<IBanUsers[]> {
         authorization:`Bearer ${body.token}`,
         role:body.role
      }
-  }).then(({data}:Axios<IBanUsers[]>)=>data);
+  }).then(({data}:TAxios<IBanUsers[]>)=>data);
 }

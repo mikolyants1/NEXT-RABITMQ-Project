@@ -1,5 +1,5 @@
 
-import {type Axios,type IMessBody,type IStateMess } from '@/components/libs/types/type'
+import {type TAxios,type IMessBody,type IStateMess } from '@/components/libs/types/type'
 import { apiClient } from '../../apiClient'
 
 async function setMessToAdmin(args:IMessBody):Promise<IStateMess> {
@@ -10,7 +10,7 @@ async function setMessToAdmin(args:IMessBody):Promise<IStateMess> {
       authorization:`Bearer ${token}`,
       role
      }
-  }).then(({data}:Axios<IStateMess>)=>data);
+  }).then(({data}:TAxios<IStateMess>)=>data);
 }
 
 export default setMessToAdmin

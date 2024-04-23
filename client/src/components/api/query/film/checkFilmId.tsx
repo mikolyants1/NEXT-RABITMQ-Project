@@ -1,9 +1,9 @@
 import { apiClient } from "../../apiClient";
-import {type Axios } from "@/components/libs/types/type";
+import {type TAxios } from "@/components/libs/types/type";
 
 async function checkFilmId(imdbID:string,id:string):Promise<boolean> {
   return apiClient.post<boolean>(`check/${id}`,{imdbID})
-  .then(({data}:Axios<boolean>)=>data)
+  .then(({data}:TAxios<boolean>)=>data)
 }
 
 export default checkFilmId

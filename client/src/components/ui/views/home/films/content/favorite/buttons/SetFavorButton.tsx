@@ -4,7 +4,7 @@ import { favorAction } from '@/components/api/mutation/favor/favorAction'
 import { useStore } from '@/components/model/store/store'
 import {type IFavorFilmData,type IFilms,type IStore } from '@/components/libs/types/type'
 import { Box, Text } from '@chakra-ui/react'
-import React, { memo, useState } from 'react'
+import { memo, useState } from 'react'
 import { checkFavor } from '@/components/libs/compare/checkFavor'
 import { EFavoriteType } from '@/components/libs/enum/enum'
 

@@ -4,19 +4,21 @@ import {type ICommBody,type IComments,type IStore,type IToken } from '@/componen
 import { Button, Flex, useMediaQuery } from '@chakra-ui/react'
 import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
 
-interface props {
-    filmID:string,
-    personal:string,
-    name:string,
-    text:string
-    children:JSX.Element
-};
+interface IProps {
+  filmID:string,
+  personal:string,
+  name:string,
+  text:string
+  children:JSX.Element
+}
 
-function CommentInput({personal,name,filmID,children,text}:props):JSX.Element {
+type TBody = ICommBody & IToken;
+
+function CommentInput({personal,name,filmID,children,text}:IProps):JSX.Element {
  const [isWidth] = useMediaQuery('(max-width: 700px)');
  const {token,name:username,id:userId,role}:IStore = useStore();
  const {invalidateQueries}:QueryClient = useQueryClient();
- const {mutate} = useMutation<unknown,IComments,ICommBody&IToken>({
+ const {mutate} = useMutation<unknown,IComments,TBody>({
   mutationFn:(body:ICommBody&IToken)=>addComment(body),
   onSuccess:()=>invalidateQueries({queryKey:['comments']})
  });

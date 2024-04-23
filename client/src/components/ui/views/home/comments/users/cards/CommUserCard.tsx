@@ -1,4 +1,3 @@
-
 import delComment from "@/components/api/mutation/comment/delComment";
 import { useStore } from "@/components/model/store/store";
 import {type ICommDelBody,type IComments,type IStore } from "@/components/libs/types/type";

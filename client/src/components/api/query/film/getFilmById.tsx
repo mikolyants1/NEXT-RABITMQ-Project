@@ -1,10 +1,10 @@
-import {type Axios,type IFilms } from "@/components/libs/types/type";
+import {type TAxios,type IFilms } from "@/components/libs/types/type";
 import axios from "axios";
+import { OmdbUrl } from "../../apiClient";
 
 async function getFilmById(id:string):Promise<IFilms> {
-  return axios.get<IFilms>(
-  `http://www.omdbapi.com/?apikey=b07ab897&i=${id}`)
-  .then(({data}:Axios<IFilms>)=>data);
+  return axios.get<IFilms>(`${OmdbUrl}&i=${id}`)
+  .then(({data}:TAxios<IFilms>)=>data);
 };
 
 export default getFilmById

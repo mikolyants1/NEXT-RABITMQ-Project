@@ -1,4 +1,4 @@
-import {type Axios,type IFavorBody,type IFavorData } from "@/components/libs/types/type";
+import {type TAxios,type IFavorBody,type IFavorData } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 
@@ -10,5 +10,5 @@ export async function favorAction(body:IFavorBody):Promise<IFavorData> {
           authorization:`Bearer ${store.token}`,
           role:store.role
         }
-    }).then(({data}:Axios<IFavorData>)=>data);
+    }).then(({data}:TAxios<IFavorData>)=>data);
 }

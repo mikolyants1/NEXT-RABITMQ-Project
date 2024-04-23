@@ -1,4 +1,4 @@
-import {type Axios, type IDelQuery,type IUsers } from "@/components/libs/types/type";
+import {type TAxios, type IDelQuery,type IUsers } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 async function delFilm({id,_id,token,role}:IDelQuery):Promise<IUsers> {
@@ -8,7 +8,7 @@ async function delFilm({id,_id,token,role}:IDelQuery):Promise<IUsers> {
           authorization:`Bearer ${token}`,
           role
         }
-    }).then(({data}:Axios<IUsers>)=>data);
+    }).then(({data}:TAxios<IUsers>)=>data);
 };
 
 export default delFilm

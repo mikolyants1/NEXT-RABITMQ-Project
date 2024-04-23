@@ -2,9 +2,9 @@ import { Box } from '@chakra-ui/react'
 import React, {type ReactNode } from 'react'
 
 function ScrollLayout({
-    children
+  children
  }:{
-    children:ReactNode
+  children:ReactNode
  }):JSX.Element {
   return (
     <Box w="100%"

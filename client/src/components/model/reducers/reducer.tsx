@@ -1,4 +1,4 @@
-import {type Action,type IState } from "@/components/libs/types/type";
+import {type TAction,type IState } from "@/components/libs/types/type";
 
 export const initial:IState = {
     error:false,
@@ -6,7 +6,7 @@ export const initial:IState = {
     title:""
 }
 
-export function reducer(prv:IState,nxt:Action):IState{
+export function reducer(prv:IState,nxt:TAction):IState{
   return {
      ...prv, ...nxt
    };

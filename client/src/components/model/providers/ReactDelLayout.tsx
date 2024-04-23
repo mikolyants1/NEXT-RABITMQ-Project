@@ -3,12 +3,12 @@
 import {type ReactNode } from "react"
 import { DelContext } from "../context/DelContext"
 
-interface props {
+interface IProps {
     children:ReactNode,
     isDel:boolean
 };
 
-function DelLayut({children,isDel}:props):JSX.Element{
+function DelLayut({children,isDel}:IProps):JSX.Element{
    return (
      <DelContext.Provider value={isDel}>
         {children}

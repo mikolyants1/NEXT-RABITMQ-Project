@@ -80,7 +80,7 @@ export interface IMessToAdmin {
   time:number
 }
 
-export interface BanData {
+export interface IBanData {
   _id:string,
   userId:string,
   time:number
@@ -108,13 +108,13 @@ export interface IQueries {
   film:IFilms
 }
 
-export interface datas<T> {
+export interface IDatas<T> {
   isError:boolean,
   isLoading:boolean,
   data:T
 };
 
-export type UserComm = Omit<ICommBody,"filmID">;
+export type TUserComm = Omit<ICommBody,"filmID">;
 
 export interface ICommDelBody {
   id:string,
@@ -124,7 +124,7 @@ export interface ICommDelBody {
   role:string
 };
 
-export type BanBody = Omit<IBanBody,"id"|"type">;
+export type TBanBody = Omit<IBanBody,"id"|"type">;
 
 export interface IFilmsBody {
   id:string,
@@ -143,7 +143,7 @@ export type IQueryData = [
   }
 ]
 
-export type QResult = [UseQueryResult<IComment[]>,UseQueryResult<IFilms>];
+export type TQresult = [UseQueryResult<IComment[]>,UseQueryResult<IFilms>];
 
 export interface IComments {
   _id:string,
@@ -169,11 +169,11 @@ export interface IState {
    title:string
 }
 
-export type Action = Record<string,IState[keyof IState]>;
+export type TAction = Record<string,IState[keyof IState]>;
 
-export type Form = Omit<IUsers,"_id"|'posts'>;
+export type TForm = Omit<IUsers,"_id"|'posts'>;
 
-export type Control<T extends string> = ControllerRenderProps<FieldValues,T>;
+export type TControl<T extends string> = ControllerRenderProps<FieldValues,T>;
 
 export interface ICheck {
    _id:string,
@@ -223,13 +223,13 @@ export interface IFavorBody {
    type:EFavoriteType
 }
 
-export interface OptimisticAction {
+export interface IOptimisticAction {
   type:EFilmType,
   payload:string | []
 }
 
 export interface IOptimisticContext {
-  optimistic:(action:OptimisticAction)=>void
+  optimistic:(action:IOptimisticAction)=>void
 }
 
-export type Axios<T> = AxiosResponse<T>;
+export type TAxios<T> = AxiosResponse<T>;

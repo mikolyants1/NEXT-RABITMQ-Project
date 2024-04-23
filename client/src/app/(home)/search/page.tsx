@@ -61,10 +61,7 @@ function page():JSX.Element {
        </Flex>
        <>
         {state.show&&(
-          <motion.div
-           initial="initial"
-           animate="animate"
-           variants={searchMotion}
+          <motion.div {...searchMotion}
            style={{width:400,margin:"auto"}}>
             <FilmCard data={memoData} />
           </motion.div>

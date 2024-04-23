@@ -30,6 +30,7 @@ export const autoAbsolute:IAbsolute = {
   bottom:0,
   m:"auto"
 }
+
 export const searchMotion = {
   initial:{
     opacity:0,
@@ -40,6 +41,7 @@ export const searchMotion = {
     transform:"translateY(0)"
   }
 }
+
 export const FlexWrapper:IStyledComponent<"web",IWrapProps> = styled.div`
  min-width:400px;
  border-radius:10px;

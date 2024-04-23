@@ -1,9 +1,10 @@
-import {type Axios,type IUsers } from "@/components/libs/types/type";
+import {type TAxios,type IUsers } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 async function getUsers():Promise<IUsers[]> {
-  return apiClient.get<IUsers[]>('users')
-  .then(({data}:Axios<IUsers[]>)=>data);
+  return fetch("http://localhost:5000/api/users",{
+    next:{revalidate:10}
+  }).then(res => res.json());
 };
 
 export default getUsers

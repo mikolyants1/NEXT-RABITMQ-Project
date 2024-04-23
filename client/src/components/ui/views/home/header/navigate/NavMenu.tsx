@@ -30,7 +30,8 @@ function NavMenu({isOpen,onClose}:IProps):JSX.Element {
          borderBottom='1px solid white'>
            Navigation
         </DrawerHeader>
-        <DrawerBody color='white'
+        <DrawerBody
+         color='white'
          bg='rgb(50,50,50)'>
           {links.map((i:ILinks):JSX.Element=>(
            <NavLinkCard key={i.path} {...i} />

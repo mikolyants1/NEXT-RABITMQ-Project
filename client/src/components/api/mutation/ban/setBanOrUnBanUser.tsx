@@ -1,4 +1,4 @@
-import {type Axios,type IBanBody,type IBanUsers } from '@/components/libs/types/type'
+import {type TAxios,type IBanBody,type IBanUsers } from '@/components/libs/types/type'
 import { apiClient } from '../../apiClient'
 import {type AxiosResponse } from 'axios';
 
@@ -10,7 +10,7 @@ async function setBanOrUnBanUser(body:IBanBody):Promise<IBanUsers[]> {
         authorization:`Bearer ${token}`,
         role
      }
-  }).then(({data}:Axios<IBanUsers[]>)=>data);
+  }).then(({data}:TAxios<IBanUsers[]>)=>data);
 }
 
 export default setBanOrUnBanUser

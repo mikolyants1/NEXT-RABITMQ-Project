@@ -1,5 +1,4 @@
-import {type ICommDelBody,type IComments } from "@/components/libs/types/type";
-import {type AxiosResponse } from "axios";
+import {type TAxios, type ICommDelBody,type IComments } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 async function delComment({id,time,token,userId,role}:ICommDelBody):Promise<IComments> {
@@ -10,7 +9,7 @@ async function delComment({id,time,token,userId,role}:ICommDelBody):Promise<ICom
             role
         },
     })
-    .then(({data}:AxiosResponse<IComments>)=>data);
+    .then(({data}:TAxios<IComments>)=>data);
 
 }
 

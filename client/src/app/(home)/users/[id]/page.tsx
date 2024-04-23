@@ -6,7 +6,7 @@ import { Box } from "@chakra-ui/react";
 
 interface IProps {
   params:IParams
-};
+}
 
 async function page({params:{id}}:IProps):Promise<JSX.Element> {
   const data:IUsers[] = await getUsers();

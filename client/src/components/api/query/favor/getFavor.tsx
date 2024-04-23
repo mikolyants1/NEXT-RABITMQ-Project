@@ -1,6 +1,5 @@
-import {type Axios,type IFavorData,type IFavorFilmData,type IStore } from '@/components/libs/types/type';
+import {type TAxios,type IFavorData,type IFavorFilmData,type IStore } from '@/components/libs/types/type';
 import { apiClient } from '../../apiClient';
-import {type AxiosResponse } from 'axios';
 
 interface IProps {
    store:IStore,
@@ -15,6 +14,6 @@ export async function getFavorData({store,_id}:IProps):Promise<IFavorFilmData[]>
         authorization:`Bearer ${token}`,
         role
      }
-   }).then(({data}:Axios<IFavorFilmData[]>)=>data);
+   }).then(({data}:TAxios<IFavorFilmData[]>)=>data);
 }
 

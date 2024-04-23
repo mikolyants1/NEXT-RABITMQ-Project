@@ -19,7 +19,7 @@ export const generateMetadata = async ({params}:IParams):Promise<Metadata> => {
   const film:IFilms = await getFilmById(params.id);
   return {
     title:film.Title,
-    description:"Information of film"
+    description:`Information of film "${film.Title}"`
   }
 }
 

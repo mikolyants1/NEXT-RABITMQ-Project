@@ -16,7 +16,9 @@ import { CommContext } from "@/components/model/context/CommContext"
 
 interface IProps {
   params:IParams
-};
+}
+
+type QueryData = UseQueryResult<IComment[]|IFilms>;
 
 function page({params:{id}}:IProps):JSX.Element {
  const [personal,setPersonal] = useState<string>("");
@@ -27,7 +29,7 @@ function page({params:{id}}:IProps):JSX.Element {
    queries:queryData({token,id,role,userId})
  });
 
- const answer = (name:string) => ():void =>{
+ const answer = (name:string) => ():void => {
     setPersonal(name);
     inputRef.current.focus();
  }
@@ -36,17 +38,15 @@ function page({params:{id}}:IProps):JSX.Element {
   setText(e.target.value);
  }
 
- if (queries.some((i:UseQueryResult<IComment[]|IFilms>)=>i.isLoading)){
+ if (queries.some((i:QueryData)=>i.isLoading)){
    return <Loading />;
  }
 
- if (queries.some((i:UseQueryResult<IComment[]|IFilms>)=>i.isError)){
+ if (queries.some((i:QueryData)=>i.isError || !i.data)){
     return <Error />;
  }
  
  const [{data:comm},{data:film}]:QResult = queries;
-
- if (!comm || !film) return <Error />;
 
   return (
     <CommContext.Provider value={{answer}}>
@@ -62,7 +62,7 @@ function page({params:{id}}:IProps):JSX.Element {
          <>
           {comm.length ? (
             <CommFilmMapCard
-              data={comm}
+             data={comm}
             />
            ) : (
             <CommEmpty

@@ -1,6 +1,6 @@
 "use client"
 
-import {type IFilms } from '@/components/libs/types/type';
+import {IStore, type IFilms } from '@/components/libs/types/type';
 import { Box, Text} from '@chakra-ui/react';
 import { useEffect, useState,useLayoutEffect } from 'react';
 import {Socket, io} from 'socket.io-client';
@@ -13,22 +13,21 @@ interface IProps {
   role:string,
   pass:string,
   _id:string
-};
+}
 
 function UserCard({name,films,_id}:IProps):JSX.Element {
   const [isOnline,setOnline] = useState<boolean>(false);
   const [socket,setSocket] = useState<Socket>();
-  const {id:userId} = useStore();
+  const {id:userId}:IStore = useStore();
 
-  useLayoutEffect(()=>{
+  useLayoutEffect(() => {
     setSocket(io("http://localhost:5000/"));
   },[]);
 
   useEffect(()=>{
    socket?.emit("join",_id);
-   socket?.on("online",(users:string[])=>{
-    const online:boolean = users
-    .some((i:string)=> i == userId);
+   socket?.on("online",(users:string[]) => {
+    const online = users.some(id => id == userId);
      setOnline(online);
    })
   },[socket]);
@@ -43,11 +42,11 @@ function UserCard({name,films,_id}:IProps):JSX.Element {
        borderBottom='1px solid white'
        fontSize={30}
        color='white'>
-          {name} {" "}
-          <Text fontSize={20}
-           color={isOnline ? "green" : "red"}>
-            {isOnline ? "online" : "offline"}
-          </Text>
+        {name} {" "}
+        <Text fontSize={20}
+         color={isOnline ? "green" : "red"}>
+          {isOnline ? "online" : "offline"}
+        </Text>
       </Box>
       <UserShowMapCard
        name={name}

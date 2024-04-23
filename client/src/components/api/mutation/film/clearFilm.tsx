@@ -1,4 +1,4 @@
-import {type IUsers,type IClearQuery,type Axios } from "@/components/libs/types/type";
+import {type IUsers,type IClearQuery,type TAxios } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 async function clearFilm({id,token,role}:IClearQuery):Promise<IUsers> {
@@ -8,7 +8,7 @@ async function clearFilm({id,token,role}:IClearQuery):Promise<IUsers> {
             authorization:`Bearer ${token}`,
             role
         }
-    }).then(({data}:Axios<IUsers>)=>data);
+    }).then(({data}:TAxios<IUsers>)=>data);
 }
 
 export default clearFilm

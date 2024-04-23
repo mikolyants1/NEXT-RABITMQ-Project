@@ -1,4 +1,4 @@
-import {type Axios,type ICheck,type IMessToAdmin } from '@/components/libs/types/type'
+import {type TAxios,type ICheck,type IMessToAdmin } from '@/components/libs/types/type'
 import { apiClient } from '../../apiClient'
 
 async function getAdminMess(body:ICheck):Promise<IMessToAdmin[]> {
@@ -8,7 +8,7 @@ async function getAdminMess(body:ICheck):Promise<IMessToAdmin[]> {
         authorization:`Bearer ${body.token}`,
         role:body.role
      }
-  }).then(({data}:Axios<IMessToAdmin[]>)=>data);
+  }).then(({data}:TAxios<IMessToAdmin[]>)=>data);
 }
 
 export default getAdminMess

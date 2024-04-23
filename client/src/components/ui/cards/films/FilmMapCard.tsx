@@ -2,7 +2,7 @@
 
 import {type IFilms } from '@/components/libs/types/type'
 import { Box, Flex } from '@chakra-ui/react'
-import { useContext, useEffect, useOptimistic, useRef, useState } from 'react'
+import { useContext, useOptimistic, useState } from 'react'
 import FilmCard from './content/FilmCard'
 import { DelContext } from '@/components/model/context/DelContext'
 import { OptimisticContext } from '@/components/model/context/OptimisticContext'

@@ -1,4 +1,4 @@
-import {type Axios,type IComment,type IFilmsBody } from "@/components/libs/types/type";
+import {type TAxios,type IComment,type IFilmsBody } from "@/components/libs/types/type";
 import { apiClient } from "../../apiClient";
 
 async function getFilmComments(body:IFilmsBody):Promise<IComment[]> {
@@ -8,7 +8,7 @@ async function getFilmComments(body:IFilmsBody):Promise<IComment[]> {
             authorization:`Bearer ${body.token}`,
             role:`${body.role}`
         }
-    }).then(({data}:Axios<IComment[]>)=>data);
+    }).then(({data}:TAxios<IComment[]>)=>data);
 }
 
 export default getFilmComments

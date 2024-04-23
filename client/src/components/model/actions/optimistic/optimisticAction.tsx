@@ -1,9 +1,9 @@
 import { EFilmType } from "@/components/libs/enum/enum";
-import {type IFilms,type OptimisticAction } from "@/components/libs/types/type";
+import {type IFilms,type IOptimisticAction } from "@/components/libs/types/type";
 
 export const optimisticAction = (
   state:IFilms[],
-  action:OptimisticAction
+  action:IOptimisticAction
 ):IFilms[] => {
   switch (action.type) {
     case EFilmType.CLEAR:

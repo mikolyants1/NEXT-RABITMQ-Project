@@ -1,14 +1,16 @@
-import {type Axios,type ICheck,type IMessBody,type IMessToAdmin } from '@/components/libs/types/type'
+import {type TAxios,type ICheck,type IMessBody,type IMessToAdmin } from '@/components/libs/types/type'
 import { apiClient } from '../../apiClient'
 
-async function delAdminMess(body:ICheck&{id:string}):Promise<IMessToAdmin> {
+type TBody = ICheck & {id:string};
+
+async function delAdminMess(body:TBody):Promise<IMessToAdmin> {
   return apiClient.delete<IMessToAdmin>(
    `mess/${body.id}?userId=${body._id}`,{
      headers:{
         authorization:`Bearer ${body.token}`,
         role:body.role
      }
-  }).then(({data}:Axios<IMessToAdmin>)=>data);
+  }).then(({data}:TAxios<IMessToAdmin>)=>data);
 }
 
 export default delAdminMess

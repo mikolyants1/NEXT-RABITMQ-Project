@@ -1,4 +1,4 @@
-import {type Axios,type ICommBody,type IFilmsBody } from '@/components/libs/types/type'
+import {type TAxios,type ICommBody,type IFilmsBody } from '@/components/libs/types/type'
 import {type AxiosResponse } from 'axios'
 import { apiClient } from '../../apiClient'
 
@@ -9,7 +9,7 @@ function getUserComments(body:IFilmsBody):Promise<ICommBody[]> {
       authorization:`Bearer ${body.token}`,
       role:`${body.role}`
      }
-   }).then(({data}:Axios<ICommBody[]>)=>data);
+   }).then(({data}:TAxios<ICommBody[]>)=>data);
 }
 
 export default getUserComments

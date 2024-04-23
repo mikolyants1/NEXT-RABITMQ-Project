@@ -13,7 +13,7 @@ export default function Layout({
 }>):JSX.Element {
   return (
     <>
-    {children}
+      {children}
     </>
-  )
+  );
 }
