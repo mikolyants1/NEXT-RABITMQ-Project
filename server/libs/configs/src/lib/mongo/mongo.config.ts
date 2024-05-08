@@ -9,7 +9,6 @@ export const MongoConfig = ():MongooseModuleAsyncOptions => ({
     const pass = service.get<string>("MONGO_PASSWORD");
     const host = service.get<string>("MONGO_HOST");
     const port = service.get<string>("MONGO_PORT");
-
     return {
       uri:`mongodb://${login}:${pass}@${host}:${port}/`
   }}

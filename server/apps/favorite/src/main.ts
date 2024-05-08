@@ -10,9 +10,7 @@ import { FavoriteModule } from './app/favorite.module';
 async function bootstrap() {
   const app = await NestFactory.create(FavoriteModule);
   await app.init();
-  Logger.log(
-    `🚀 Application is running on`
-  );
+  Logger.log(`🚀 favorite is running on`);
 }
 
 bootstrap();

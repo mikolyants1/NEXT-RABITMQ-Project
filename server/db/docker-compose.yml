@@ -16,9 +16,21 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq
     restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RMQ_PASS}
     ports:
       - '15672:15672'
       - '5672:5672'
+  
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    environment:
+      - password=${REDIS_PASSWORD}
+    ports:
+      - "6379:6379"
 
 volumes:
   mongodb_data:
