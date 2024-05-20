@@ -4,12 +4,12 @@ import { apiClient } from '../../apiClient'
 type TBody = ICheck & {id:string};
 
 async function delAdminMess(body:TBody):Promise<IMessToAdmin> {
-  return apiClient.delete<IMessToAdmin>(
-   `mess/${body.id}?userId=${body._id}`,{
-     headers:{
-        authorization:`Bearer ${body.token}`,
-        role:body.role
-     }
+  return apiClient.delete<IMessToAdmin>(`mess/${body.id}`,{
+    headers:{
+      Authorization:`Bearer ${body.token}`,
+      "x-user":body._id,
+      role:body.role
+    }
   }).then(({data}:TAxios<IMessToAdmin>)=>data);
 }
 

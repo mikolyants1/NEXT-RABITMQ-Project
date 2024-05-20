@@ -3,11 +3,12 @@ import { apiClient } from "../../apiClient";
 
 async function clearFilm({id,token,role}:IClearQuery):Promise<IUsers> {
     return apiClient.delete<IUsers>(
-    `films/clear?userId=${id}`,{
-        headers:{
-            authorization:`Bearer ${token}`,
-            role
-        }
+    'films/clear',{
+      headers:{
+        Authorization:`Bearer ${token}`,
+        "x-user":id,
+        role
+      }
     }).then(({data}:TAxios<IUsers>)=>data);
 }
 

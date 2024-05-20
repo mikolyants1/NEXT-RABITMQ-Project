@@ -7,12 +7,11 @@ interface IProps {
 }
 
 export async function getFavorData({store,_id}:IProps):Promise<IFavorFilmData[]> {
-   const {role,id,token}:IStore = store;
-   return apiClient.get<IFavorFilmData[]>(
-    `favorite/${_id}?userId=${id}`,{
+   return apiClient.get<IFavorFilmData[]>(`favorite/${_id}`,{
      headers:{
-        authorization:`Bearer ${token}`,
-        role
+        Authorization:`Bearer ${store.token}`,
+        "x-user":store.id,
+        role:store.role
      }
    }).then(({data}:TAxios<IFavorFilmData[]>)=>data);
 }

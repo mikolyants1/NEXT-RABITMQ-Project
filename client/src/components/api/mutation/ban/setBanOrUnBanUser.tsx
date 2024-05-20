@@ -4,10 +4,10 @@ import {type AxiosResponse } from 'axios';
 
 async function setBanOrUnBanUser(body:IBanBody):Promise<IBanUsers[]> {
   const {id,token,type,_id,role}:IBanBody = body;
-  return apiClient.post<IBanUsers[]>(
-   `ban?userId=${_id}`,{id,type},{
+  return apiClient.post<IBanUsers[]>("ban",{id,type},{
      headers:{
-        authorization:`Bearer ${token}`,
+        Authorization:`Bearer ${token}`,
+        "x-user":_id,
         role
      }
   }).then(({data}:TAxios<IBanUsers[]>)=>data);

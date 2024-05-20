@@ -3,11 +3,12 @@ import { apiClient } from "../../apiClient";
 
 async function delFilm({id,_id,token,role}:IDelQuery):Promise<IUsers> {
     return apiClient.delete<IUsers>(
-    `films/delOne?userId=${id}&filmId=${_id}`,{
-        headers:{
-          authorization:`Bearer ${token}`,
-          role
-        }
+    `films/delOne?filmId=${_id}`,{
+      headers:{
+        Authorization:`Bearer ${token}`,
+        "x-user":id,
+        role
+      }
     }).then(({data}:TAxios<IUsers>)=>data);
 };
 

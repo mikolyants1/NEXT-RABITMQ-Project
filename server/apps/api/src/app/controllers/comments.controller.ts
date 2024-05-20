@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query, SetMetadata, UseGuards} from "@nestjs/common";
+import { Body, Controller, Delete, Get, Headers, Param, ParseIntPipe, Post, Query, SetMetadata, UseGuards} from "@nestjs/common";
 import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse,ApiInternalServerErrorResponse,
 ApiNotFoundResponse,ApiOkResponse,ApiOperation,ApiParam, ApiQuery, ApiTags,
 ApiUnauthorizedResponse, OmitType } from "@nestjs/swagger";
@@ -307,7 +307,7 @@ export class CommentsController {
     @Get('user')
     @UseGuards(AuthGuard)
     @UseGuards(AdminGuard)
-    async getUserComments(@Query('userId') id:string):Promise<UpdateDto[]>{
+    async getUserComments(@Headers('x-user') id:string):Promise<UpdateDto[]>{
       try {
         const {data} = await this.rmq.send<
           GetUserComments.Request,

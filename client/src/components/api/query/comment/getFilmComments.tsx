@@ -3,10 +3,11 @@ import { apiClient } from "../../apiClient";
 
 async function getFilmComments(body:IFilmsBody):Promise<IComment[]> {
     return apiClient.get<IComment[]>(
-    `comments/film?filmID=${body.id}&userId=${body.userId}`,{
+    `comments/film?filmID=${body.id}`,{
         headers:{
-            authorization:`Bearer ${body.token}`,
-            role:`${body.role}`
+          Authorization:`Bearer ${body.token}`,
+          "x-user":body.userId,
+          role:`${body.role}`
         }
     }).then(({data}:TAxios<IComment[]>)=>data);
 }

@@ -5,10 +5,10 @@ type TArgs = IFilms & IToken;
 
 async function addFilm(args:TArgs):Promise<IUsers> {
  const {_id,token,role,...body}:TArgs = args;
- return apiClient.post<IUsers>(
-  `films/${_id}?userId=${_id}`,body,{
+ return apiClient.post<IUsers>(`films/${_id}`,body,{
     headers:{
-      authorization:`Bearer ${token}`,
+      Authorization:`Bearer ${token}`,
+      "x-user":_id,
       role:`${role}`
     }
   }).then(({data}:TAxios<IUsers>)=>data);

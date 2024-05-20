@@ -3,10 +3,10 @@ import {type AxiosResponse } from 'axios'
 import { apiClient } from '../../apiClient'
 
 function getUserComments(body:IFilmsBody):Promise<ICommBody[]> {
-  return apiClient.get<ICommBody[]>(
-  `comments/user?userId=${body.id}`,{
+  return apiClient.get<ICommBody[]>('comments/user',{
      headers:{
-      authorization:`Bearer ${body.token}`,
+      Authorization:`Bearer ${body.token}`,
+      "x-user":body.id,
       role:`${body.role}`
      }
    }).then(({data}:TAxios<ICommBody[]>)=>data);

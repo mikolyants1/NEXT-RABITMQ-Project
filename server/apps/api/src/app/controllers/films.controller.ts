@@ -1,9 +1,8 @@
-import { Body, Controller, Delete, Param, Post, Query, SetMetadata, UseGuards} from "@nestjs/common";
-import { ApiBadRequestResponse, ApiBody, ApiInternalServerErrorResponse, 
+import { Body, Controller, Delete, Headers, Param, Post, Query, SetMetadata, UseGuards} from "@nestjs/common";
+import { ApiBadRequestResponse, ApiBody, ApiHeader, ApiHeaders, ApiInternalServerErrorResponse, 
 ApiNotFoundResponse, ApiOkResponse, ApiOperation,ApiParam,ApiQuery, ApiTags,
 ApiUnauthorizedResponse,OmitType} from "@nestjs/swagger";
 import { RMQService } from "nestjs-rmq";
-import { AuthGuard } from "../guards/auth.guard";
 import { AdminGuard } from "../guards/admin.guard";
 import { Users } from "@server1/models";
 import { ClearFilm, CreateFilm, DelFilm } from "@server1/contracts";
@@ -77,7 +76,7 @@ export class FilmsController {
    @Delete('clear')
    @UseGuards(StrategyGuard)
    @UseGuards(AdminGuard)
-   async clearFilm(@Query('userId') id:string):Promise<Users>{
+   async clearFilm(@Headers('userId') id:string):Promise<Users>{
       try {
         const {data} = await this.rmq.send<
           ClearFilm.Request,
@@ -221,9 +220,8 @@ export class FilmsController {
          }
       }
    })
-   @ApiQuery({
-     name:"userId",
-     type:String
+   @ApiHeader({
+     name:"userId"
    })
    @ApiQuery({
      name:"filmId",
@@ -233,7 +231,7 @@ export class FilmsController {
    @UseGuards(StrategyGuard)
    @UseGuards(AdminGuard)
    async delFilm(
-      @Query('userId') id:string,
+      @Headers('userId') id:string,
       @Query('filmId') _id:string
    ):Promise<Users>{
      try {

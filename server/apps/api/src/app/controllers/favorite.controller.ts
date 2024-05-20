@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query, SetMetadata, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Query, SetMetadata, UseGuards, } from "@nestjs/common";
 import { ApiBadRequestResponse, ApiBody, ApiInternalServerErrorResponse, ApiNotFoundResponse,
  ApiOkResponse, ApiOperation, ApiParam, ApiQuery, ApiTags, ApiUnauthorizedResponse } from "@nestjs/swagger";
 import { RMQService } from "nestjs-rmq";
@@ -79,7 +79,7 @@ export class FavoriteController {
      @UseGuards(AuthGuard)
      @UseGuards(AdminGuard)
      async actionWithFavor(
-      @Query("userId") userId:string,
+      @Headers("x-user") userId:string,
       @Body() film:FavorBodyFilm
      ):Promise<FavorDto>{
        try {

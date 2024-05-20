@@ -3,13 +3,14 @@ import { apiClient } from "../../apiClient";
 
 async function delComment({id,time,token,userId,role}:ICommDelBody):Promise<IComments> {
     return apiClient.delete<IComments>(
-    `comments/${id}?time=${time}&userId=${userId}`,{
+    `comments/${id}?time=${time}`,{
         headers:{
-            authorization:`Bearer ${token}`,
+            Authorization:`Bearer ${token}`,
+            "x-user":userId,
             role
         },
     })
-    .then(({data}:TAxios<IComments>)=>data);
+    .then(({data}:TAxios<IComments>) => data);
 
 }
 
