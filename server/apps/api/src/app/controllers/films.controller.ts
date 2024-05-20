@@ -9,6 +9,7 @@ import { Users } from "@server1/models";
 import { ClearFilm, CreateFilm, DelFilm } from "@server1/contracts";
 import { FilmsDto } from "@server1/apidocs";
 import { HttpError } from "@server1/methods";
+import { StrategyGuard } from "../guards/strategy.guard";
 
 @SetMetadata("roles",["admin","guest"])
 @ApiTags("actions with films")
@@ -74,7 +75,7 @@ export class FilmsController {
       example:'tt12345'
    })
    @Delete('clear')
-   @UseGuards(AuthGuard)
+   @UseGuards(StrategyGuard)
    @UseGuards(AdminGuard)
    async clearFilm(@Query('userId') id:string):Promise<Users>{
       try {
@@ -150,7 +151,7 @@ export class FilmsController {
      type:OmitType(FilmsDto,["_id"] as const)
    })
    @Post(':id')
-   @UseGuards(AuthGuard)
+   @UseGuards(StrategyGuard)
    @UseGuards(AdminGuard)
    async addFilms(
      @Param('id') id:string,
@@ -229,7 +230,7 @@ export class FilmsController {
      type:String
    })
    @Delete('delOne')
-   @UseGuards(AuthGuard)
+   @UseGuards(StrategyGuard)
    @UseGuards(AdminGuard)
    async delFilm(
       @Query('userId') id:string,

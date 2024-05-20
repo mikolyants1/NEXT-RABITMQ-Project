@@ -1,33 +1,31 @@
 import { Injectable } from '@nestjs/common';
-import { BanModel } from '@server1/models';
 import {BanUser,GetBanUsers} from '@server1/contracts';
-import { Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
+import { InjectRedis } from '@nestjs-modules/ioredis';
+import { Redis } from 'ioredis';
 
 @Injectable()
 export class BanService {
+  private readonly KEY = "ban_users";
+
   constructor(
-    @InjectModel(BanModel.name)
-    private readonly base:Model<BanModel>
+    @InjectRedis()
+    private readonly redis:Redis
   ){}
 
   async banUser(userId:string):Promise<BanUser.Response>{
-    const users = new this.base({
-      userId,
-      banTime:Date.now()
-    })
-    await users.save();
+    await this.redis.lpush(this.KEY,userId);
+    const users = await this.redis.lrange(this.KEY,0,-1);
     return {users};
   }
 
   async unBabUser(userId:string):Promise<BanUser.Response>{
-    const users:BanModel = await this.base
-    .findOneAndDelete({userId});
+    await this.redis.lrem(this.KEY,1,userId);
+    const users = await this.redis.lrange(this.KEY,0,-1);
     return {users};
   }
 
   async getAllUsers():Promise<GetBanUsers.Response>{
-    const users:BanModel[] = await this.base.find();
+    const users:string[] = await this.redis.lrange(this.KEY,0,-1);
     return {users};
   }
 }

@@ -5,15 +5,12 @@
 
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-
 import { AccountModule } from './app/account.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AccountModule);
   await app.init();
-  Logger.log(
-    `🚀 Application is running`
-  );
+  Logger.log(`🚀 account is running`);
 }
 
 bootstrap();

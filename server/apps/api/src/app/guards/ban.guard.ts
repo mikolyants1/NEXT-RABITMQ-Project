@@ -15,7 +15,7 @@ export class BanGuard implements CanActivate {
     async canActivate(ctx: ExecutionContext): Promise<boolean> {
       const req:Request = ctx.switchToHttp().getRequest();
       const banUsers:BanDto[] = await this.base.find();
-      const id = `${req.query.userId}`;
+      const id = req.query.userId as string || "";
       return banUsers.every((i:BanDto)=>i.userId !== id);
     }
 }

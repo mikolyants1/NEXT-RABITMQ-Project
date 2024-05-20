@@ -1,13 +1,12 @@
-import { Body, Controller, Get, Post, Query, SetMetadata, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Query, SetMetadata, UseGuards } from "@nestjs/common";
 import { ApiBadRequestResponse, ApiBody, ApiInternalServerErrorResponse, ApiNotFoundResponse,
- ApiOkResponse, ApiOperation, ApiQuery, ApiTags, ApiUnauthorizedResponse } from "@nestjs/swagger";
+ ApiOkResponse, ApiOperation, ApiParam, ApiQuery, ApiTags, ApiUnauthorizedResponse } from "@nestjs/swagger";
 import { RMQService } from "nestjs-rmq";
 import { AuthGuard } from "../guards/auth.guard";
 import { AdminGuard } from "../guards/admin.guard";
-import { FavorBodyFilm, FavorFilmDto } from "@server1/apidocs";
+import { FavorBodyFilm, FavorDto, FavorFilmDto } from "@server1/apidocs";
 import { FavoriteType } from "@server1/enums";
 import { FavoriteCreate, FavoriteDelete, GetFavorite } from "@server1/contracts";
-import { FavorModel } from "@server1/models";
 import { HttpError } from "@server1/methods";
 
 @ApiTags("set or del favorite")
@@ -22,7 +21,7 @@ export class FavoriteController {
      })
      @ApiOkResponse({
         status:201,
-        type:FavorModel,
+        type:FavorDto,
         description:"film add success to base"
      })
      @ApiBadRequestResponse({
@@ -82,7 +81,7 @@ export class FavoriteController {
      async actionWithFavor(
       @Query("userId") userId:string,
       @Body() film:FavorBodyFilm
-     ):Promise<FavorModel>{
+     ):Promise<FavorDto>{
        try {
          switch (film.type) {
            case FavoriteType.DELETE:
@@ -115,7 +114,7 @@ export class FavoriteController {
      })
      @ApiOkResponse({
         status:200,
-        type:[FavorModel],
+        type:[FavorDto],
         description:"film add success to base"
      })
      @ApiBadRequestResponse({
@@ -162,14 +161,14 @@ export class FavoriteController {
         },
         description:"something going wrong on server"
      })
-     @ApiQuery({
-        name:"userId",
+     @ApiParam({
+        name:"id",
         type:String
      })
-     @Get()
+     @Get(":id")
      @UseGuards(AuthGuard)
      @UseGuards(AdminGuard)
-     async getFavor(@Query("userId") id:string):Promise<FavorFilmDto[]>{
+     async getFavor(@Param("id") id:string):Promise<FavorFilmDto[]>{
        try {
          const {data} = await this.rmq.send<
            GetFavorite.Request,

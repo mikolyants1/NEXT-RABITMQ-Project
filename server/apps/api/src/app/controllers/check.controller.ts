@@ -59,16 +59,13 @@ export class CheckController {
   })
   @Post()
   async checkData(@Body() body:UserBody):Promise<CheckDto>{
-    try {
-      return this.rmq.send<
+    
+      const result = await this.rmq.send<
         CheckUser.Request,
         CheckUser.Response
       >(CheckUser.topic,{body});
-    } catch (e) {
-      if (e instanceof Error){
-        throw new HttpError(e.message).throwError();
-      }
-    }
+      console.log(result);
+     return result;
   }
   
   @ApiOperation({

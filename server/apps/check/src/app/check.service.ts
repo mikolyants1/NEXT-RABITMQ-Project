@@ -19,21 +19,20 @@ export class CheckService {
    async checkData({name,pass}:UserBody):Promise<CheckUser.Response>{
       const users:UsersDto[] = await this.Base.find();
       if (!users) throw new UnauthorizedException();
-      const user:UsersDto = users.find((i:UsersDto)=>(
-        i.name == name && bc.compare(pass,i.pass)
+      const user:UsersDto = users.find((i:UsersDto) => (
+        i.name == name && bc.compareSync(pass,i.pass)
       ));
-      const token:string = user ? this.jwt.sign({
+      const token = user ? this.jwt.sign({
         _id:user._id,
         name:user.name
       }) : "";
-      const role:Roles|string = user ? user.role : "";
+      const role = user ? user.role : Roles.GUEST;
       return {_id: user ? user._id : '-1',token,role};
    }
 
    async checkId(imdbID:string,id:string):Promise<CheckId.Response>{
     const user:UsersDto = await this.Base.findById(id);
-    const result:boolean = user.films
-    .some((i:FilmsDto)=>i.imdbID == imdbID);
+    const result = user.films.some((i:FilmsDto)=>i.imdbID == imdbID);
     return {result};
    } 
 }

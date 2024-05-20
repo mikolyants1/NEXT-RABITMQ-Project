@@ -10,9 +10,7 @@ import { FilmModule } from './app/films.module';
 async function bootstrap() {
   const app = await NestFactory.create(FilmModule);
   await app.init();
-  Logger.log(
-    `🚀 Application is running on`
-  );
+  Logger.log(`🚀 films is running on`);
 }
 
 bootstrap();

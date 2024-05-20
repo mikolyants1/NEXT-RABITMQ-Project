@@ -21,4 +21,5 @@ export class FilmsController {
   async clearFilm(@Body() {id}:ClearFilm.Request){
     return this.service.clearFilm(id);
   }
+
 }

@@ -8,12 +8,13 @@ import { UsersDto } from "@server1/apidocs";
 
 export class AuthMiddleware implements NestMiddleware {
     constructor(
-      @InjectModel(Users.name) private readonly Base:Model<Users>,
+      @InjectModel(Users.name)
+      private readonly Base:Model<Users>,
       private readonly auth:AuthService
     ){}
 
     async use(req:Request, res:Response, next:NextFunction) {
-      const id = `${req.query.userId}`;
+      const id = req.query.userId as string || "";
       const user:UsersDto = await this.Base.findById(id);
       if (!user) throw new UnauthorizedException();
       const token:string = this.auth.getToken(req);

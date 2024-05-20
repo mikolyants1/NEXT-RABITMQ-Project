@@ -9,7 +9,7 @@ import { ClearFilm, CreateFilm, DelFilm } from '@server1/contracts';
 export class FilmService {
   constructor(
     @InjectModel(Users.name)
-    private readonly Base:Model<Users>
+    private readonly Base:Model<Users>,
   ){}
 
   async addFilm(id:string,body:Omit<FilmsDto,"_id">):Promise<CreateFilm.Response>{

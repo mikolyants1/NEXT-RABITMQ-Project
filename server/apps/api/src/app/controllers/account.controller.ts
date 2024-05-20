@@ -55,7 +55,6 @@ export class AccountController {
       })
       @Get()
       async getUsers(@Res() res:Response){
-        console.log("user")
         try {
           const {users} = await this.rmq.send<
             GetUsers.Request,
@@ -63,7 +62,6 @@ export class AccountController {
           >(GetUsers.topic,{});
           return res.status(HttpStatus.OK).json(users);
         } catch (e) {
-          console.log(e)
           if (e instanceof Error){
             throw new HttpError(e.message).throwError();
           }

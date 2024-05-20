@@ -5,19 +5,20 @@ import { Request } from "express";
 
 @Injectable()
 export class AuthService {
-    constructor(private readonly service:JwtService){}
+  constructor(private readonly service:JwtService){}
 
-    create({_id,name}:UsersDto):string{
-      return this.service.sign({_id,name});
-    }
+  create({_id,name}:UsersDto):string{
+    return this.service.sign({_id,name});
+  }
 
-    compare(token:string,{name,_id}:UsersDto):boolean{
-      const decoded:AuthUser = this.service.verify(token);
-      return decoded._id == _id && decoded.name == name;
-    }
+  compare(token:string,{name,_id}:UsersDto):boolean{
+    const decoded:AuthUser = this.service.verify(token);
+    return decoded._id == _id && decoded.name == name;
+  }
 
-     getToken({headers}:Request):string{
-      const auth:string = headers.authorization;
-      return auth.includes('Bearer') ? auth.split(' ')[1] : "";
-    }
+  getToken({headers}:Request):string{
+    const auth = headers.Authorization as string;
+    const valid = auth.includes("Bearer");
+    return valid ? auth.split(' ')[1] : "";
+  }
 }

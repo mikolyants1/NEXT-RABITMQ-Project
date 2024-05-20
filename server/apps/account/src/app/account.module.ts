@@ -6,12 +6,13 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { UserSchema, Users } from '@server1/models';
 import { RMQModule } from 'nestjs-rmq';
+import {getEnv} from '@server1/methods';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal:true,
-      envFilePath:"./envs/.account.env"
+      envFilePath:getEnv('account')
     }),
     MongooseModule.forRootAsync(MongoConfig()),
     RMQModule.forRootAsync(RMQConfig()),

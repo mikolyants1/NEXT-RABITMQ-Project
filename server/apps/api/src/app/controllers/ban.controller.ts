@@ -73,9 +73,7 @@ export class BanController {
       type:BanDtoBody
     })
     @Post()
-    @UseGuards(AdminGuard)
-    @UseGuards(AuthGuard)
-    async banUser(@Body() {id,type}:BanDtoBody):Promise<BanModel>{
+    async banUser(@Body() {id,type}:BanDtoBody):Promise<string[]>{
       try {
         if (type === BanType.BAN){
           const {users} = await this.rmq.send<
@@ -154,7 +152,7 @@ export class BanController {
     @Get()
     @UseGuards(AdminGuard)
     @UseGuards(AuthGuard)
-    async getAllUsers():Promise<BanModel[]>{
+    async getAllUsers():Promise<string[]>{
       try {
         const {users} = await this.rmq.send<
           GetBanUsers.Request,

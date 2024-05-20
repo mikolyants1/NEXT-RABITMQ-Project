@@ -14,6 +14,6 @@ export class AdminGuard implements CanActivate {
         ctx.getClass()
       ]);
       if (!roles) return true;
-      return roles.some((i:string)=>i == headers.role);
+      return roles.some(r => r == headers.role);
     }
 }

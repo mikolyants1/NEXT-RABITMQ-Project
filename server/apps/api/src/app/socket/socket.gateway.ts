@@ -6,11 +6,12 @@ import {Server} from 'socket.io';
 @WebSocketGateway({cors:{origin:"*"}})
 export class Gateway implements OnGatewayDisconnect,OnGatewayInit {
   @WebSocketServer() private server:Server;
-  private current:string = "";
   private users:string[] = [];
-
+  private current = "";
+  
   afterInit(server:Server) {
-    Logger.log("socket works",server);
+    const logger = new Logger(Gateway.name);
+    logger.log("socket works",server);
   }
 
   handleDisconnect() {
@@ -25,15 +26,15 @@ export class Gateway implements OnGatewayDisconnect,OnGatewayInit {
   }
 
   addUserId(id:string):void {
-    if (!this.users.some((i:string)=> i == id)){
+    if (!this.users.some(u => u == id)){
       this.users.push(id);
     }
     this.current = id;
   }
 
   delUserId():void{
-    this.users = this.users.filter((i:string)=>(
-      i !== this.current
-    ))
+    this.users = this.users.filter(u => (
+      u !== this.current
+    ));
   }
 }

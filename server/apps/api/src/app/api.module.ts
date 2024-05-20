@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { Logger, MiddlewareConsumer, Module, NestModule, OnApplicationBootstrap, OnModuleInit } from '@nestjs/common';
 import { GatewayModule } from './socket/socket.module';
 import { AuthModule } from './auth/auth.module';
 import { RMQConfig} from '@server1/configs';
@@ -47,10 +47,20 @@ import { JwtStrategy } from './strategy/jwt.strategy';
     JwtStrategy
   ]
 })
-export class ApiModule implements NestModule {
-   configure(consumer: MiddlewareConsumer) {
-     consumer
-     .apply(AuthMiddleware)
-     .forRoutes(FilmsController)
-   }
+export class ApiModule implements NestModule,OnModuleInit,OnApplicationBootstrap {
+  private readonly logger:Logger = new Logger(ApiModule.name);
+
+  onApplicationBootstrap() {
+    this.logger.log("all controllers init");
+  }
+
+  onModuleInit() {
+    this.logger.log("api module init");
+  }
+
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+    .apply(AuthMiddleware)
+    .forRoutes(FilmsController)
+  }
 }

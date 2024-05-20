@@ -11,9 +11,7 @@ import { CheckModule } from './app/check.module';
 async function bootstrap() {
   const app = await NestFactory.create(CheckModule);
   await app.init();
-  Logger.log(
-    `🚀 Application is running on`
-  );
+  Logger.log(`🚀 check service run`);
 }
 
 bootstrap();
