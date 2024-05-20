@@ -18,7 +18,8 @@ export class AuthGuard implements CanActivate {
      try {
        const req:Request = ctx.switchToHttp().getRequest();
        const token:string = this.authService.getToken(req);
-       const user:UsersDto = await this.Base.findById(req.query.userId);
+       const userId = req.headers["x-user"] as string;
+       const user:UsersDto = await this.Base.findById(userId);
        if (!token) throw new UnauthorizedException('Bearer not found');
        return this.authService.compare(token,user);
      } catch (e) {
